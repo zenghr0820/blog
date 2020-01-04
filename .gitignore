@@ -1,0 +1,23 @@
+# npm
+package-lock.json
+node_modules
+
+# vscode
+.vscode
+
+# vuepress 
+dist
+.vuepress/config/sidebar-auto.js
+
+# 撰写中
+todo/
+
+# 读书笔记
+notes/
+
+# 剑指offer刷题笔记
+剑指offer刷题笔记/index.js
+
+# 前端知识体系
+前端知识体系/js/index.js
+.idea
