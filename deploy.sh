@@ -10,7 +10,7 @@ fi
 # build static
 npm run build
 cd .vuepress/dist
-echo "zenghr.cn/blog" > CNAME
+echo "blog.zenghr.cn" > CNAME
 
 git init
 git add -A
