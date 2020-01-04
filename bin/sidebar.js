@@ -84,11 +84,18 @@ function mapTocToSidebar(root, prefix) {
   let sidebar = [];
 
   const files = fs.readdirSync(root);
+  // let order = 1;
   files.forEach(filename => {
     const file = path.resolve(root, filename);
     const stat = fs.statSync(file);
-    let [order, title, type] = filename.split(".");
+    // const typeIndex = filename.lastIndexOf('.');
+    // if (typeIndex < 0) {
+    //   return;
+    // }
+    // const title = filename.slice(0, typeIndex);
+    // const type = filename.slice(typeIndex+1);
 
+    let [order, title, type] = filename.split(".");
     order = parseInt(order, 10);
     if (isNaN(order) || order < 0) {
       return;
@@ -113,6 +120,8 @@ function mapTocToSidebar(root, prefix) {
       }
       sidebar[order] = [prefix + filename, title];
     }
+
+    // order += 1;
   });
 
   sidebar = sidebar.filter(item => item !== null && item !== undefined);

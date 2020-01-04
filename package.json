@@ -11,6 +11,7 @@
     "commander": "^3.0.0",
     "ejs": "^2.7.1",
     "husky": "^2.3.0",
+    "nodemon": "^1.19.2",
     "ora": "^3.4.0",
     "prettier": "^1.17.1",
     "tracer": "^1.0.1",
@@ -18,14 +19,17 @@
     "vuepress-plugin-comment": "^0.5.4",
     "vuepress-plugin-viewer": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.0.2"
+  },
   "scripts": {
     "check": "node bin/prettier.js -t docs -c",
     "lint": "node bin/prettier.js -t docs -l",
     "check:notes": "node bin/prettier.js -t notes -c",
     "lint:notes": "node bin/prettier.js -t notes -l",
     "start": "npm run dev",
-    "dev": "./node_modules/.bin/vuepress dev .",
+    "dev": "concurrently \"nodemon --watch docs bin/sidebar.js\" \"vuepress dev .\"",
+    "dev-mon": "concurrently \"nodemon --watch docs bin/sidebar.js\" \"./node_modules/.bin/vuepress dev .\"",
     "build": "node bin/sidebar.js && ./node_modules/.bin/vuepress build ."
   },
   "repository": {
