@@ -1,7 +1,7 @@
 module.exports = {
   "/": {
     lang: "zh-CN",
-    title: "随言博客",
+    title: "随手记",
     description: "Emmmmm~~~ 就是任性"
   }
 };
