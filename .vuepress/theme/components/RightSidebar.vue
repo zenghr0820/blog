@@ -1,8 +1,8 @@
 <template>
   <aside class="right-sidebar">
     <div class="right-sidebar-links">
-      <div class="right-sidebar-header">关注公众号</div>
-      <img src="https://static.godbmw.com/img/public/wechat-8cm.jpg" alt="公众号搜索：心谭博客" srcset />
+      <div class="right-sidebar-header">做个俗人</div>
+      <img class="right-sidebar-rqcode" src="../../public/wechat.jpg" alt="少年的肩头挑着草长莺飞" srcset />
     </div>
 
     <div class="right-sidebar-links">
@@ -114,6 +114,11 @@ export default {
 
   &-links {
     margin: 1.5rem 0 1.5rem 1.5rem;
+  }
+
+  &-rqcode {
+    width: 258px;
+    height: 258px;
   }
 
   &-header {
