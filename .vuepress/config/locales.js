@@ -1,7 +1,7 @@
 module.exports = {
   "/": {
     lang: "zh-CN",
-    title: "随手记",
-    description: "Emmmmm~~~ 就是任性"
+    title: "无聊少年",
+    description: "这个少年的肩头想挑着草长莺飞"
   }
 };

@@ -17,6 +17,10 @@ module.exports = {
       text: "其它",
       items: [
         {
+          text: "生活闲谈",
+          link: "/passages/2020-01-18-first-blog"
+        },
+        {
           text: "友情链接",
           link: "/friends/"
         },
