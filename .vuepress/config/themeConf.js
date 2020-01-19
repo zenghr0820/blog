@@ -18,7 +18,7 @@ module.exports = {
       items: [
         {
           text: "生活闲谈",
-          link: "/passages/2020-01-18-first-blog"
+          link: "/passages/2020-01-18-first-blog/"
         },
         {
           text: "友情链接",
