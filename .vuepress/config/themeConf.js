@@ -12,6 +12,19 @@ module.exports = {
       text: "最新",
       link: "/guide/"
     },
+    {
+      text: "Linux",
+      items: [
+        {
+          text: "docker",
+          link: "/passages/2020-02-24-docker-install/"
+        },
+        {
+          text: "nginx",
+          link: "/passages/2020-02-25-nginx-install/"
+        },
+      ]
+    },
     // 其它
     {
       text: "其它",

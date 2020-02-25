@@ -3,6 +3,7 @@ title: "导航"
 permalink: "guide"
 comment: true
 single: true
+hide: true
 ---
 
 > 最近更新了下面这些文章 👇
@@ -55,7 +56,7 @@ export default {
       return this.posts
         .filter(post => {
           const { frontmatter } = post;
-          return frontmatter && frontmatter.permalink && frontmatter.title;
+          return frontmatter && frontmatter.permalink && frontmatter.title && !frontmatter.hide;
         })
         .map(post => {
           const execs = re.exec(post.relativePath)
@@ -74,15 +75,15 @@ export default {
       if (!(date instanceof Date)) {
         return 
       }
-
+    
       return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     },
-
+    
     loadMore() {
       if (this.timeout) {
         return
       }
-
+    
       if (this.page * this.step >= this.num) {
         this.btnInfo = '加载完成'
         this.$refs.btn.style.opacity = 0
