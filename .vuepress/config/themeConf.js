@@ -17,11 +17,11 @@ module.exports = {
       items: [
         {
           text: "docker",
-          link: "/passages/2020-02-24-docker-install/"
+          link: "/passages/2020-02-24-docker-install.html"
         },
         {
           text: "nginx",
-          link: "/passages/2020-02-25-nginx-install/"
+          link: "/passages/2020-02-25-nginx-install.html"
         },
       ]
     },
@@ -31,7 +31,7 @@ module.exports = {
       items: [
         {
           text: "生活闲谈",
-          link: "/passages/2020-01-18-first-blog/"
+          link: "/passages/2020-01-18-first-blog.html"
         },
         {
           text: "友情链接",

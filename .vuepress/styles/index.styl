@@ -1,3 +1,25 @@
+$codeBgColor = #f8f8f8
+
+blockquote {
+  color: #880d0d
+  background-color: #fbfbfb
+}
+
+blockquote:hover {
+  border-left-width: 5px;
+}
+
+.theme-default-content pre code, .theme-default-content pre[class*="language-"] code {
+  color: #476582
+}
+
+@media (max-width: 419px) {
+  .theme-default-content div[class*="language-"] {
+    margin: 0.85rem 0;
+  }
+}
+
+
 #vuepress-plugin-comment
   max-width $contentWidth
   margin 0 auto
@@ -8,15 +30,15 @@
     padding 1.5rem
 
 #main-title
-  display none !important 
+  display none !important
 
 .hero
-  .description 
-    display none !important 
+  .description
+    display none !important
 
 // $sidebarWidth: 20rem
 // define at: vuepress/packages/@vuepress/core/lib/client/style/config.styl
-.page   
+.page
   @media (min-width: $MQNarrow + 1px) {
     padding-right $sidebarWidth
   }

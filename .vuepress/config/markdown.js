@@ -5,8 +5,8 @@ module.exports = {
     permalink: true
   },
   // markdown-it-toc 的选项
-  toc: { 
+  toc: {
     includeLevel: [1, 2, 3]
   },
-  lineNumbers: true
+  lineNumbers: false
 }

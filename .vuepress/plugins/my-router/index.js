@@ -20,6 +20,6 @@ module.exports = {
       frontmatter.comment = true;
       frontmatter.commentid = frontmatter.permalink;
     }
-    frontmatter.permalink = `${routePfx}${frontmatter.permalink}`;
+    frontmatter.permalink = `${routePfx}${frontmatter.permalink}.html`;
   }
 };
