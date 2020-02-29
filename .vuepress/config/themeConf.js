@@ -13,6 +13,10 @@ module.exports = {
       link: "/guide/"
     },
     {
+      text: "Go",
+      link: "/passages/go-catalog.html"
+    },
+    {
       text: "Linux",
       items: [
         {

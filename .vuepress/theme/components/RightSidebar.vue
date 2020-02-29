@@ -15,20 +15,21 @@
       </div>
     </div>
 
-    <div class="right-sidebar-links">
-      <div class="right-sidebar-header">
-        想法
-        <a href="/passages/2019-11-25-how-insist-on-learning/" target="_blank">&gt;&gt;&gt;查看全部</a>
-      </div>
-      <div
-        class="right-sidebar-item"
-        v-for="(diary, index) in relatedDiaries"
-        :key="index"
-        :title="diary.title"
-      >
-        <a target="_blank" :href="diary.path" :title="diary.title">{{diary.title}}</a>
-      </div>
-    </div>
+    <!--TODO 有空再实现-->
+    <!--<div class="right-sidebar-links">-->
+      <!--<div class="right-sidebar-header">-->
+        <!--想法-->
+        <!--<a href="/passages/2019-11-25-how-insist-on-learning/" target="_blank">&gt;&gt;&gt;查看全部</a>-->
+      <!--</div>-->
+      <!--<div-->
+        <!--class="right-sidebar-item"-->
+        <!--v-for="(diary, index) in relatedDiaries"-->
+        <!--:key="index"-->
+        <!--:title="diary.title"-->
+      <!--&gt;-->
+        <!--<a target="_blank" :href="diary.path" :title="diary.title">{{diary.title}}</a>-->
+      <!--</div>-->
+    <!--</div>-->
   </aside>
 </template>
 
@@ -61,8 +62,8 @@ export default {
   methods: {
     getRecentTopK(posts = [], k = 5) {
       return posts
-        .filter(({ title }) => {
-          return this.isValidStr(title) && !this.filterTitles.includes(title);
+        .filter(({ title, frontmatter }) => {
+          return !frontmatter.hide && this.isValidStr(title) && !this.filterTitles.includes(title);
         })
         .map(post => {
           return {

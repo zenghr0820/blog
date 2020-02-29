@@ -40,6 +40,21 @@ module.exports = {
             "<%- frontmatter.title %>：<%- window.location.origin %><%- frontmatter.to.path || window.location.pathname %>"
         }
       }
-    ]
+    ],
+    [
+      '@vuepress/plugin-last-updated',
+      {
+        transformer: (timestamp) => {
+          const moment = require('moment');
+          return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
+        },
+      },
+    ],
+    // [
+    //   'vuepress-plugin-sitemap',
+    //   {
+    //     hostname: 'https://github.com/zenghr0820/blog/' //你的gh-pages地址
+    //   },
+    // ],
   ]
 };

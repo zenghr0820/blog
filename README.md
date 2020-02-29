@@ -4,7 +4,7 @@ comment: false
 single: true
 footer: MIT Licensed | Copyright © 2020 无聊少年
 ---
-![无聊少年](http://media.zenghr.cn/logo.png)
+![无聊少年](https://media.zenghr.cn/logo.png)
 
 > 这个少年的肩头想挑着草长莺飞（~~OS：在想屁吃~~）
 

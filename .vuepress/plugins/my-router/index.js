@@ -20,6 +20,12 @@ module.exports = {
       frontmatter.comment = true;
       frontmatter.commentid = frontmatter.permalink;
     }
+
+    // TODO 暂时不实现根据目录生成前缀
+    // if (frontmatter.parentlevel && frontmatter.parentlevel !== '') {
+    //   routePfx = ("/" + frontmatter.parentlevel + "/");
+    // }
+
     frontmatter.permalink = `${routePfx}${frontmatter.permalink}.html`;
   }
 };

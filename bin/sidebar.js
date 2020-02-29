@@ -31,18 +31,36 @@ main();
  */
 function main() {
   const variables = [];
-
   const tocs = readTocs(docsRoot);
+
   tocs.forEach(toc => {
-    const js = mapTocToSidebar(toc);
+    let js = mapTocToSidebar(toc);
     if (!js.length) {
       return;
     }
 
+    // 判断是否有二级目录
+    let flag = false;
+    for (const temp of js) {
+      if (typeof temp === 'string' || Array.isArray(temp)) {
+        continue;
+      }
+      flag = true;
+      break;
+    }
+    if (!flag) {
+      js = [{
+        title: path.basename(toc),
+        collapsable: false,
+        children: js
+      }];
+    }
+
+
     variables.push({
       path: `/docs/${path.basename(toc)}/`,
       name: path.basename(toc).replace(/ /g, "_"),
-      js
+      js,
     });
   });
 
@@ -74,6 +92,8 @@ function readTocs(root) {
   return result;
 }
 
+
+
 /**
  * 将对应目录映射为对应的边栏配置
  * @param {String} root
@@ -84,16 +104,16 @@ function mapTocToSidebar(root, prefix) {
   let sidebar = [];
 
   const files = fs.readdirSync(root);
+  let index = false;
   // let order = 1;
   files.forEach(filename => {
     const file = path.resolve(root, filename);
     const stat = fs.statSync(file);
-    // const typeIndex = filename.lastIndexOf('.');
-    // if (typeIndex < 0) {
-    //   return;
-    // }
-    // const title = filename.slice(0, typeIndex);
-    // const type = filename.slice(typeIndex+1);
+
+    if (filename === 'README.md' || filename === 'readme.md') {
+      index = true;
+      return;
+    }
 
     let [order, title, type] = filename.split(".");
     order = parseInt(order, 10);
@@ -111,6 +131,7 @@ function mapTocToSidebar(root, prefix) {
       sidebar[order] = {
         title,
         collapsable: false,
+        sidebarDepth: 2,
         children: mapTocToSidebar(file, prefix + filename + "/")
       };
     } else {
@@ -123,6 +144,11 @@ function mapTocToSidebar(root, prefix) {
 
     // order += 1;
   });
+
+  if (index) {
+    // sidebar.unshift([prefix + 'READE.md', ''])
+    sidebar.unshift('')
+  }
 
   sidebar = sidebar.filter(item => item !== null && item !== undefined);
   return sidebar;
