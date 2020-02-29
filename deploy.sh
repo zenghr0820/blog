@@ -16,7 +16,7 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f "https://travis-ci:$GITHUB_TOKEN@github.com/zenghr0820/zenghr0820.github.io.git"
+git push -f "https://travis-ci:$GITHUB_TOKEN@github.com/zenghr0820/zenghr0820.github.io.git" master
 
 cd -
 
