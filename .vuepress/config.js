@@ -29,7 +29,7 @@ module.exports = {
         options: {
           clientID: "180b1626afc1b134ecfa",
           clientSecret: process.env.clientSecret || "",
-          repo: "blog",
+          repo: "zenghr0820.github.io",
           owner: "zenghr0820",
           admin: ["zenghr0820"],
           id: "<%- frontmatter.commentid || frontmatter.permalink %>", // Ensure uniqueness and length less than 50
