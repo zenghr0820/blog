@@ -41,6 +41,21 @@ module.exports = {
         }
       }
     ],
+    // see: https://vssue.js.org/guide/vuepress.html#usage
+    // ['@vssue/vuepress-plugin-vssue', {
+    //   // set `platform` rather than `api`
+    //   platform: 'github',
+    //   // all other options of Vssue are allowed
+    //   owner: 'zenghr0820',
+    //   repo: 'blog',
+    //   admin: ["zenghr0820"],
+    //   clientId: '4002c8fb700ad54cfffc',
+    //   clientSecret: process.env.vssueClientSecret || "",
+    //   labels: ["Gitalk", "Comment"],
+    //   title: "「评论」<%- frontmatter.title %>",
+    //   issueContent: ({ url }) => `这个 Issue 由 Vssue 自动创建，用来存储该页面的评论：${url}`,
+    //   autoCreateIssue: true,
+    // }],
     [
       '@vuepress/plugin-last-updated',
       {
@@ -50,11 +65,21 @@ module.exports = {
         },
       },
     ],
-    // [
-    //   'vuepress-plugin-sitemap',
-    //   {
-    //     hostname: 'https://github.com/zenghr0820/blog/' //你的gh-pages地址
-    //   },
-    // ],
+    // see: https://github.com/ekoeryanto/vuepress-plugin-sitemap
+    ['sitemap', {
+      hostname: 'https://blog.zenghr.cn'
+    }],
+    // see: https://github.com/IOriens/vuepress-plugin-baidu-autopush
+    ['vuepress-plugin-baidu-autopush', {
+
+    }],
+    // see: https://github.com/webmasterish/vuepress-plugin-autometa
+    ['autometa', {
+      site: {
+        name   : 'zenghr',
+        twitter: 'zenghr',
+      },
+      canonical_base: 'https://blog.zenghr.cn',
+    }],
   ]
 };
