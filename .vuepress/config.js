@@ -75,11 +75,15 @@ module.exports = {
     }],
     // see: https://github.com/webmasterish/vuepress-plugin-autometa
     ['autometa', {
-      site: {
+      author: {
         name   : 'zenghr',
-        twitter: 'zenghr',
       },
       canonical_base: 'https://blog.zenghr.cn',
     }],
+    // see: https://github.com/znicholasbrown/vuepress-plugin-code-copy
+    ["vuepress-plugin-code-copy", {
+      staticIcon: true,
+      color: '#ccc',
+    }]
   ]
 };
