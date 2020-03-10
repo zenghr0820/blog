@@ -10,7 +10,7 @@ module.exports = {
     require("./plugins/my-router"),
     require("./plugins/my-loader"),
     require("vuepress-plugin-viewer"),
-    "@vuepress/back-to-top",
+    // "@vuepress/back-to-top",
     ["@vuepress/google-analytics", { ga: "UA-124601890-1" }],
     [
       "@vuepress/pwa",
@@ -84,6 +84,17 @@ module.exports = {
     ["vuepress-plugin-code-copy", {
       staticIcon: true,
       color: '#ccc',
-    }]
+    }],
+    // see https://github.com/QiShaoXuan/vuepress-plugin-cat
+    // ["vuepress-plugin-cat", {}],
+    ['go-top'],
+    [
+      "vuepress-plugin-live2d",
+      {
+        "modelName": ["hijiki", "tororo"],
+        "mobileShow": false
+      }
+    ]
+
   ]
 };

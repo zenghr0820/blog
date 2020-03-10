@@ -25,7 +25,9 @@
   },
   "devDependencies": {
     "concurrently": "^5.0.2",
-    "vuepress-plugin-autometa": "^0.1.13"
+    "vuepress-plugin-autometa": "^0.1.13",
+    "vuepress-plugin-go-top": "^0.0.2",
+    "vuepress-plugin-live2d": "^0.0.7"
   },
   "scripts": {
     "check": "node bin/prettier.js -t docs -c",
