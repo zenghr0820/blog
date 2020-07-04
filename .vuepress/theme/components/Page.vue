@@ -7,7 +7,7 @@
 
     <PageNav v-bind="{ sidebarItems }" />
 
-    <RightSidebar />
+    <PageSidebar />
 
     <slot name="bottom" />
   </main>
@@ -16,17 +16,19 @@
 <script>
 import PageEdit from "@theme/components/PageEdit.vue";
 import PageNav from "@theme/components/PageNav.vue";
-import RightSidebar from "./RightSidebar";
+// import RightSidebar from "./RightSidebar";
+import PageSidebar from "./PageSidebar/PageSidebar";
 
 export default {
-  components: { PageEdit, PageNav, RightSidebar },
+  components: { PageEdit, PageNav, PageSidebar },
   props: ["sidebarItems"]
 };
 </script>
 
 <style lang="stylus">
 $wrapper {
-  max-width: $contentWidth;
+  /* max-width: $contentWidth; */
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem 2.5rem;
 
@@ -42,5 +44,6 @@ $wrapper {
 .page {
   padding-bottom: 2rem;
   display: block;
+  padding-right: 3.5rem;
 }
 </style>

@@ -29,20 +29,28 @@ blockquote:hover {
     display: block;
   }
 }
+.theme-default-content:not(.custom) {
+  max-width: 100%;
+}
+.page-edit {
+  max-width: 100% !important;
+}
+.page-nav {
+  max-width: 100% !important;
+}
+// go-to-top
+.go-to-top {
+  bottom: 1rem !important;
+  right: 0.8rem !important;
+  z-index: 20 !important;
+}
 
 div[class*="language-"]::before {
   color: #f08d49
 }
 
-@media (max-width: 419px) {
-  .theme-default-content div[class*="language-"] {
-    margin: 0.85rem 0;
-  }
-}
-
-
 #vuepress-plugin-comment
-  max-width $contentWidth
+  max-width 100%
   margin 0 auto
   padding 2rem 2.5rem
   @media (max-width: $MQNarrow)
@@ -68,9 +76,42 @@ div[class*="language-"]::before {
 // 回到顶部猫
 .show-cat {
   z-index: 11!important
-  right: 320px!important
+  right: 120px!important
 }
 .hide-cat {
   z-index: 11!important
-  right: 320px!important
+  right: 120px!important
+}
+
+
+// media
+@media (max-width: 419px) {
+  .theme-default-content div[class*="language-"] {
+    margin: 0.85rem 0;
+  }
+}
+
+@media (max-width: 719px) {
+  .page {
+    padding-left: 0;
+    padding-right: 0 !important;
+  }
+  .page-sidebar {
+    display: none;
+  }
+  .show-cat {
+    display: none;
+  }
+  .hide-cat {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  .show-cat {
+    display: block !important;
+  }
+  .hide-cat {
+    display: block !important;
+  }
 }

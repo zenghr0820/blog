@@ -10,7 +10,7 @@ module.exports = {
     require("./plugins/my-router"),
     require("./plugins/my-loader"),
     require("vuepress-plugin-viewer"),
-    // "@vuepress/back-to-top",
+    // ["@vuepress/back-to-top", true],
     ["@vuepress/google-analytics", { ga: "UA-124601890-1" }],
     [
       "@vuepress/pwa",
