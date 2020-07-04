@@ -49,6 +49,19 @@
                 </div>
             </template>
 
+            <template v-if="opt.type == 'qrcode'">
+                <img :src="opt.icon" style="pointer-events: none; width: 20px" class="nozoom">
+                <span class="show-txt">{{opt.title}}</span>
+                <div class="toc-container">
+                    <div class="pos-box">
+                        <div class="icon-arrow"></div>
+                        <div class="scroll-box" style="max-height:550px">
+                            <img height="180px" :src="opt.imageUrl + config.path" class="medium-zoom-image" style="margin: 10px;">
+                        </div>
+                    </div>
+                </div>
+            </template>
+
             <template v-if="opt.type == 'html'">
                 <img :src="opt.icon" style="pointer-events: none; width: 27px" class="nozoom">
                 <span class="show-txt">{{opt.title}}</span>

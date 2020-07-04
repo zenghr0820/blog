@@ -34,10 +34,10 @@ export default {
             event: this.closeNav,
           },
           {
-            type: "image",
+            type: "qrcode",
             icon: "/iphone.png",
             title: "手机看",
-            imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=" + window.location.href,
+            imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn",
           },
           {
             type: "image",
