@@ -1,5 +1,20 @@
 $codeBgColor = #f8f8f8
 
+// vuepress-plugin-container 自定义容器样式
+.theorem
+  margin 1rem 0
+  padding .1rem 1.5rem
+  border-radius 0.4rem
+  background-color #f0f4f8
+  .title
+    font-weight bold
+
+.custom-block
+  &.right
+    color transparentify($textColor, 0.4)
+    font-size 0.9rem
+    text-align right
+
 button{
   outline:none;
 }
@@ -29,6 +44,9 @@ blockquote:hover {
     display: block;
   }
 }
+.theme-default-content {
+  word-break: break-all; // 单词换行
+}
 .theme-default-content:not(.custom) {
   max-width: 100%;
 }
@@ -43,6 +61,10 @@ blockquote:hover {
   bottom: 1rem !important;
   right: 0.8rem !important;
   z-index: 20 !important;
+}
+// 侧边栏
+.sidebar {
+  z-index: 11;
 }
 
 div[class*="language-"]::before {

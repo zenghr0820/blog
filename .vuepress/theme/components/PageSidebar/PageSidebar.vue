@@ -1,9 +1,7 @@
 <template>
   <aside class="page-sidebar">
     <!--  工具栏  -->
-    <SideToolbar :config="toolbarConfig" />
-
-    <!--  ----  -->
+    <SideToolbar :config="relatedToc" />
 
   </aside>
 </template>
@@ -15,7 +13,52 @@ export default {
   components: { SideToolbar },
   data() {
     return {
-      toolbarConfig: {
+      // toolbarConfig: {
+      //   title: "",
+      //   path: "",
+      //   icon: "/toc.png",
+      //   headers: [],
+      //   opts: [
+      //     {
+      //       type: "script",
+      //       icon: "/full.png",
+      //       title: "全屏看",
+      //       event: this.full,
+      //     },
+      //     {
+      //       type: "script",
+      //       icon: "/toggle.png",
+      //       title: "侧边栏",
+      //       event: this.closeNav,
+      //     },
+      //     {
+      //       type: "qrcode",
+      //       icon: "/iphone.png",
+      //       title: "手机看",
+      //       imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn",
+      //     },
+      //     {
+      //       type: "image",
+      //       icon: "/reward.png",
+      //       title: "打赏",
+      //       imageUrl: '/wechat.jpg',
+      //     },
+      //   ]
+      // },
+    };
+  },
+  created() {},
+
+  mounted() {},
+  computed: {
+    relatedToc() {
+      return this.getPageToc(this.$page, this.postK);
+    },
+  },
+
+  methods: {
+    getPageToc(p = null) {
+      let toolbarConfig = {
         title: "",
         path: "",
         icon: "/toc.png",
@@ -34,10 +77,10 @@ export default {
             event: this.closeNav,
           },
           {
-            type: "qrcode",
+            type: "image",
             icon: "/iphone.png",
             title: "手机看",
-            imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn",
+            imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=" + window.location.href,
           },
           {
             type: "image",
@@ -46,19 +89,20 @@ export default {
             imageUrl: '/wechat.jpg',
           },
         ]
-      },
-    };
-  },
-  created() {
-    this.toolbarConfig.title = this.$page.title;
-    this.toolbarConfig.path = this.$page.path;
-    this.toolbarConfig.headers = this.$page.headers;
-  },
+      };
 
-  mounted() {},
-  computed: {},
-
-  methods: {
+      if (p) {
+        toolbarConfig.title = this.$page.title;
+        toolbarConfig.path = this.$page.path;
+        toolbarConfig.headers = this.formatPageToc(this.$page.headers);
+        // console.log(toolbarConfig.headers)
+      }
+      return toolbarConfig
+    },
+    isHash(path) { // 获取路由锚点变化
+      const hash = window.location.hash;
+      return ('#' + path) === decodeURIComponent(hash);
+    },
     full() {
       if (!! (
               document.fullscreen ||
@@ -78,7 +122,46 @@ export default {
       if (theme.length > 0) {
         theme[0].classList.toggle("no-sidebar");
       }
-    }
+    },
+    // childrens
+    formatPageToc(headers = []) { // 格式化 Toc 数据格式
+      if (!headers) return [];
+      let menus = JSON.parse(JSON.stringify(headers)); // 深拷贝
+
+      const pageToc = [];
+      let currentToc;
+      for (let menu of menus) {
+        if (menu.level <= 1) continue;
+        // 判断锚点
+        if (this.isHash(menu.title)) {
+          menu.active = true
+        }
+        if (!currentToc) {
+          currentToc = menu;
+          continue
+        }
+        // ...
+        if (currentToc.level >= menu.level) {
+          pageToc.push(currentToc);
+          currentToc = menu;
+        } else {
+          if (menu.active) {
+            currentToc.active = true;
+          }
+          if (currentToc.childrens && currentToc.childrens.length > 0) {
+            currentToc.childrens.push(menu)
+          } else {
+            currentToc.childrens = [menu]
+          }
+        }
+      }
+
+      if (currentToc) {
+        pageToc.push(currentToc)
+      }
+
+      return pageToc
+    },
   }
 };
 </script>

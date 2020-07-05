@@ -10,7 +10,7 @@ module.exports = {
     require("./plugins/my-router"),
     require("./plugins/my-loader"),
     require("vuepress-plugin-viewer"),
-    // ["@vuepress/back-to-top", true],
+    ["@vuepress/back-to-top", true],
     ["@vuepress/google-analytics", { ga: "UA-124601890-1" }],
     [
       "@vuepress/pwa",
@@ -85,16 +85,46 @@ module.exports = {
       staticIcon: true,
       color: '#ccc',
     }],
+    // see: https://vuepress.github.io/zh/plugins/copyright
+    ['copyright',{
+      noCopy: false, // 允许复制内容
+      minLength: 200, // 如果长度超过 200 个字符
+      authorName: "https://blog.zenghr.cn",
+    }],
     // see https://github.com/QiShaoXuan/vuepress-plugin-cat
     // ["vuepress-plugin-cat", {}],
-    ['go-top'],
+    // ['go-top'],
     [
       "vuepress-plugin-live2d",
       {
         "modelName": ["hijiki", "tororo"],
         "mobileShow": false
       }
-    ]
+    ],
+    // see: https://vuepress.github.io/zh/plugins/container
+    // 你可以多次使用这个插件
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'right',
+        defaultTitle: '',
+      },
+    ],
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'theorem',
+        before: info => `<div class="theorem"><p class="title">${info}</p>`,
+        after: '</div>',
+      },
+    ],
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'tip',
+        defaultTitle: {},
+      },
+    ],
 
   ]
 };

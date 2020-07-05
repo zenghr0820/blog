@@ -12,10 +12,10 @@
                         <div class="toc-box">
                             <ul class="toc-sidebar-links">
                                 <li v-for="(node, index) in config.headers" :key="index">
-                                    <a :href="config.path +'#'+ node.title" class="toc-sidebar-link">{{node.title}}</a>
+                                    <a :href="config.path +'#'+ node.title" :class="node.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{node.title}}</a>
                                     <ul class="toc-sidebar-sub-headers">
-                                        <li v-for="(child, index) in node.children" :key="index">
-                                            <a :href="config.path +'#'+ child.title" class="toc-sidebar-link">{{child.title}}</a>
+                                        <li v-for="(children, index) in node.childrens" :key="index">
+                                            <a :href="config.path +'#'+ children.title" :class="children.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{children.title}}</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -44,19 +44,6 @@
                         <div class="icon-arrow"></div>
                         <div class="scroll-box" style="max-height:550px">
                             <img height="180px" :src="opt.imageUrl" class="medium-zoom-image" style="margin: 10px;">
-                        </div>
-                    </div>
-                </div>
-            </template>
-
-            <template v-if="opt.type == 'qrcode'">
-                <img :src="opt.icon" style="pointer-events: none; width: 20px" class="nozoom">
-                <span class="show-txt">{{opt.title}}</span>
-                <div class="toc-container">
-                    <div class="pos-box">
-                        <div class="icon-arrow"></div>
-                        <div class="scroll-box" style="max-height:550px">
-                            <img height="180px" :src="opt.imageUrl + config.path" class="medium-zoom-image" style="margin: 10px;">
                         </div>
                     </div>
                 </div>
