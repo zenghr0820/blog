@@ -13,38 +13,8 @@ export default {
   components: { SideToolbar },
   data() {
     return {
-      // toolbarConfig: {
-      //   title: "",
-      //   path: "",
-      //   icon: "/toc.png",
-      //   headers: [],
-      //   opts: [
-      //     {
-      //       type: "script",
-      //       icon: "/full.png",
-      //       title: "全屏看",
-      //       event: this.full,
-      //     },
-      //     {
-      //       type: "script",
-      //       icon: "/toggle.png",
-      //       title: "侧边栏",
-      //       event: this.closeNav,
-      //     },
-      //     {
-      //       type: "qrcode",
-      //       icon: "/iphone.png",
-      //       title: "手机看",
-      //       imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn",
-      //     },
-      //     {
-      //       type: "image",
-      //       icon: "/reward.png",
-      //       title: "打赏",
-      //       imageUrl: '/wechat.jpg',
-      //     },
-      //   ]
-      // },
+      pageUrl: "",
+      pageHash: "",
     };
   },
   created() {},
@@ -80,7 +50,7 @@ export default {
             type: "image",
             icon: "/iphone.png",
             title: "手机看",
-            imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=" + window.location.href,
+            imageUrl: "https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn" + this.$page.path,
           },
           {
             type: "image",
@@ -95,12 +65,11 @@ export default {
         toolbarConfig.title = this.$page.title;
         toolbarConfig.path = this.$page.path;
         toolbarConfig.headers = this.formatPageToc(this.$page.headers);
-        // console.log(toolbarConfig.headers)
       }
       return toolbarConfig
     },
     isHash(path) { // 获取路由锚点变化
-      const hash = window.location.hash;
+      const hash = this.$route.hash;
       return ('#' + path) === decodeURIComponent(hash);
     },
     full() {
