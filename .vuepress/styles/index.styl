@@ -1,5 +1,10 @@
 $codeBgColor = #f8f8f8
 
+h2 {
+  font-size: 1.65rem;
+  border-bottom: 0 solid #eaecef;
+}
+
 // vuepress-plugin-container 自定义容器样式
 .theorem
   margin 1rem 0
@@ -24,8 +29,12 @@ blockquote {
   background-color: #fbfbfb
 }
 
+// 代码区域样式
 blockquote:hover {
   border-left-width: 5px;
+}
+.code-copy {
+  display: table-row;
 }
 .theme-default-content code {
   background-color: #fff5f5;
@@ -34,8 +43,11 @@ blockquote:hover {
   padding: .065em .4em;
 }
 
-.theme-default-content pre code, .theme-default-content pre[class*="language-"] code {
-  color: #476582
+//.theme-default-content pre code, .theme-default-content pre[class*="language-"] code {
+//  color: #476582
+//}
+div[class*="language-"]::before {
+  color: #f08d49
 }
 
 .theme-default-content p:first-child{
@@ -67,9 +79,6 @@ blockquote:hover {
   z-index: 11;
 }
 
-div[class*="language-"]::before {
-  color: #f08d49
-}
 
 #vuepress-plugin-comment
   max-width 100%

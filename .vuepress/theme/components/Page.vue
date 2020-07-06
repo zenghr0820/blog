@@ -7,7 +7,7 @@
 
     <PageNav v-bind="{ sidebarItems }" />
 
-    <PageSidebar />
+    <PageSidebar v-bind="{ sidebarItems }" />
 
     <slot name="bottom" />
   </main>

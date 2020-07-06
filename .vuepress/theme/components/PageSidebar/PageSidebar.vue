@@ -8,24 +8,22 @@
 
 <script>
 import SideToolbar from "./SideToolbar";
+import { resolvePage } from "../../util";
+import isString from 'lodash/isString'
+import isNil from 'lodash/isNil'
 
 export default {
+  props: ['sidebarItems'],
   components: { SideToolbar },
-  data() {
-    return {
-      pageUrl: "",
-      pageHash: "",
-    };
-  },
+  data() {return {}},
   created() {},
-
   mounted() {},
+
   computed: {
     relatedToc() {
       return this.getPageToc(this.$page, this.postK);
     },
   },
-
   methods: {
     getPageToc(p = null) {
       let toolbarConfig = {
@@ -66,6 +64,27 @@ export default {
         toolbarConfig.path = this.$page.path;
         toolbarConfig.headers = this.formatPageToc(this.$page.headers);
       }
+
+      // 上/下一篇链接
+      const prev = resolvePageLink(LINK_TYPES.PREV, this);
+      const next = resolvePageLink(LINK_TYPES.NEXT, this);
+      if (prev) {
+        toolbarConfig.opts.push({
+          type: "PageLink",
+          icon: "/prev.png",
+          title: "上一篇",
+          pageLink: prev,
+        })
+      }
+      if (next) {
+        toolbarConfig.opts.push({
+          type: "PageLink",
+          icon: "/next.png",
+          title: "下一篇",
+          pageLink: next,
+        })
+      }
+
       return toolbarConfig
     },
     isHash(path) { // 获取路由锚点变化
@@ -133,6 +152,75 @@ export default {
     },
   }
 };
+
+// func
+function resolvePrev (page, items) {
+  return find(page, items, -1)
+}
+
+function resolveNext (page, items) {
+  return find(page, items, 1)
+}
+
+const LINK_TYPES = {
+  NEXT: {
+    resolveLink: resolveNext,
+    getThemeLinkConfig: ({ nextLinks }) => nextLinks,
+    getPageLinkConfig: ({ frontmatter }) => frontmatter.next
+  },
+  PREV: {
+    resolveLink: resolvePrev,
+    getThemeLinkConfig: ({ prevLinks }) => prevLinks,
+    getPageLinkConfig: ({ frontmatter }) => frontmatter.prev
+  }
+};
+
+function resolvePageLink (
+        linkType,
+        { $themeConfig, $page, $route, $site, sidebarItems }
+) {
+  const { resolveLink, getThemeLinkConfig, getPageLinkConfig } = linkType
+
+  // Get link config from theme
+  const themeLinkConfig = getThemeLinkConfig($themeConfig)
+
+  // Get link config from current page
+  const pageLinkConfig = getPageLinkConfig($page)
+
+  // Page link config will overwrite global theme link config if defined
+  const link = isNil(pageLinkConfig) ? themeLinkConfig : pageLinkConfig
+
+  if (link === false) {
+    return
+  } else if (isString(link)) {
+    return resolvePage($site.pages, link, $route.path)
+  } else {
+    return resolveLink($page, sidebarItems)
+  }
+}
+
+function find (page, items, offset) {
+  const res = []
+  flatten(items, res)
+  for (let i = 0; i < res.length; i++) {
+    const cur = res[i]
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
+      return res[i + offset]
+    }
+  }
+}
+
+function flatten (items, res) {
+  for (let i = 0, l = items.length; i < l; i++) {
+    if (items[i].type === 'group') {
+      flatten(items[i].children || [], res)
+    } else {
+      res.push(items[i])
+    }
+  }
+}
+
+
 </script>
 
 <style lang="stylus">

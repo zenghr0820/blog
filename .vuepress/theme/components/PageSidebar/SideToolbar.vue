@@ -29,14 +29,13 @@
         <!-- 分隔符 -->
         <div class="option-box" v-for="(opt, index) in config.opts" :key="index">
             <template v-if="opt.type == 'script'">
-                <div v-on:click="opt.event" style="width: 100%" />
                 <a title="点击切换全屏" v-on:click="opt.event" style="text-align: center; padding-left: 2px;">
                     <img :src="opt.icon" style="pointer-events: none; width: 27px" class="nozoom">
                     <span class="show-txt">{{opt.title}}</span>
                 </a>
             </template>
 
-            <template v-if="opt.type == 'image'">
+            <template v-else-if="opt.type == 'image'">
                 <img :src="opt.icon" style="pointer-events: none; width: 20px" class="nozoom">
                 <span class="show-txt">{{opt.title}}</span>
                 <div class="toc-container">
@@ -49,7 +48,7 @@
                 </div>
             </template>
 
-            <template v-if="opt.type == 'html'">
+            <template v-else-if="opt.type == 'html'">
                 <img :src="opt.icon" style="pointer-events: none; width: 27px" class="nozoom">
                 <span class="show-txt">{{opt.title}}</span>
                 <div class="toc-container">
@@ -60,6 +59,13 @@
                         </div>
                     </div>
                 </div>
+            </template>
+
+            <template v-else-if="opt.type == 'PageLink'">
+                <a :title="opt.pageLink.title" :href="opt.pageLink.path" style="text-align: center; padding-left: 2px;">
+                    <img :src="opt.icon" style="pointer-events: none; width: 27px" class="nozoom">
+                    <span class="show-txt">{{opt.title}}</span>
+                </a>
             </template>
         </div>
 
