@@ -1,0 +1,107 @@
+---
+title: "在Ubuntu上部署kubernetes集群"
+date: "2020-08-12 16:14"
+parentlevel: "kubernetes"
+permalink: "2020-08-12-kubernetes-deploy-ready"
+---
+
+# 在Ubuntu上部署kubernetes集群
+
+
+## 1.1 安装方式
+
+- 基于二进制的安装方式
+
+- 基于官方工具kubeadm的安装方式 [官方地址](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/)
+
+- 基于第三方工具的安装
+
+由于国内的网络环境问题，使用官方工具 kubeadm 需要解决网络问题，所以本系列文档将从 github 下载发行版的二进制包，手动部署每个组件，组成Kubernetes集群，同时开启了集群的TLS安全认证。而不是使用 `kubeadm` 等自动化方式来部署集群。
+
+
+
+## 1.2 准备环境
+
+这里准备了三台ubuntu虚拟机，每台一核cpu和2G内存，配置好root账户，并安装好了docker，后续的所有操作都是使用root账户。
+
+**单Master架构图：**
+
+<img src="https://media.zenghr.cn/blog/img/单 Master 集群架构图.jpg" alt="单Master集群架构图" />
+
+**单Master服务器规划：**
+
+|  系统类型   |     IP地址     | 节点角色 | Hostname |                             组件                             |
+| :---------: | :------------: | :------: | :------: | :----------------------------------------------------------: |
+| Ubuntu18.04 | 192.168.10.101 |  worker  | server01 |              kubelet，kube-proxy，docker,  etcd              |
+| Ubuntu18.04 | 192.168.10.102 |  worker  | server02 | kube-apiserver，kube-controller-manager，kube-scheduler，docker, etcd |
+| Ubuntu18.04 | 192.168.10.103 |  worker  | server03 |              kubelet，kube-proxy，docker,  etcd              |
+
+> **先部署一套单Master架构（192.168.10.101/102/103）**
+
+
+
+## 1.3 操作系统初始化配置(每个虚拟机)
+
+```bash
+# 关闭防火墙
+ufw disable
+# 查看状态
+ufw status
+
+# 关闭swap
+swapoff -a  # 临时
+sed -ri 's/.*swap.*/#&/' /etc/fstab    # 永久
+
+# 根据规划设置主机名
+hostnamectl set-hostname <hostname>
+
+# 设置固定 IP ==================
+# 网卡信息配置在/etc/netplan/xxx.yaml文件，需做如下配置，如下配置
+network:
+  ethernets:
+    enp0s5:
+      dhcp4: false
+      addresses: [192.168.10.103/24]
+      gateway4: 192.168.10.1
+      nameservers:
+        addresses: [192.168.10.1]
+  version: 2
+# 然后使用以下命令使配置即时生效
+netplan apply
+# ===========================
+
+# 添加hosts
+cat >> /etc/hosts << EOF
+192.168.10.101 server01
+192.168.10.102 server02
+192.168.10.103 server03
+EOF
+
+# 将桥接的IPv4流量传递到iptables的链
+cat <<EOF > /etc/sysctl.d/k8s.conf
+net.ipv4.ip_forward = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+# 生效配置文件
+sysctl -p /etc/sysctl.d/k8s.conf
+# 或者
+sysctl --system
+
+# 时间同步
+apt install ntpdate
+ntpdate time.windows.com
+```
+
+
+
+## 步骤介绍
+
+1. [创建 TLS 证书和秘钥](/passages/2020-08-12-kubernetes-generate-tls.html)
+2. [安装 docker](/passages/2020-02-24-docker-install)
+3. [创建高可用etcd集群](/passages/2020-08-12-kubernetes-deploy-etcd)
+4. [部署master节点](/passages/2020-08-12-kubernetes-deploy-master)
+5. [部署Node节点](/passages/2020-08-13-kubernetes-deploy-worker)
+6. [部署CNI 网络](/passages/2020-08-13-kubernetes-deploy-cni)
+7. [部署CoreDns](/passages/2020-08-13-kubernetes-deploy-dns)
+

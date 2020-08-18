@@ -1,26 +1,19 @@
 ---
 home: true
+heroImage: https://media.zenghr.cn/logo.png
+actionText: 开始阅读 →
+actionLink: /guide/
+features:
+- title: 春夏秋冬
+  details: 愿__心境四季如春
+- title: 清风翻书
+  details: 自己提笔写书，不如清风翻书人看书
+- title: bug 与 code
+  details: 人生除了眼前的苟且，还有未知的 bug 和看不懂的 code
 comment: false
 single: true
-footer: MIT Licensed | Copyright © 2020 无聊少年
+footer: MIT Licensed | Copyright © 2020 Zenghr
 ---
-![无聊少年](https://media.zenghr.cn/logo.png)
+
 
 > 这个少年的肩头想挑着草长莺飞（~~OS：在想屁吃~~）
-
-## Go
-- `[简介]`[简介](/passages/go-catalog.html)
-- `[源码分析]` [记录Go中Slice扩容源码分析](/passages/2020-02-28-golang-slice-analysis.html)
-
-
-## Docker
-- `[安装]` [Ubuntu18.04 安装docker](/passages/2020-02-24-docker-install.html)
-- `[常用命令]` [docker常用命令](/passages/2020-02-25-docker-command.html)
-
-## Nginx
-- `[安装]` [Ubuntu18.04 安装nginx](/passages/2020-02-25-nginx-install.html)
-- `[常用命令]` [nginx常用命令](/passages/2020-02-25-nginx-command.html)
-
-## 生活闲谈
-- `札记` [少年的第一篇博客](/passages/2020-01-18-first-blog.html)
-

@@ -12,10 +12,10 @@
                         <div class="toc-box">
                             <ul class="toc-sidebar-links">
                                 <li v-for="(node, index) in config.headers" :key="index">
-                                    <a :href="config.path +'#'+ node.title" :class="node.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{node.title}}</a>
+                                    <a :href="config.path +'#'+ node.slug" :class="node.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{node.title}}</a>
                                     <ul class="toc-sidebar-sub-headers">
                                         <li v-for="(children, index) in node.childrens" :key="index">
-                                            <a :href="config.path +'#'+ children.title" :class="children.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{children.title}}</a>
+                                            <a :href="config.path +'#'+ children.slug" :class="children.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{children.title}}</a>
                                         </li>
                                     </ul>
                                 </li>

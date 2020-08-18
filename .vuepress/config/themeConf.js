@@ -17,6 +17,10 @@ module.exports = {
       link: "/passages/go-catalog.html"
     },
     {
+      text: "Kubernetes",
+      link: "/passages/2020-08-12-kubernetes-deploy-ready.html"
+    },
+    {
       text: "Linux",
       items: [
         {
