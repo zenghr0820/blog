@@ -22,3 +22,7 @@ notes/
 前端知识体系/js/index.js
 .idea
 /yarn.lock
+
+# 文章加密
+/keys.json
+/.temp-encrypt

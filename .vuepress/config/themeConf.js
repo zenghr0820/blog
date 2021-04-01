@@ -33,6 +33,15 @@ module.exports = {
         },
       ]
     },
+    {
+      text: "开发环境",
+      items: [
+        {
+          text: "开发工具",
+          link: "/passages/tool-list-overview.html"
+        },
+      ]
+    },
     // 其它
     {
       text: "其它",

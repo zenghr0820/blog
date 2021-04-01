@@ -25,6 +25,7 @@
     "vuepress-plugin-viewer": "^1.0.0"
   },
   "devDependencies": {
+    "@oak-tree-house/vuepress-plugin-encrypt": "^1.0.1",
     "concurrently": "^5.0.2",
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-go-top": "^0.0.2",
@@ -38,7 +39,9 @@
     "start": "npm run dev",
     "dev": "concurrently \"nodemon --watch docs bin/sidebar.js\" \"vuepress dev .\"",
     "dev-mon": "concurrently \"nodemon --watch docs bin/sidebar.js\" \"./node_modules/.bin/vuepress dev .\"",
-    "build": "node bin/sidebar.js && ./node_modules/.bin/vuepress build ."
+    "build": "node bin/sidebar.js && npm run encrypt && ./node_modules/.bin/vuepress build .",
+    "decrypt": "encrypt decrypt --source-dir . --key-file keys.json --temp .temp-encrypt",
+    "encrypt": "encrypt encrypt --source-dir . --key-file keys.json --temp .temp-encrypt"
   },
   "repository": {
     "type": "git",
