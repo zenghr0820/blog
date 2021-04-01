@@ -69,7 +69,7 @@ export default {
           return {
             ...post,
             updateTimestamp: new Date(
-              post.lastUpdated || post.frontmatter.date
+              (post.lastUpdated || post.frontmatter.date).replace(/-/g, '/')
             ).getTime()
           };
         })

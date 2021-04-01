@@ -62,9 +62,9 @@ export default {
           const execs = re.exec(post.relativePath)
           return {
             ...post,
-            updateTimestamp: (new Date(post.frontmatter.date || post.lastUpdated)).getTime(),
+            updateTimestamp: (new Date((post.frontmatter.date || post.lastUpdated).replace(/-/g, '/'))).getTime(),
             filename: execs ? execs['1'] : '',
-            formatDay: this.formatDate(new Date(post.frontmatter.date || post.lastUpdated))
+            formatDay: this.formatDate(new Date((post.frontmatter.date || post.lastUpdated).replace(/-/g, '/')))
           }
         })
         .sort((a, b) => b.updateTimestamp - a.updateTimestamp)
@@ -127,6 +127,9 @@ export default {
 .page-guide-row a {
   max-width: 50%;
   padding-right: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .page-guide-row span {

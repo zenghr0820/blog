@@ -13,7 +13,7 @@ module.exports = {
       link: "/guide/"
     },
     {
-      text: "Go",
+      text: "Golang",
       link: "/passages/go-catalog.html"
     },
     {
@@ -24,11 +24,11 @@ module.exports = {
       text: "Linux",
       items: [
         {
-          text: "docker",
+          text: "Docker",
           link: "/passages/2020-02-24-docker-install.html"
         },
         {
-          text: "nginx",
+          text: "Nginx",
           link: "/passages/2020-02-25-nginx-install.html"
         },
       ]
