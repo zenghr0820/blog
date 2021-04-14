@@ -1,6 +1,31 @@
 <template>
     <div class="page-side-toolbar">
-        <div class="option-box">
+        <!--目录-->
+        <div class="option-box-toc-fixed">
+            <div class="toc-container-sidebar">
+                <div class="pos-box">
+                    <div class="icon-arrow"></div>
+                    <div class="scroll-box" style="max-height:550px">
+                        <div style="font-weight:bold;text-align:center;">{{config.title}}</div>
+                        <hr />
+                        <div class="toc-box">
+                            <ul class="toc-sidebar-links">
+                                <li v-for="(node, index) in config.headers" :key="index">
+                                    <a :href="config.path +'#'+ node.slug" :class="node.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{node.title}}</a>
+                                    <ul class="toc-sidebar-sub-headers">
+                                        <li v-for="(children, index) in node.childrens" :key="index">
+                                            <a :href="config.path +'#'+ children.slug" :class="children.active ? 'active toc-sidebar-link' : 'toc-sidebar-link'">{{children.title}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--鼠标显示目录-->
+        <div class="option-box option-box-toc-over">
             <img :src="config.icon" style="pointer-events: none; width: 20px" class="nozoom">
             <span class="show-txt">目录</span>
             <div class="toc-container">
@@ -120,11 +145,37 @@
         height: 60px;
         cursor: pointer;
     }
+    .page-side-toolbar div.option-box-toc-over {
+        display: none;
+    }
 
     .page-side-toolbar div.option-box .show-txt {
         color: grey;
         margin-top: 3px;
         font-size: 11px;
+    }
+    //目录菜单自适应
+    @media (max-width: 1280px) {
+        .page-side-toolbar div.option-box-toc-over {
+            display: flex;
+        }
+        .page-side-toolbar div.toc-container-sidebar {
+            display: none;
+        }
+    }
+    .toc-container-sidebar {
+        display: block;
+        position: absolute;
+        color: #2c3e50;
+        left: 100%;
+        top: 0;
+        width: 240px;
+        background: #f7f7f7;
+        border: 1px solid #e8e8e8;
+        left: unset;
+        right: 100%;
+        margin-right: 15px;
+        margin-left: 0;
     }
 
     .toc-container {
@@ -142,25 +193,25 @@
         margin-left: 0;
     }
 
-    .toc-container .pos-box {
+    .toc-container .pos-box, .toc-container-sidebar .pos-box {
         position: relative;
         padding: 16px;
     }
 
-    .toc-container .pos-box .icon-arrow {
+    .toc-container .pos-box .icon-arrow, .toc-container-sidebar .pos-box .icon-arrow {
         position: relative;
         margin-left: -20px;
     }
 
-    .toc-container .pos-box .scroll-box {
+    .toc-container .pos-box .scroll-box， .toc-container-sidebar .pos-box .scroll-box {
         overflow-x: hidden;
         overflow-y: hidden;
     }
 
-    .toc-container .pos-box .scroll-box hr {
+    .toc-container .pos-box .scroll-box hr, .toc-container-sidebar .pos-box .scroll-box hr {
         margin-top: .5rem;
     }
-    .toc-container .pos-box .scroll-box .toc-box {
+    .toc-container .pos-box .scroll-box .toc-box, .toc-container-sidebar .pos-box .scroll-box .toc-box {
         max-height: 500px;
         overflow-y: auto;
         overflow-x: hidden;

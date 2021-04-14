@@ -131,7 +131,7 @@ function mapTocToSidebar(root, prefix) {
       sidebar[order] = {
         title,
         collapsable: false,
-        sidebarDepth: 2,
+        // sidebarDepth: 2, // 侧边栏显示 h2、h3标题
         children: mapTocToSidebar(file, prefix + filename + "/")
       };
     } else {

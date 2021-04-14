@@ -44,6 +44,8 @@ $wrapper {
 .page {
   padding-bottom: 2rem;
   display: block;
-  padding-right: 3.5rem;
+  /*padding-right: 3.5rem;*/
+  /*background: #f3f5f7;*/
+  padding-right: 315px;
 }
 </style>
