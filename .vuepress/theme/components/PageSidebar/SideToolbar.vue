@@ -5,7 +5,7 @@
             <div class="toc-container-sidebar">
                 <div class="pos-box">
                     <div class="icon-arrow"></div>
-                    <div class="scroll-box" style="max-height:550px">
+                    <div class="scroll-box" style="max-height:650px">
                         <div style="font-weight:bold;text-align:center;">{{config.title}}</div>
                         <hr />
                         <div class="toc-box">
@@ -177,6 +177,11 @@
         margin-right: 15px;
         margin-left: 0;
     }
+    .toc-container-sidebar .pos-box .scroll-box, .toc-container .pos-box .scroll-box {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
 
     .toc-container {
         display: none;
@@ -212,7 +217,7 @@
         margin-top: .5rem;
     }
     .toc-container .pos-box .scroll-box .toc-box, .toc-container-sidebar .pos-box .scroll-box .toc-box {
-        max-height: 500px;
+        max-height: 550px;
         overflow-y: auto;
         overflow-x: hidden;
         width: 238px;
