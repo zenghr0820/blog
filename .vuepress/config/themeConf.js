@@ -28,6 +28,15 @@ module.exports = {
             }
           ]
         },
+        {
+          text: "Java进阶 - 集合框架",
+          items: [
+            {
+              text: "Java 集合框架",
+              link: "/passages/2021-04-25-java-collection-frame.html"
+            }
+          ]
+        }
       ]
     },
     {
