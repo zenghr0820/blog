@@ -71,12 +71,17 @@ export default {
         .slice(0, num)
     },
     
+    appendzero(obj) {
+        if(obj < 10) return "0" +""+ obj;
+        else return obj;
+    },
+    
     formatDate(date) {
       if (!(date instanceof Date)) {
         return 
       }
     
-      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+      return `${date.getFullYear()}-${this.appendzero(date.getMonth() + 1)}-${this.appendzero(date.getDate())}`
     },
     
     loadMore() {
