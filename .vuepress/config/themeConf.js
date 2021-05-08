@@ -36,6 +36,15 @@ module.exports = {
               link: "/passages/2021-04-25-java-collection-frame.html"
             }
           ]
+        },
+        {
+          text: "Java进阶 - IO框架",
+          items: [
+            {
+              text: "Java I/O知识详解",
+              link: "/passages/2021-05-05-java-io-basic.html"
+            }
+          ]
         }
       ]
     },
@@ -66,6 +75,19 @@ module.exports = {
         {
           text: "开发工具",
           link: "/passages/tool-list-overview.html"
+        },
+      ]
+    },
+    {
+      text: "开发指南",
+      items: [
+        {
+          text: "代码规范",
+          link: "/passages/code-spec-alibaba.html"
+        },
+        {
+          text: "设计模式详解",
+          link: "/passages/dev-pattern-overview.html"
         },
       ]
     },
