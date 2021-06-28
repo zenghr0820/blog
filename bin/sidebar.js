@@ -34,26 +34,28 @@ function main() {
   const tocs = readTocs(docsRoot);
 
   tocs.forEach(toc => {
-    let js = mapTocToSidebar(toc);
-    if (!js.length) {
+    let sidebars = mapTocToSidebar(toc);
+    if (!sidebars.length) {
       return;
     }
 
-    // 判断是否有二级目录
-    let flag = false;
-    for (const temp of js) {
+    const js = [];
+    const oneChildren = [];
+    // 判断第一级目录是否有文件
+    for (const temp of sidebars) {
       if (typeof temp === 'string' || Array.isArray(temp)) {
+        oneChildren.push(temp);
         continue;
       }
-      flag = true;
-      break;
+      js.push(temp);
     }
-    if (!flag) {
-      js = [{
+
+    if (oneChildren && oneChildren.length > 0) {
+      js.unshift({
         title: path.basename(toc),
         collapsable: false,
-        children: js
-      }];
+        children: oneChildren
+      })
     }
 
 
@@ -63,15 +65,6 @@ function main() {
       js,
     });
   });
-
-  // const notesJs = mapTocToSidebar(notesRoot);
-  // if (notesJs.length) {
-  //   variables.push({
-  //     path: "/notes/",
-  //     name: "notes",
-  //     js: notesJs
-  //   });
-  // }
 
   fs.writeFileSync(sidebarPath, ejs.render(template, { variables }));
 }
@@ -105,12 +98,12 @@ function mapTocToSidebar(root, prefix) {
 
   const files = fs.readdirSync(root);
   let index = false;
-  // let order = 1;
   files.forEach(filename => {
     const file = path.resolve(root, filename);
     const stat = fs.statSync(file);
 
-    if (filename === 'README.md' || filename === 'readme.md') {
+    // 遇到 readme.md 文件 跳过此次循环
+    if (filename.toLowerCase() === 'readme.md') {
       index = true;
       return;
     }
@@ -121,28 +114,27 @@ function mapTocToSidebar(root, prefix) {
       return;
     }
 
-    if (sidebar[order]) {
+    if (sidebar[sidebar.length]) {
       logger.warn(
         `For ${file}, its order has appeared in the same level directory. And it will be rewritten.`
       );
     }
 
     if (stat.isDirectory()) {
-      sidebar[order] = {
+      sidebar.push({
         title,
         collapsable: false,
         // sidebarDepth: 2, // 侧边栏显示 h2、h3标题
         children: mapTocToSidebar(file, prefix + filename + "/")
-      };
+      });
     } else {
       if (type !== "md") {
         logger.error(`For ${file}, its type is not supported.`);
         return;
       }
-      sidebar[order] = [prefix + filename, title];
+      sidebar.push([prefix + filename, title]);
     }
 
-    // order += 1;
   });
 
   if (index) {

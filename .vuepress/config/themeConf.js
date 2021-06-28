@@ -7,6 +7,7 @@ module.exports = {
   editLinkText: "在 GitHub 上编辑此页",
   lastUpdated: "更新于",
   sidebar,
+  sidebarDepth: 0,
   nav: [
     {
       text: "最新",
@@ -60,11 +61,11 @@ module.exports = {
       text: "Linux",
       items: [
         {
-          text: "Docker",
+          text: "docker",
           link: "/passages/2020-02-24-docker-install.html"
         },
         {
-          text: "Nginx",
+          text: "nginx",
           link: "/passages/2020-02-25-nginx-install.html"
         },
       ]

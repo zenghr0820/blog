@@ -14,11 +14,11 @@ module.exports = {
       return;
     }
 
-    if (/^\/?notes\//.test(regularPath)) {
-      frontmatter.comment = false;
-    } else {
+    if (/^\/?docs\//.test(regularPath)) {
       frontmatter.comment = true;
       frontmatter.commentid = frontmatter.permalink;
+    } else {
+      frontmatter.comment = false;
     }
 
     // TODO 暂时不实现根据目录生成前缀
@@ -26,6 +26,7 @@ module.exports = {
     //   routePfx = ("/" + frontmatter.parentlevel + "/");
     // }
 
-    frontmatter.permalink = `${routePfx}${frontmatter.permalink}.html`;
+    $page.path = `${routePfx}${frontmatter.permalink}.html`;
+    $page.frontmatter.permalink = `${routePfx}${frontmatter.permalink}.html`;
   }
 };
