@@ -77,6 +77,14 @@ module.exports = {
           text: "开发工具",
           link: "/passages/tool-list-overview.html"
         },
+        {
+          text: "mysql 环境",
+          link: "/passages/tool-list-overview.html"
+        },
+        {
+          text: "git 环境",
+          link: "/passages/2021-06-28-git-common-cmd.html"
+        },
       ]
     },
     {
