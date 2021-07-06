@@ -27,13 +27,12 @@ button{
 blockquote {
   color: #2c3e4f
   background-color: #fbfbfb
-  border-left: 0.4rem solid #83d3ae;
-  border-radius: 5px;
+  border-left: 0.3rem solid #83d3ae;
 }
 
 // 代码区域样式
 blockquote:hover {
-  border-left-width: 0.5rem;
+  border-left-width: 0.4rem;
 }
 .code-copy {
   display: table-row;
@@ -162,6 +161,10 @@ div[class*="language-"]::before {
   cursor: pointer;
   vertical-align: middle;
 }
+  // 发现内容窗口样式
+  .sw-update-popup {
+    z-index: 13 !important;
+  }
 
 // media
 @media (max-width: 419px) {
