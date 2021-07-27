@@ -50,6 +50,15 @@ module.exports = {
       ]
     },
     {
+      text: "Spring",
+      items: [
+        {
+          text: "Spring Cloud 基础",
+          link: "/passages/2021-07-27-spring-cloud-alibaba.html"
+        }
+      ]
+    },
+    {
       text: "Golang",
       link: "/passages/go-catalog.html"
     },
@@ -58,17 +67,8 @@ module.exports = {
       link: "/passages/2020-08-12-kubernetes-deploy-ready.html"
     },
     {
-      text: "Linux",
-      items: [
-        {
-          text: "docker",
-          link: "/passages/2020-02-24-docker-install.html"
-        },
-        {
-          text: "nginx",
-          link: "/passages/2020-02-25-nginx-install.html"
-        },
-      ]
+      text: "Linux系列",
+      link: "/passages/2020-02-25-nginx-install.html"
     },
     {
       text: "开发环境",
@@ -79,7 +79,7 @@ module.exports = {
         },
         {
           text: "mysql 环境",
-          link: "/passages/tool-list-overview.html"
+          link: "/passages/2021-06-29-mysql-manage-auth.html"
         },
         {
           text: "git 环境",
