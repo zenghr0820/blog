@@ -85,6 +85,10 @@ module.exports = {
           text: "git 环境",
           link: "/passages/2021-06-28-git-common-cmd.html"
         },
+        {
+          text: "Redis 知识体系",
+          link: "/passages/2021-08-02-redis-overview.html"
+        },
       ]
     },
     {
