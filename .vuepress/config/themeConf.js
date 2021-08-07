@@ -89,6 +89,10 @@ module.exports = {
           text: "Redis 知识体系",
           link: "/passages/2021-08-02-redis-overview.html"
         },
+        {
+          text: "Elasticsearch 知识体系",
+          link: "/passages/2021-08-06-elasticsearch.html"
+        },
       ]
     },
     {
