@@ -90,6 +90,10 @@ module.exports = {
           link: "/passages/2021-08-02-redis-overview.html"
         },
         {
+          text: "Mongo 知识体系",
+          link: "/passages/2021-08-15-mongo-overview.html"
+        },
+        {
           text: "Elasticsearch 知识体系",
           link: "/passages/2021-08-06-elasticsearch.html"
         },
