@@ -53,6 +53,10 @@ module.exports = {
       text: "Spring",
       items: [
         {
+          text: "SpringBoot 系列",
+          link: "/passages/2021-08-18-springboot-argument-resolver.html"
+        },
+        {
           text: "Spring Cloud 基础",
           link: "/passages/2021-07-27-spring-cloud-alibaba.html"
         }
