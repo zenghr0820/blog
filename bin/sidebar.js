@@ -108,29 +108,31 @@ function mapTocToSidebar(root, prefix) {
       return;
     }
 
-    let [order, title, type] = filename.split(".");
-    order = parseInt(order, 10);
-    if (isNaN(order) || order < 0) {
-      return;
-    }
-
     if (sidebar[sidebar.length]) {
       logger.warn(
-        `For ${file}, its order has appeared in the same level directory. And it will be rewritten.`
+          `For ${file}, its order has appeared in the same level directory. And it will be rewritten.`
       );
     }
 
+    // 判断文件是否符合规则 xxx.md
+    const regExp = /.+\.md$/g;
+    let order, title, type;
+    // 分割文件名
+    const arr = filename.split(".");
+    // 判断文件类型
     if (stat.isDirectory()) {
+      title = arr.length > 1 ? arr[1] : arr[0];
       sidebar.push({
         title,
         collapsable: false,
         // sidebarDepth: 2, // 侧边栏显示 h2、h3标题
         children: mapTocToSidebar(file, prefix + filename + "/")
       });
-    } else {
-      if (type !== "md") {
-        logger.error(`For ${file}, its type is not supported.`);
-        return;
+    } else if (regExp.test(filename)) {
+      if (arr.length === 3) { // 01.xxx.md
+        [order, title, type] = arr;
+      } else if (arr.length === 2) { // xxx.md
+        [title, type] = arr;
       }
       sidebar.push([prefix + filename, title]);
     }
