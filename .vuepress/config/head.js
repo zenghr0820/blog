@@ -11,5 +11,6 @@ module.exports = [
   ['link', { rel: 'manifest', href: '/manifest.json' }],
   // IOS、iPhone移动端，表单input聚焦时页面放大的解决办法
   ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
-  ["meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" }]
+  ["meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" }],
+  ["meta", { name: "google-site-verification", content: "YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs" }]
 ];
