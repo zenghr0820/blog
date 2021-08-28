@@ -53,6 +53,10 @@ module.exports = {
             text: "Spring",
             items: [
                 {
+                    text: "Activity7 系列",
+                    link: "/passages/2021-07-21-activiti7-note.html"
+                },
+                {
                     text: "SpringBoot 系列",
                     link: "/passages/2021-08-18-springboot-argument-resolver.html"
                 },
