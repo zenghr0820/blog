@@ -8,7 +8,7 @@ if [[ -z "$CODING_TOKEN"  || -z "$GITHUB_TOKEN" ]]; then
 fi
 
 # build static
-npm run build
+yarn run build
 cd .vuepress/dist
 echo "blog.zenghr.cn" > CNAME
 
