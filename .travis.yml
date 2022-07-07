@@ -4,7 +4,7 @@ branches:
     - master
 language: node_js
 node_js:
-  - lts/*
+  - "16.14.2"
 install:
   - yarn
 cache: yarn
