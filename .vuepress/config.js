@@ -127,7 +127,7 @@ module.exports = {
     ],
     // 文章加密 see：https://www.imaegoo.com/2020/vuepress-encrypt/
     [
-      '@oak-tree-house/encrypt',
+      '@zenghr/encrypt',
       {
         contentTitle: '加密的内容',
         unencryptedText: '内容如下所示，它应该在发布时加密.',

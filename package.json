@@ -25,7 +25,7 @@
     "vuepress-plugin-viewer": "^1.0.0"
   },
   "devDependencies": {
-    "@oak-tree-house/vuepress-plugin-encrypt": "^1.0.1",
+    "@zenghr/vuepress-plugin-encrypt": "file:lib/vuepress-plugin-encrypt",
     "concurrently": "^5.0.2",
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-go-top": "^0.0.2",
