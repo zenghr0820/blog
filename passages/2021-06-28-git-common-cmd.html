@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>git 常用命令 | Zenghr</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script type="text/javascript" src="/scripts/baidu-analytics.js" async=""></script>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content=":::tip
+记录一些 git 常用命令
+:::">
+    <meta name="image" content="https://media.zenghr.cn/blog/img/20210628/C6JmcP.png">
+    <meta name="twitter:title" content="git 常用命令">
+    <meta name="twitter:description" content=":::tip
+记录一些 git 常用命令
+:::">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://media.zenghr.cn/blog/img/20210628/C6JmcP.png">
+    <meta name="twitter:url" content="https://blog.zenghr.cn/passages/2021-06-28-git-common-cmd.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="git 常用命令">
+    <meta property="og:description" content=":::tip
+记录一些 git 常用命令
+:::">
+    <meta property="og:image" content="https://media.zenghr.cn/blog/img/20210628/C6JmcP.png">
+    <meta property="og:url" content="https://blog.zenghr.cn/passages/2021-06-28-git-common-cmd.html">
+    <meta property="article:author" content="zenghr">
+    <meta property="article:published_time" content="2021-06-28 23:00">
+    <meta itemprop="name" content="git 常用命令">
+    <meta itemprop="description" content=":::tip
+记录一些 git 常用命令
+:::">
+    <meta itemprop="image" content="https://media.zenghr.cn/blog/img/20210628/C6JmcP.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs">
+    
+    <link rel="preload" href="/assets/css/0.styles.40e6d409.css" as="style"><link rel="preload" href="/assets/js/app.61497e9b.js" as="script"><link rel="preload" href="/assets/js/2.3bcbf9c7.js" as="script"><link rel="preload" href="/assets/js/4.6ca913cf.js" as="script"><link rel="preload" href="/assets/js/60.902afb3d.js" as="script"><link rel="preload" href="/assets/js/5.df73da89.js" as="script"><link rel="prefetch" href="/assets/js/10.04153bc9.js"><link rel="prefetch" href="/assets/js/11.2608d821.js"><link rel="prefetch" href="/assets/js/12.0daeaa9b.js"><link rel="prefetch" href="/assets/js/13.d4603cae.js"><link rel="prefetch" href="/assets/js/14.30263e34.js"><link rel="prefetch" href="/assets/js/15.f9ad01e5.js"><link rel="prefetch" href="/assets/js/16.373121db.js"><link rel="prefetch" href="/assets/js/17.002f322b.js"><link rel="prefetch" href="/assets/js/18.cbced4fe.js"><link rel="prefetch" href="/assets/js/19.db5ad804.js"><link rel="prefetch" href="/assets/js/20.9c9513c7.js"><link rel="prefetch" href="/assets/js/21.ac7e1cf3.js"><link rel="prefetch" href="/assets/js/22.98d19f1a.js"><link rel="prefetch" href="/assets/js/23.81f244b7.js"><link rel="prefetch" href="/assets/js/24.1750ff92.js"><link rel="prefetch" href="/assets/js/25.3c622977.js"><link rel="prefetch" href="/assets/js/26.96fc3699.js"><link rel="prefetch" href="/assets/js/27.7c9e5429.js"><link rel="prefetch" href="/assets/js/28.d7c941a5.js"><link rel="prefetch" href="/assets/js/29.52dbf6fa.js"><link rel="prefetch" href="/assets/js/3.5ded679c.js"><link rel="prefetch" href="/assets/js/30.46dc896c.js"><link rel="prefetch" href="/assets/js/31.001750af.js"><link rel="prefetch" href="/assets/js/32.63a5326c.js"><link rel="prefetch" href="/assets/js/33.71a3cc0a.js"><link rel="prefetch" href="/assets/js/34.56944fe3.js"><link rel="prefetch" href="/assets/js/35.efb1f471.js"><link rel="prefetch" href="/assets/js/36.ccec69fe.js"><link rel="prefetch" href="/assets/js/37.2926ec61.js"><link rel="prefetch" href="/assets/js/38.660b4175.js"><link rel="prefetch" href="/assets/js/39.8e208f76.js"><link rel="prefetch" href="/assets/js/40.61b8034e.js"><link rel="prefetch" href="/assets/js/41.beac8270.js"><link rel="prefetch" href="/assets/js/42.fd79480a.js"><link rel="prefetch" href="/assets/js/43.070ef247.js"><link rel="prefetch" href="/assets/js/44.90098dd8.js"><link rel="prefetch" href="/assets/js/45.fb7f04d9.js"><link rel="prefetch" href="/assets/js/46.9f5c61eb.js"><link rel="prefetch" href="/assets/js/47.5150f37e.js"><link rel="prefetch" href="/assets/js/48.e4b6da20.js"><link rel="prefetch" href="/assets/js/49.4f1ba364.js"><link rel="prefetch" href="/assets/js/50.3b48478e.js"><link rel="prefetch" href="/assets/js/51.61dd55c8.js"><link rel="prefetch" href="/assets/js/52.5feca2c2.js"><link rel="prefetch" href="/assets/js/53.5ae3f14e.js"><link rel="prefetch" href="/assets/js/54.1f5e32a5.js"><link rel="prefetch" href="/assets/js/55.6fb4760b.js"><link rel="prefetch" href="/assets/js/56.50b28b75.js"><link rel="prefetch" href="/assets/js/57.67574ed0.js"><link rel="prefetch" href="/assets/js/58.4fbf7cf1.js"><link rel="prefetch" href="/assets/js/59.ff6daca7.js"><link rel="prefetch" href="/assets/js/6.eaefe7ba.js"><link rel="prefetch" href="/assets/js/61.89357986.js"><link rel="prefetch" href="/assets/js/62.e4d4b952.js"><link rel="prefetch" href="/assets/js/63.5909108c.js"><link rel="prefetch" href="/assets/js/64.0a252c1f.js"><link rel="prefetch" href="/assets/js/65.f24ea9a7.js"><link rel="prefetch" href="/assets/js/66.8291859c.js"><link rel="prefetch" href="/assets/js/67.7403743f.js"><link rel="prefetch" href="/assets/js/68.bee74822.js"><link rel="prefetch" href="/assets/js/69.87dda0ad.js"><link rel="prefetch" href="/assets/js/7.944d5a58.js"><link rel="prefetch" href="/assets/js/70.d0c54e2e.js"><link rel="prefetch" href="/assets/js/71.6eaec73e.js"><link rel="prefetch" href="/assets/js/72.31c0d947.js"><link rel="prefetch" href="/assets/js/73.c19147ed.js"><link rel="prefetch" href="/assets/js/74.1e8dc310.js"><link rel="prefetch" href="/assets/js/75.05f42dff.js"><link rel="prefetch" href="/assets/js/76.4ccb0e6f.js"><link rel="prefetch" href="/assets/js/77.12d8c7e4.js"><link rel="prefetch" href="/assets/js/78.826a2622.js"><link rel="prefetch" href="/assets/js/79.26a4eed7.js"><link rel="prefetch" href="/assets/js/8.5d7c5743.js"><link rel="prefetch" href="/assets/js/80.f9e49a14.js"><link rel="prefetch" href="/assets/js/81.4b6741de.js"><link rel="prefetch" href="/assets/js/82.718be8a0.js"><link rel="prefetch" href="/assets/js/83.fd6a7f32.js"><link rel="prefetch" href="/assets/js/84.001574eb.js"><link rel="prefetch" href="/assets/js/85.d1bdde68.js"><link rel="prefetch" href="/assets/js/9.fc00dd7a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.40e6d409.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zenghr</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>工具清单</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/tool-list-overview.html" class="sidebar-link">Overview</a></li><li><a href="/passages/2021-04-01-idea-crack-2018.html" class="sidebar-link">IDE工具破解</a></li><li><a href="/passages/2021-06-30-idea-jrebel-config.html" class="sidebar-link">IDE JRebel 插件使用</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Mysql</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2021-06-29-mysql-manage-auth.html" class="sidebar-link">mysql 创建用户并赋权</a></li><li><a href="/passages/2021-07-06-group-by-error.html" class="sidebar-link">mysql高版本group-by问题</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Git</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2021-06-28-git-common-cmd.html" aria-current="page" class="active sidebar-link">git 常用命令</a></li><li><a href="/passages/2021-06-30-git-branch-manage.html" class="sidebar-link">git 一个仓库管理多个项目</a></li><li><a href="/passages/2021-08-18-git-ignore-file.html" class="sidebar-link">git-忽略已提交文件的修改</a></li><li><a href="/passages/2022-02-23-git-stash-note.html" class="sidebar-link">git stash提交当前修改到其他分支</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Redis</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2021-08-02-redis-overview.html" class="sidebar-link">Redis-知识体系</a></li><li><a href="/passages/2021-08-02-redis-base-desc.html" class="sidebar-link">Redis入门-Redis概念</a></li><li><a href="/passages/2021-08-02-redis-base-struct.html" class="sidebar-link">Redis入门-五种数据类型</a></li><li><a href="/passages/2021-08-02-redis-rdb-aof.html" class="sidebar-link">Redis进阶-持久化教程</a></li><li><a href="/passages/2021-08-02-redis-memory.html" class="sidebar-link">Redis进阶-内存淘汰机制</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Mongo</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2021-08-15-mongo-overview.html" class="sidebar-link">Mongo-知识体系</a></li><li><a href="/passages/2021-08-15-mongo-introduce.html" class="sidebar-link">Mongo-介绍</a></li><li><a href="/passages/2021-08-19-mongo-install.html" class="sidebar-link">Mongo-环境搭建</a></li><li><a href="/passages/2021-08-27-mongo-springboot.html" class="sidebar-link">Mongo-SpringBoot集成</a></li><li><a href="/passages/2021-08-27-mongo-geospatial.html" class="sidebar-link">Mongo-地理空间查询</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Elasticsearch</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2021-08-06-elasticsearch.html" class="sidebar-link">Elasticsearch-知识体系</a></li><li><a href="/passages/2021-08-06-elasticsearch-introduce.html" class="sidebar-link">Elasticsearch-基础概念</a></li><li><a href="/passages/2021-08-06-elasticsearch-env.html" class="sidebar-link">Elasticsearch-环境搭建</a></li><li><a href="/passages/2021-08-07-elasticsearch-basic-course.html" class="sidebar-link">Elasticsearch-基础教程</a></li><li><a href="/passages/2021-08-16-elasticsearch-ik.html" class="sidebar-link">Elasticsearch-安装中文分词器</a></li><li><a href="/passages/2021-08-18-elasticsearch-integrate-springboot.html" class="sidebar-link">Elasticsearch-SpringBoot整合</a></li><li><a href="/passages/2021-08-18-elasticsearch-highlight.html" class="sidebar-link">Elasticsearch-高亮查询</a></li><li><a href="/passages/2021-08-19-elasticsearch-complex-query.html" class="sidebar-link">Elasticsearch-复杂查询</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>疑难杂症</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2022-01-11-mac-jdk8-slow-solution.html" class="sidebar-link">Mac安装JDK8启动项目慢解决方案</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git-常用命令"><a href="#git-常用命令" class="header-anchor">#</a> git 常用命令</h1> <div class="custom-block tip"><p>记录一些 git 常用命令</p></div> <p><img src="https://media.zenghr.cn/blog/img/20210628/C6JmcP.png" alt="C6JmcP"></p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/zenghr0820/blog/edit/master/docs/开发环境/03.Git/01.git 常用命令.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">更新于:</span> <span class="time">2021-06-30 09:18:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/passages/2021-07-06-group-by-error.html" class="prev">
+        mysql高版本group-by问题
+      </a></span> <span class="next"><a href="/passages/2021-06-30-git-branch-manage.html">
+        git 一个仓库管理多个项目
+      </a>
+      →
+    </span></p></div> <aside class="page-sidebar"><div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">git 常用命令</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"></ul></div></div></div></div></div> <div class="option-box option-box-toc-over"><img src="/toc.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">git 常用命令</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"></ul></div></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/full.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">全屏看</span></a></div><div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/toggle.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">侧边栏</span></a></div><div class="option-box"><img src="/iphone.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn/passages/2021-06-28-git-common-cmd.html" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><img src="/reward.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">打赏</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="/wechat.jpg" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><a title="mysql高版本group-by问题" href="/passages/2021-07-06-group-by-error.html" style="text-align: center; padding-left: 2px;"><img src="/prev.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">上一篇</span></a></div><div class="option-box"><a title="git 一个仓库管理多个项目" href="/passages/2021-06-30-git-branch-manage.html" style="text-align: center; padding-left: 2px;"><img src="/next.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">下一篇</span></a></div></div></aside> </main></div><div class="global-ui"><div class="my-loader center" style="display:none;" data-v-354e1a9e><div class="my-loader-circle" data-v-354e1a9e></div></div><div class="my-popup" style="display:none;" data-v-5f98aac3><div class="my-popup-container" data-v-5f98aac3><div class="my-popup-exit" data-v-5f98aac3></div> <img src="" alt data-v-5f98aac3></div></div><!----><!----><div></div><div class="container" data-v-0178ff65><canvas id="live2d" width="280" height="250" class="live2d-right" data-v-0178ff65></canvas></div></div></div>
+    <script src="/assets/js/app.61497e9b.js" defer></script><script src="/assets/js/2.3bcbf9c7.js" defer></script><script src="/assets/js/4.6ca913cf.js" defer></script><script src="/assets/js/60.902afb3d.js" defer></script><script src="/assets/js/5.df73da89.js" defer></script>
+  </body>
+</html>

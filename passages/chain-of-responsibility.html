@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>行为型 - 责任链模式(Chain) | Zenghr</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script type="text/javascript" src="/scripts/baidu-analytics.js" async=""></script>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content=":::tip">
+    <meta name="twitter:title" content="行为型 - 责任链模式(Chain)">
+    <meta name="twitter:description" content=":::tip">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://blog.zenghr.cn/passages/chain-of-responsibility.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="行为型 - 责任链模式(Chain)">
+    <meta property="og:description" content=":::tip">
+    <meta property="og:url" content="https://blog.zenghr.cn/passages/chain-of-responsibility.html">
+    <meta property="article:author" content="zenghr">
+    <meta property="article:published_time" content="2022-07-07 15:50:12">
+    <meta itemprop="name" content="行为型 - 责任链模式(Chain)">
+    <meta itemprop="description" content=":::tip">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs">
+    
+    <link rel="preload" href="/assets/css/0.styles.40e6d409.css" as="style"><link rel="preload" href="/assets/js/app.61497e9b.js" as="script"><link rel="preload" href="/assets/js/2.3bcbf9c7.js" as="script"><link rel="preload" href="/assets/js/4.6ca913cf.js" as="script"><link rel="preload" href="/assets/js/53.5ae3f14e.js" as="script"><link rel="preload" href="/assets/js/5.df73da89.js" as="script"><link rel="prefetch" href="/assets/js/10.04153bc9.js"><link rel="prefetch" href="/assets/js/11.2608d821.js"><link rel="prefetch" href="/assets/js/12.0daeaa9b.js"><link rel="prefetch" href="/assets/js/13.d4603cae.js"><link rel="prefetch" href="/assets/js/14.30263e34.js"><link rel="prefetch" href="/assets/js/15.f9ad01e5.js"><link rel="prefetch" href="/assets/js/16.373121db.js"><link rel="prefetch" href="/assets/js/17.002f322b.js"><link rel="prefetch" href="/assets/js/18.cbced4fe.js"><link rel="prefetch" href="/assets/js/19.db5ad804.js"><link rel="prefetch" href="/assets/js/20.9c9513c7.js"><link rel="prefetch" href="/assets/js/21.ac7e1cf3.js"><link rel="prefetch" href="/assets/js/22.98d19f1a.js"><link rel="prefetch" href="/assets/js/23.81f244b7.js"><link rel="prefetch" href="/assets/js/24.1750ff92.js"><link rel="prefetch" href="/assets/js/25.3c622977.js"><link rel="prefetch" href="/assets/js/26.96fc3699.js"><link rel="prefetch" href="/assets/js/27.7c9e5429.js"><link rel="prefetch" href="/assets/js/28.d7c941a5.js"><link rel="prefetch" href="/assets/js/29.52dbf6fa.js"><link rel="prefetch" href="/assets/js/3.5ded679c.js"><link rel="prefetch" href="/assets/js/30.46dc896c.js"><link rel="prefetch" href="/assets/js/31.001750af.js"><link rel="prefetch" href="/assets/js/32.63a5326c.js"><link rel="prefetch" href="/assets/js/33.71a3cc0a.js"><link rel="prefetch" href="/assets/js/34.56944fe3.js"><link rel="prefetch" href="/assets/js/35.efb1f471.js"><link rel="prefetch" href="/assets/js/36.ccec69fe.js"><link rel="prefetch" href="/assets/js/37.2926ec61.js"><link rel="prefetch" href="/assets/js/38.660b4175.js"><link rel="prefetch" href="/assets/js/39.8e208f76.js"><link rel="prefetch" href="/assets/js/40.61b8034e.js"><link rel="prefetch" href="/assets/js/41.beac8270.js"><link rel="prefetch" href="/assets/js/42.fd79480a.js"><link rel="prefetch" href="/assets/js/43.070ef247.js"><link rel="prefetch" href="/assets/js/44.90098dd8.js"><link rel="prefetch" href="/assets/js/45.fb7f04d9.js"><link rel="prefetch" href="/assets/js/46.9f5c61eb.js"><link rel="prefetch" href="/assets/js/47.5150f37e.js"><link rel="prefetch" href="/assets/js/48.e4b6da20.js"><link rel="prefetch" href="/assets/js/49.4f1ba364.js"><link rel="prefetch" href="/assets/js/50.3b48478e.js"><link rel="prefetch" href="/assets/js/51.61dd55c8.js"><link rel="prefetch" href="/assets/js/52.5feca2c2.js"><link rel="prefetch" href="/assets/js/54.1f5e32a5.js"><link rel="prefetch" href="/assets/js/55.6fb4760b.js"><link rel="prefetch" href="/assets/js/56.50b28b75.js"><link rel="prefetch" href="/assets/js/57.67574ed0.js"><link rel="prefetch" href="/assets/js/58.4fbf7cf1.js"><link rel="prefetch" href="/assets/js/59.ff6daca7.js"><link rel="prefetch" href="/assets/js/6.eaefe7ba.js"><link rel="prefetch" href="/assets/js/60.902afb3d.js"><link rel="prefetch" href="/assets/js/61.89357986.js"><link rel="prefetch" href="/assets/js/62.e4d4b952.js"><link rel="prefetch" href="/assets/js/63.5909108c.js"><link rel="prefetch" href="/assets/js/64.0a252c1f.js"><link rel="prefetch" href="/assets/js/65.f24ea9a7.js"><link rel="prefetch" href="/assets/js/66.8291859c.js"><link rel="prefetch" href="/assets/js/67.7403743f.js"><link rel="prefetch" href="/assets/js/68.bee74822.js"><link rel="prefetch" href="/assets/js/69.87dda0ad.js"><link rel="prefetch" href="/assets/js/7.944d5a58.js"><link rel="prefetch" href="/assets/js/70.d0c54e2e.js"><link rel="prefetch" href="/assets/js/71.6eaec73e.js"><link rel="prefetch" href="/assets/js/72.31c0d947.js"><link rel="prefetch" href="/assets/js/73.c19147ed.js"><link rel="prefetch" href="/assets/js/74.1e8dc310.js"><link rel="prefetch" href="/assets/js/75.05f42dff.js"><link rel="prefetch" href="/assets/js/76.4ccb0e6f.js"><link rel="prefetch" href="/assets/js/77.12d8c7e4.js"><link rel="prefetch" href="/assets/js/78.826a2622.js"><link rel="prefetch" href="/assets/js/79.26a4eed7.js"><link rel="prefetch" href="/assets/js/8.5d7c5743.js"><link rel="prefetch" href="/assets/js/80.f9e49a14.js"><link rel="prefetch" href="/assets/js/81.4b6741de.js"><link rel="prefetch" href="/assets/js/82.718be8a0.js"><link rel="prefetch" href="/assets/js/83.fd6a7f32.js"><link rel="prefetch" href="/assets/js/84.001574eb.js"><link rel="prefetch" href="/assets/js/85.d1bdde68.js"><link rel="prefetch" href="/assets/js/9.fc00dd7a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.40e6d409.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zenghr</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" class="nav-link">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" class="nav-link">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/dev-pattern-overview.html" class="sidebar-link">设计模式-Overview</a></li><li><a href="/passages/dev-decorator-pattern.html" class="sidebar-link">结构型-装饰者模式(Decorator)</a></li><li><a href="/passages/chain-of-responsibility.html" aria-current="page" class="active sidebar-link">行为型-责任链模式(Chain)</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>代码规范</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/code-spec-alibaba.html" class="sidebar-link">阿里巴巴Java开发规范</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="责任链-chain"><a href="#责任链-chain" class="header-anchor">#</a> 责任链(Chain)</h1> <div class="custom-block tip"><p>责任链（Chain of Responsibility）模式的定义：<strong>为了避免请求发送者与多个请求处理者耦合在一起，于是将所有请求的处理者通过前一对象记住其下一个对象的引用而连成一条链；当有请求发生时，可将请求沿着这条链传递，直到有对象处理它为止</strong></p></div> <p>在责任链模式中，客户只需要将请求发送到责任链上即可，无须关心请求的处理细节和请求的传递过程，请求会自动进行传递。所以责任链将请求的发送者和请求的处理者解耦了</p> <h2 id="责任链-优缺点"><a href="#责任链-优缺点" class="header-anchor">#</a> 责任链 - 优缺点</h2> <p><strong>责任链模式是一种对象行为型模式，其主要优点如下</strong></p> <ol><li><p>降低耦合度。它将请求的发送者和接收者解耦</p></li> <li><p>简化了对象。使得对象不需要知道链的结构</p></li> <li><p>增强给对象指派职责的灵活性。通过改变链内的成员或者调动它们的次序，允许动态地新增或者删除责任</p></li> <li><p>增加新的请求处理类很方便</p></li></ol> <p><strong>主要缺点如下</strong></p> <ol><li><p>不能保证请求一定被接收</p></li> <li><p>系统性能将受到一定影响，而且在进行代码调试时不太方便，可能会造成循环调用</p></li> <li><p>可能不容易观察运行时的特征，有碍于除错</p></li></ol> <h2 id="责任链模式的结构与实现"><a href="#责任链模式的结构与实现" class="header-anchor">#</a> 责任链模式的结构与实现</h2> <h3 id="责任链模式的结构"><a href="#责任链模式的结构" class="header-anchor">#</a> 责任链模式的结构</h3> <ol><li>抽象处理者（Handler）角色：定义一个处理请求的接口，包含抽象处理方法和一个后继连接。</li> <li>具体处理者（Concrete Handler）角色：实现抽象处理者的处理方法，判断能否处理本次请求，如果可以处理请求则处理，否则将该请求转给它的后继者。</li> <li>客户类（Client）角色：创建处理链，并向链头的具体处理者对象提交请求，它不关心处理细节和请求的传递过程。</li></ol> <h3 id="代码实现"><a href="#代码实现" class="header-anchor">#</a> 代码实现</h3> <blockquote><p>开发一个流程流转控制器功能，通过配置是否需要自动流转到下一个流程</p></blockquote> <p><strong>定义抽象的handler接口</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 自动执行器抽象类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractAutoHandler</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">S</span><span class="token punctuation">,</span> <span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token comment">// 下一个执行器</span>
+    <span class="token keyword">protected</span> <span class="token class-name">AbstractAutoHandler</span> handler<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">execute</span><span class="token punctuation">(</span><span class="token class-name">S</span> s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 判断是否需要自动执行</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">T</span> t <span class="token operator">=</span> <span class="token function">doExecute</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">//执行下一个自动执行器</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>handler <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                handler<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 业务逻辑实现
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">T</span> <span class="token function">doExecute</span><span class="token punctuation">(</span><span class="token class-name">S</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/**
+     * 是否自动执行
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">boolean</span> <span class="token function">isAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>定义具体实现事项</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 审核自动执行器
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ApproveHandler</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractAutoHandler</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">ApproveHandler</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Autowired</span> <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">&quot;geneHandler&quot;</span><span class="token punctuation">)</span> <span class="token class-name">AbstractAutoHandler</span> handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>handler <span class="token operator">=</span> handler<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> <span class="token function">doExecute</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务实现...</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务实现...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 单据生成自动执行器
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GeneHandler</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractAutoHandler</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">GeneHandler</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Autowired</span> <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">&quot;confirmHandler&quot;</span><span class="token punctuation">)</span> <span class="token class-name">AbstractAutoHandler</span> handler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>handler <span class="token operator">=</span> handler<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> <span class="token function">doExecute</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务实现...</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务实现...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">/**
+ * 自动确认执行器
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConfirmHandler</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractAutoHandler</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span><span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">ConfirmHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> <span class="token function">doExecute</span><span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务实现...</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAutoExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 业务实现...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>注意：需要在每个具体handler里面执行下一个需要执行的handler，直到最后一个</p> <p>可以看到我们在构造器中定义的关系强耦合，如果现在我们需要改变顺序或者是新增其他handler，需要改动代码，可扩展性较差</p> <p>那么我们可以把 beanId 关系维护到数据库中，利用 spring 容器，根据 beanId 获取到每个具体的实例对象</p> <p>这里就不多演示，有兴趣的可以自己尝试一下</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/zenghr0820/blog/edit/master/docs/开发指南/01.设计模式/22.行为型-责任链模式(Chain).md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">更新于:</span> <span class="time">2022-07-07 08:24:03</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/passages/dev-decorator-pattern.html" class="prev">
+        结构型-装饰者模式(Decorator)
+      </a></span> <span class="next"><a href="/passages/code-spec-alibaba.html">
+        阿里巴巴Java开发规范
+      </a>
+      →
+    </span></p></div> <aside class="page-sidebar"><div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">行为型 - 责任链模式(Chain)</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/passages/chain-of-responsibility.html#责任链-优缺点" class="toc-sidebar-link">责任链 - 优缺点</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/chain-of-responsibility.html#责任链模式的结构与实现" class="toc-sidebar-link">责任链模式的结构与实现</a> <ul class="toc-sidebar-sub-headers"><li><a href="/passages/chain-of-responsibility.html#责任链模式的结构" class="toc-sidebar-link">责任链模式的结构</a></li><li><a href="/passages/chain-of-responsibility.html#代码实现" class="toc-sidebar-link">代码实现</a></li></ul></li></ul></div></div></div></div></div> <div class="option-box option-box-toc-over"><img src="/toc.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">行为型 - 责任链模式(Chain)</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/passages/chain-of-responsibility.html#责任链-优缺点" class="toc-sidebar-link">责任链 - 优缺点</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/chain-of-responsibility.html#责任链模式的结构与实现" class="toc-sidebar-link">责任链模式的结构与实现</a> <ul class="toc-sidebar-sub-headers"><li><a href="/passages/chain-of-responsibility.html#责任链模式的结构" class="toc-sidebar-link">责任链模式的结构</a></li><li><a href="/passages/chain-of-responsibility.html#代码实现" class="toc-sidebar-link">代码实现</a></li></ul></li></ul></div></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/full.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">全屏看</span></a></div><div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/toggle.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">侧边栏</span></a></div><div class="option-box"><img src="/iphone.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn/passages/chain-of-responsibility.html" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><img src="/reward.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">打赏</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="/wechat.jpg" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><a title="结构型-装饰者模式(Decorator)" href="/passages/dev-decorator-pattern.html" style="text-align: center; padding-left: 2px;"><img src="/prev.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">上一篇</span></a></div><div class="option-box"><a title="阿里巴巴Java开发规范" href="/passages/code-spec-alibaba.html" style="text-align: center; padding-left: 2px;"><img src="/next.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">下一篇</span></a></div></div></aside> </main></div><div class="global-ui"><div class="my-loader center" style="display:none;" data-v-354e1a9e><div class="my-loader-circle" data-v-354e1a9e></div></div><div class="my-popup" style="display:none;" data-v-5f98aac3><div class="my-popup-container" data-v-5f98aac3><div class="my-popup-exit" data-v-5f98aac3></div> <img src="" alt data-v-5f98aac3></div></div><!----><!----><div></div><div class="container" data-v-0178ff65><canvas id="live2d" width="280" height="250" class="live2d-right" data-v-0178ff65></canvas></div></div></div>
+    <script src="/assets/js/app.61497e9b.js" defer></script><script src="/assets/js/2.3bcbf9c7.js" defer></script><script src="/assets/js/4.6ca913cf.js" defer></script><script src="/assets/js/53.5ae3f14e.js" defer></script><script src="/assets/js/5.df73da89.js" defer></script>
+  </body>
+</html>

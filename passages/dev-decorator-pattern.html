@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>结构型 - 装饰器模式(Decorator) | Zenghr</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script type="text/javascript" src="/scripts/baidu-analytics.js" async=""></script>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content=":::tip">
+    <meta name="image" content="https://media.zenghr.cn/blog/img/20210507/44cmIa2m9SQd.png?imageslim">
+    <meta name="twitter:title" content="结构型 - 装饰器模式(Decorator)">
+    <meta name="twitter:description" content=":::tip">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://media.zenghr.cn/blog/img/20210507/44cmIa2m9SQd.png?imageslim">
+    <meta name="twitter:url" content="https://blog.zenghr.cn/passages/dev-decorator-pattern.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="结构型 - 装饰器模式(Decorator)">
+    <meta property="og:description" content=":::tip">
+    <meta property="og:image" content="https://media.zenghr.cn/blog/img/20210507/44cmIa2m9SQd.png?imageslim">
+    <meta property="og:url" content="https://blog.zenghr.cn/passages/dev-decorator-pattern.html">
+    <meta property="article:author" content="zenghr">
+    <meta property="article:published_time" content="2021-05-07 21:30:12">
+    <meta itemprop="name" content="结构型 - 装饰器模式(Decorator)">
+    <meta itemprop="description" content=":::tip">
+    <meta itemprop="image" content="https://media.zenghr.cn/blog/img/20210507/44cmIa2m9SQd.png?imageslim">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs">
+    
+    <link rel="preload" href="/assets/css/0.styles.40e6d409.css" as="style"><link rel="preload" href="/assets/js/app.61497e9b.js" as="script"><link rel="preload" href="/assets/js/2.3bcbf9c7.js" as="script"><link rel="preload" href="/assets/js/4.6ca913cf.js" as="script"><link rel="preload" href="/assets/js/52.5feca2c2.js" as="script"><link rel="preload" href="/assets/js/5.df73da89.js" as="script"><link rel="prefetch" href="/assets/js/10.04153bc9.js"><link rel="prefetch" href="/assets/js/11.2608d821.js"><link rel="prefetch" href="/assets/js/12.0daeaa9b.js"><link rel="prefetch" href="/assets/js/13.d4603cae.js"><link rel="prefetch" href="/assets/js/14.30263e34.js"><link rel="prefetch" href="/assets/js/15.f9ad01e5.js"><link rel="prefetch" href="/assets/js/16.373121db.js"><link rel="prefetch" href="/assets/js/17.002f322b.js"><link rel="prefetch" href="/assets/js/18.cbced4fe.js"><link rel="prefetch" href="/assets/js/19.db5ad804.js"><link rel="prefetch" href="/assets/js/20.9c9513c7.js"><link rel="prefetch" href="/assets/js/21.ac7e1cf3.js"><link rel="prefetch" href="/assets/js/22.98d19f1a.js"><link rel="prefetch" href="/assets/js/23.81f244b7.js"><link rel="prefetch" href="/assets/js/24.1750ff92.js"><link rel="prefetch" href="/assets/js/25.3c622977.js"><link rel="prefetch" href="/assets/js/26.96fc3699.js"><link rel="prefetch" href="/assets/js/27.7c9e5429.js"><link rel="prefetch" href="/assets/js/28.d7c941a5.js"><link rel="prefetch" href="/assets/js/29.52dbf6fa.js"><link rel="prefetch" href="/assets/js/3.5ded679c.js"><link rel="prefetch" href="/assets/js/30.46dc896c.js"><link rel="prefetch" href="/assets/js/31.001750af.js"><link rel="prefetch" href="/assets/js/32.63a5326c.js"><link rel="prefetch" href="/assets/js/33.71a3cc0a.js"><link rel="prefetch" href="/assets/js/34.56944fe3.js"><link rel="prefetch" href="/assets/js/35.efb1f471.js"><link rel="prefetch" href="/assets/js/36.ccec69fe.js"><link rel="prefetch" href="/assets/js/37.2926ec61.js"><link rel="prefetch" href="/assets/js/38.660b4175.js"><link rel="prefetch" href="/assets/js/39.8e208f76.js"><link rel="prefetch" href="/assets/js/40.61b8034e.js"><link rel="prefetch" href="/assets/js/41.beac8270.js"><link rel="prefetch" href="/assets/js/42.fd79480a.js"><link rel="prefetch" href="/assets/js/43.070ef247.js"><link rel="prefetch" href="/assets/js/44.90098dd8.js"><link rel="prefetch" href="/assets/js/45.fb7f04d9.js"><link rel="prefetch" href="/assets/js/46.9f5c61eb.js"><link rel="prefetch" href="/assets/js/47.5150f37e.js"><link rel="prefetch" href="/assets/js/48.e4b6da20.js"><link rel="prefetch" href="/assets/js/49.4f1ba364.js"><link rel="prefetch" href="/assets/js/50.3b48478e.js"><link rel="prefetch" href="/assets/js/51.61dd55c8.js"><link rel="prefetch" href="/assets/js/53.5ae3f14e.js"><link rel="prefetch" href="/assets/js/54.1f5e32a5.js"><link rel="prefetch" href="/assets/js/55.6fb4760b.js"><link rel="prefetch" href="/assets/js/56.50b28b75.js"><link rel="prefetch" href="/assets/js/57.67574ed0.js"><link rel="prefetch" href="/assets/js/58.4fbf7cf1.js"><link rel="prefetch" href="/assets/js/59.ff6daca7.js"><link rel="prefetch" href="/assets/js/6.eaefe7ba.js"><link rel="prefetch" href="/assets/js/60.902afb3d.js"><link rel="prefetch" href="/assets/js/61.89357986.js"><link rel="prefetch" href="/assets/js/62.e4d4b952.js"><link rel="prefetch" href="/assets/js/63.5909108c.js"><link rel="prefetch" href="/assets/js/64.0a252c1f.js"><link rel="prefetch" href="/assets/js/65.f24ea9a7.js"><link rel="prefetch" href="/assets/js/66.8291859c.js"><link rel="prefetch" href="/assets/js/67.7403743f.js"><link rel="prefetch" href="/assets/js/68.bee74822.js"><link rel="prefetch" href="/assets/js/69.87dda0ad.js"><link rel="prefetch" href="/assets/js/7.944d5a58.js"><link rel="prefetch" href="/assets/js/70.d0c54e2e.js"><link rel="prefetch" href="/assets/js/71.6eaec73e.js"><link rel="prefetch" href="/assets/js/72.31c0d947.js"><link rel="prefetch" href="/assets/js/73.c19147ed.js"><link rel="prefetch" href="/assets/js/74.1e8dc310.js"><link rel="prefetch" href="/assets/js/75.05f42dff.js"><link rel="prefetch" href="/assets/js/76.4ccb0e6f.js"><link rel="prefetch" href="/assets/js/77.12d8c7e4.js"><link rel="prefetch" href="/assets/js/78.826a2622.js"><link rel="prefetch" href="/assets/js/79.26a4eed7.js"><link rel="prefetch" href="/assets/js/8.5d7c5743.js"><link rel="prefetch" href="/assets/js/80.f9e49a14.js"><link rel="prefetch" href="/assets/js/81.4b6741de.js"><link rel="prefetch" href="/assets/js/82.718be8a0.js"><link rel="prefetch" href="/assets/js/83.fd6a7f32.js"><link rel="prefetch" href="/assets/js/84.001574eb.js"><link rel="prefetch" href="/assets/js/85.d1bdde68.js"><link rel="prefetch" href="/assets/js/9.fc00dd7a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.40e6d409.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zenghr</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" class="nav-link">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" class="nav-link">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/dev-pattern-overview.html" class="sidebar-link">设计模式-Overview</a></li><li><a href="/passages/dev-decorator-pattern.html" aria-current="page" class="active sidebar-link">结构型-装饰者模式(Decorator)</a></li><li><a href="/passages/chain-of-responsibility.html" class="sidebar-link">行为型-责任链模式(Chain)</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>代码规范</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/code-spec-alibaba.html" class="sidebar-link">阿里巴巴Java开发规范</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="装饰-decorator"><a href="#装饰-decorator" class="header-anchor">#</a> 装饰(Decorator)</h1> <div class="custom-block tip"><p>指在不改变现有对象结构的情况下，动态地给该对象增加一些职责（即增加其额外功能）的模式</p></div> <h2 id="装饰器模式介绍"><a href="#装饰器模式介绍" class="header-anchor">#</a> 装饰器模式介绍</h2> <p>装饰器器的核心就是在 <strong>不改变原有类</strong> 的基础上给类新增功能</p> <p>通常情况下，扩展一个类的功能会使用继承方式来实现。但继承具有静态特征，耦合度高，并且随着扩展功能的增多，子类会过多等问题。但是使用装饰器模式会是另外一种思路更为灵活，可以避免继承导致的子类过多</p> <h2 id="装饰器的结构"><a href="#装饰器的结构" class="header-anchor">#</a> 装饰器的结构</h2> <p>装饰器器主要解决的是直接继承下因功能的不断横向扩展导致子类膨胀的问题，而使用装饰器模式后就会比直接继承显得更加灵活同时这样也就不再需要考虑子类的维护。</p> <p>这种设计模式创建了一个装饰类，用来包装原有的类，并在保持类方法签名完整性的前提下，提供了额外的功能</p> <p>装饰器模式主要包含以下角色：</p> <ol><li>抽象构件（Component）角色：定义一个 抽象接口 以规范准备接收附加责任的对象。</li> <li>具体构件（ConcreteComponent）角色：实现抽象构件，通过装饰角色为其添加一些职责。</li> <li>抽象装饰（Decorator）角色：继承抽象构件，并包含具体构件的实例，可以通过其子类扩展具体构件的功能。</li> <li>具体装饰（ConcreteDecorator）角色：实现抽象装饰的相关方法，并给具体构件对象添加附加的责任。</li></ol> <p><img src="https://media.zenghr.cn/blog/img/20210507/44cmIa2m9SQd.png?imageslim" alt="mark"></p> <h2 id="装饰器的案例模拟"><a href="#装饰器的案例模拟" class="header-anchor">#</a> 装饰器的案例模拟</h2> <p>奶茶店中有各种各样的奶茶，珍珠奶茶、蓝莓奶茶，用户在购买时，店员会问是否要加 布丁、加糖、珍珠等配料，不同的奶茶配不同的材料，价格也不一致，使用装饰器模式设计实现。</p> <p><strong>定义抽象构件角色（Component）- 奶茶（MilkTea）</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MilkTea</span> <span class="token punctuation">{</span>
+    <span class="token comment">/**
+     * 获取最终价格
+     *
+     * @return 返回价格
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">double</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>定义具体构件（ConcreteComponent）角色 - 珍珠奶茶(PearlTea)</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token comment">// 珍珠奶茶</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PearlTea</span> <span class="token keyword">implements</span> <span class="token class-name">MilkTea</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">20.0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>蓝莓奶茶(BlueberryTea)</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BlueberryTea</span> <span class="token keyword">implements</span> <span class="token class-name">MilkTea</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">10.0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>定义抽象装饰（Decorator）角色 - 配料(Decorator)</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">BatchingDecorator</span> <span class="token keyword">implements</span> <span class="token class-name">MilkTea</span> <span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token class-name">MilkTea</span> milkTea<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>具体装饰者 - 布丁(Pudding)</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PuddingDecorator</span> <span class="token keyword">extends</span> <span class="token class-name">BatchingDecorator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">PuddingDecorator</span><span class="token punctuation">(</span><span class="token class-name">MilkTea</span> milkTea<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>milkTea <span class="token operator">=</span> milkTea<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">5.0</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>milkTea<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>具体装饰者 - 糖(Sugar)</strong></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SugarDecorator</span> <span class="token keyword">extends</span> <span class="token class-name">BatchingDecorator</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">SugarDecorator</span><span class="token punctuation">(</span><span class="token class-name">MilkTea</span> milkTea<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>milkTea <span class="token operator">=</span> milkTea<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">3.0</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>milkTea<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>演示案例</strong></p> <p>我们去奶茶店买一杯蓝莓奶茶，加糖+加布丁，请问需要多少钱？</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DecoratorExample</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 蓝莓奶茶</span>
+        <span class="token class-name">MilkTea</span> milkTea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BlueberryTea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 布丁 包装类</span>
+        milkTea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PuddingDecorator</span><span class="token punctuation">(</span>milkTea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 加糖 包装类</span>
+        milkTea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SugarDecorator</span><span class="token punctuation">(</span>milkTea<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 总价格 蓝莓10.0 + 布丁5.0 + 糖3.0 = 18.0</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>milkTea<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="装饰器模式的应用场景"><a href="#装饰器模式的应用场景" class="header-anchor">#</a> 装饰器模式的应用场景</h2> <p>装饰器模式通常在以下几种情况使用</p> <ul><li>当需要给一个现有类添加附加职责，而又不能采用生成子类的方法进行扩充时。例如，该类被隐藏或者该类是终极类或者采用继承方式会产生大量的子类。</li> <li>当需要通过对现有的一组基本功能进行排列组合而产生非常多的功能时，采用继承关系很难实现，而采用装饰器模式却很好实现。</li> <li>当对象的功能要求可以动态地添加，也可以再动态地撤销时。</li></ul> <p>装饰器模式在 Java 中的最著名的应用莫过于 Java I/O 标准库的设计了。例如：</p> <ul><li>InputStream 的子类 FilterInputStream</li> <li>OutputStream 的子类 FilterOutputStream</li> <li>Reader 的子类 BufferedReader 以及 FilterReader</li> <li>还有 Writer 的子类 BufferedWriter、FilterWriter 以及 PrintWriter 等，它们都是抽象装饰类</li></ul> <p>如需了解 I/O 类中的装饰器模式，请看👉 <a href="/passages/2021-05-06-java-io-decorator-pattern.html">Java - I/O 装饰器模式</a></p> <h2 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h2> <p><a href="https://www.pdai.tech/md/dev-spec/pattern/12_decorator.html" target="_blank" rel="noopener noreferrer">结构型 - 装饰(Decorator) - Java 全栈知识体系<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="http://c.biancheng.net/view/1366.html" target="_blank" rel="noopener noreferrer">装饰器模式详解 - C语言中文网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/zenghr0820/blog/edit/master/docs/开发指南/01.设计模式/11.结构型-装饰者模式(Decorator).md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">更新于:</span> <span class="time">2021-06-30 09:18:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/passages/dev-pattern-overview.html" class="prev">
+        设计模式-Overview
+      </a></span> <span class="next"><a href="/passages/chain-of-responsibility.html">
+        行为型-责任链模式(Chain)
+      </a>
+      →
+    </span></p></div> <aside class="page-sidebar"><div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">结构型 - 装饰器模式(Decorator)</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/passages/dev-decorator-pattern.html#装饰器模式介绍" class="toc-sidebar-link">装饰器模式介绍</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#装饰器的结构" class="toc-sidebar-link">装饰器的结构</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#装饰器的案例模拟" class="toc-sidebar-link">装饰器的案例模拟</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#装饰器模式的应用场景" class="toc-sidebar-link">装饰器模式的应用场景</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#参考资料" class="toc-sidebar-link">参考资料</a> <ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box option-box-toc-over"><img src="/toc.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">结构型 - 装饰器模式(Decorator)</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/passages/dev-decorator-pattern.html#装饰器模式介绍" class="toc-sidebar-link">装饰器模式介绍</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#装饰器的结构" class="toc-sidebar-link">装饰器的结构</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#装饰器的案例模拟" class="toc-sidebar-link">装饰器的案例模拟</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#装饰器模式的应用场景" class="toc-sidebar-link">装饰器模式的应用场景</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/dev-decorator-pattern.html#参考资料" class="toc-sidebar-link">参考资料</a> <ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/full.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">全屏看</span></a></div><div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/toggle.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">侧边栏</span></a></div><div class="option-box"><img src="/iphone.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn/passages/dev-decorator-pattern.html" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><img src="/reward.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">打赏</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="/wechat.jpg" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><a title="设计模式-Overview" href="/passages/dev-pattern-overview.html" style="text-align: center; padding-left: 2px;"><img src="/prev.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">上一篇</span></a></div><div class="option-box"><a title="行为型-责任链模式(Chain)" href="/passages/chain-of-responsibility.html" style="text-align: center; padding-left: 2px;"><img src="/next.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">下一篇</span></a></div></div></aside> </main></div><div class="global-ui"><div class="my-loader center" style="display:none;" data-v-354e1a9e><div class="my-loader-circle" data-v-354e1a9e></div></div><div class="my-popup" style="display:none;" data-v-5f98aac3><div class="my-popup-container" data-v-5f98aac3><div class="my-popup-exit" data-v-5f98aac3></div> <img src="" alt data-v-5f98aac3></div></div><!----><!----><div></div><div class="container" data-v-0178ff65><canvas id="live2d" width="280" height="250" class="live2d-right" data-v-0178ff65></canvas></div></div></div>
+    <script src="/assets/js/app.61497e9b.js" defer></script><script src="/assets/js/2.3bcbf9c7.js" defer></script><script src="/assets/js/4.6ca913cf.js" defer></script><script src="/assets/js/52.5feca2c2.js" defer></script><script src="/assets/js/5.df73da89.js" defer></script>
+  </body>
+</html>

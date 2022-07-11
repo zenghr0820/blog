@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>golang基础 - 反射机制 | Zenghr</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script type="text/javascript" src="/scripts/baidu-analytics.js" async=""></script>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="和 Java 语言一样，Go 也实现运行时反射，这为我们提供一种可以在运行时操作任意类型对象的能力。">
+    <meta name="image" content="https://media.zenghr.cn/blog/img/20210626/6hzQxX.png">
+    <meta name="twitter:title" content="golang基础 - 反射机制">
+    <meta name="twitter:description" content="和 Java 语言一样，Go 也实现运行时反射，这为我们提供一种可以在运行时操作任意类型对象的能力。">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://media.zenghr.cn/blog/img/20210626/6hzQxX.png">
+    <meta name="twitter:url" content="https://blog.zenghr.cn/passages/2021-06-26-golang-reflect.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="golang基础 - 反射机制">
+    <meta property="og:description" content="和 Java 语言一样，Go 也实现运行时反射，这为我们提供一种可以在运行时操作任意类型对象的能力。">
+    <meta property="og:image" content="https://media.zenghr.cn/blog/img/20210626/6hzQxX.png">
+    <meta property="og:url" content="https://blog.zenghr.cn/passages/2021-06-26-golang-reflect.html">
+    <meta property="article:author" content="zenghr">
+    <meta property="article:published_time" content="2021-06-26 14:14:14">
+    <meta itemprop="name" content="golang基础 - 反射机制">
+    <meta itemprop="description" content="和 Java 语言一样，Go 也实现运行时反射，这为我们提供一种可以在运行时操作任意类型对象的能力。">
+    <meta itemprop="image" content="https://media.zenghr.cn/blog/img/20210626/6hzQxX.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs">
+    
+    <link rel="preload" href="/assets/css/0.styles.40e6d409.css" as="style"><link rel="preload" href="/assets/js/app.61497e9b.js" as="script"><link rel="preload" href="/assets/js/2.3bcbf9c7.js" as="script"><link rel="preload" href="/assets/js/4.6ca913cf.js" as="script"><link rel="preload" href="/assets/js/17.002f322b.js" as="script"><link rel="preload" href="/assets/js/6.eaefe7ba.js" as="script"><link rel="preload" href="/assets/js/5.df73da89.js" as="script"><link rel="prefetch" href="/assets/js/10.04153bc9.js"><link rel="prefetch" href="/assets/js/11.2608d821.js"><link rel="prefetch" href="/assets/js/12.0daeaa9b.js"><link rel="prefetch" href="/assets/js/13.d4603cae.js"><link rel="prefetch" href="/assets/js/14.30263e34.js"><link rel="prefetch" href="/assets/js/15.f9ad01e5.js"><link rel="prefetch" href="/assets/js/16.373121db.js"><link rel="prefetch" href="/assets/js/18.cbced4fe.js"><link rel="prefetch" href="/assets/js/19.db5ad804.js"><link rel="prefetch" href="/assets/js/20.9c9513c7.js"><link rel="prefetch" href="/assets/js/21.ac7e1cf3.js"><link rel="prefetch" href="/assets/js/22.98d19f1a.js"><link rel="prefetch" href="/assets/js/23.81f244b7.js"><link rel="prefetch" href="/assets/js/24.1750ff92.js"><link rel="prefetch" href="/assets/js/25.3c622977.js"><link rel="prefetch" href="/assets/js/26.96fc3699.js"><link rel="prefetch" href="/assets/js/27.7c9e5429.js"><link rel="prefetch" href="/assets/js/28.d7c941a5.js"><link rel="prefetch" href="/assets/js/29.52dbf6fa.js"><link rel="prefetch" href="/assets/js/3.5ded679c.js"><link rel="prefetch" href="/assets/js/30.46dc896c.js"><link rel="prefetch" href="/assets/js/31.001750af.js"><link rel="prefetch" href="/assets/js/32.63a5326c.js"><link rel="prefetch" href="/assets/js/33.71a3cc0a.js"><link rel="prefetch" href="/assets/js/34.56944fe3.js"><link rel="prefetch" href="/assets/js/35.efb1f471.js"><link rel="prefetch" href="/assets/js/36.ccec69fe.js"><link rel="prefetch" href="/assets/js/37.2926ec61.js"><link rel="prefetch" href="/assets/js/38.660b4175.js"><link rel="prefetch" href="/assets/js/39.8e208f76.js"><link rel="prefetch" href="/assets/js/40.61b8034e.js"><link rel="prefetch" href="/assets/js/41.beac8270.js"><link rel="prefetch" href="/assets/js/42.fd79480a.js"><link rel="prefetch" href="/assets/js/43.070ef247.js"><link rel="prefetch" href="/assets/js/44.90098dd8.js"><link rel="prefetch" href="/assets/js/45.fb7f04d9.js"><link rel="prefetch" href="/assets/js/46.9f5c61eb.js"><link rel="prefetch" href="/assets/js/47.5150f37e.js"><link rel="prefetch" href="/assets/js/48.e4b6da20.js"><link rel="prefetch" href="/assets/js/49.4f1ba364.js"><link rel="prefetch" href="/assets/js/50.3b48478e.js"><link rel="prefetch" href="/assets/js/51.61dd55c8.js"><link rel="prefetch" href="/assets/js/52.5feca2c2.js"><link rel="prefetch" href="/assets/js/53.5ae3f14e.js"><link rel="prefetch" href="/assets/js/54.1f5e32a5.js"><link rel="prefetch" href="/assets/js/55.6fb4760b.js"><link rel="prefetch" href="/assets/js/56.50b28b75.js"><link rel="prefetch" href="/assets/js/57.67574ed0.js"><link rel="prefetch" href="/assets/js/58.4fbf7cf1.js"><link rel="prefetch" href="/assets/js/59.ff6daca7.js"><link rel="prefetch" href="/assets/js/60.902afb3d.js"><link rel="prefetch" href="/assets/js/61.89357986.js"><link rel="prefetch" href="/assets/js/62.e4d4b952.js"><link rel="prefetch" href="/assets/js/63.5909108c.js"><link rel="prefetch" href="/assets/js/64.0a252c1f.js"><link rel="prefetch" href="/assets/js/65.f24ea9a7.js"><link rel="prefetch" href="/assets/js/66.8291859c.js"><link rel="prefetch" href="/assets/js/67.7403743f.js"><link rel="prefetch" href="/assets/js/68.bee74822.js"><link rel="prefetch" href="/assets/js/69.87dda0ad.js"><link rel="prefetch" href="/assets/js/7.944d5a58.js"><link rel="prefetch" href="/assets/js/70.d0c54e2e.js"><link rel="prefetch" href="/assets/js/71.6eaec73e.js"><link rel="prefetch" href="/assets/js/72.31c0d947.js"><link rel="prefetch" href="/assets/js/73.c19147ed.js"><link rel="prefetch" href="/assets/js/74.1e8dc310.js"><link rel="prefetch" href="/assets/js/75.05f42dff.js"><link rel="prefetch" href="/assets/js/76.4ccb0e6f.js"><link rel="prefetch" href="/assets/js/77.12d8c7e4.js"><link rel="prefetch" href="/assets/js/78.826a2622.js"><link rel="prefetch" href="/assets/js/79.26a4eed7.js"><link rel="prefetch" href="/assets/js/8.5d7c5743.js"><link rel="prefetch" href="/assets/js/80.f9e49a14.js"><link rel="prefetch" href="/assets/js/81.4b6741de.js"><link rel="prefetch" href="/assets/js/82.718be8a0.js"><link rel="prefetch" href="/assets/js/83.fd6a7f32.js"><link rel="prefetch" href="/assets/js/84.001574eb.js"><link rel="prefetch" href="/assets/js/85.d1bdde68.js"><link rel="prefetch" href="/assets/js/9.fc00dd7a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.40e6d409.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Zenghr</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" class="nav-link">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  最新
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Java 基础与面向对象</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-lan-basic.html" class="nav-link">
+  Java 基础知识
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-04-09-java-basic-oop.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - 集合框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-04-25-java-collection-frame.html" class="nav-link">
+  Java 集合框架
+</a></li></ul></li><li class="dropdown-item"><h4>Java进阶 - IO框架</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-05-05-java-io-basic.html" class="nav-link">
+  Java I/O知识详解
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2021-07-21-activiti7-note.html" class="nav-link">
+  Activity7 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-08-18-springboot-argument-resolver.html" class="nav-link">
+  SpringBoot 系列
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-07-27-spring-cloud-alibaba.html" class="nav-link">
+  Spring Cloud 基础
+</a></li></ul></div></div><div class="nav-item"><a href="/passages/go-catalog.html" class="nav-link">
+  Golang
+</a></div><div class="nav-item"><a href="/passages/2020-08-12-kubernetes-deploy-ready.html" class="nav-link">
+  Kubernetes
+</a></div><div class="nav-item"><a href="/passages/2020-02-25-nginx-install.html" class="nav-link">
+  Linux系列
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发环境" class="dropdown-title"><span class="title">开发环境</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/tool-list-overview.html" class="nav-link">
+  开发工具
+</a></li><li class="dropdown-item"><!----> <a href="/passages/2021-06-28-git-common-cmd.html" class="nav-link">
+  git 环境
+</a></li><li class="dropdown-item"><h4>数据库系列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/passages/2021-06-29-mysql-manage-auth.html" class="nav-link">
+  mysql 环境
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-02-redis-overview.html" class="nav-link">
+  Redis 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-15-mongo-overview.html" class="nav-link">
+  Mongo 知识体系
+</a></li><li class="dropdown-subitem"><a href="/passages/2021-08-06-elasticsearch.html" class="nav-link">
+  Elasticsearch 知识体系
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发指南" class="dropdown-title"><span class="title">开发指南</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/code-spec-alibaba.html" class="nav-link">
+  代码规范
+</a></li><li class="dropdown-item"><!----> <a href="/passages/dev-pattern-overview.html" class="nav-link">
+  设计模式详解
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其它" class="dropdown-title"><span class="title">其它</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/passages/2020-01-18-first-blog.html" class="nav-link">
+  生活闲谈
+</a></li><li class="dropdown-item"><!----> <a href="/friends/" class="nav-link">
+  友情链接
+</a></li></ul></div></div> <a href="https://github.com/zenghr0820/blog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Golang</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/go-catalog.html" class="sidebar-link">介绍</a></li><li><a href="/passages/2020-02-28-golang-slice-analysis.html" class="sidebar-link">记录Go中Slice扩容源码分析</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>golang基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/passages/2021-06-26-golang-reflect.html" aria-current="page" class="active sidebar-link">golang基础-反射机制</a></li><li><a href="/passages/2022-03-10-golang-reflect-deepEqual.html" class="sidebar-link">深度比较DeepEqual</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="golang-反射机制"><a href="#golang-反射机制" class="header-anchor">#</a> golang 反射机制</h1> <p>和 Java 语言一样，Go 也实现运行时反射，这为我们提供一种可以在运行时操作任意类型对象的能力。</p> <p>在 go 语言中，实现反射能力的是 <code>reflect</code>包，能够让程序操作不同类型的对象。其中，在反射包中有两个非常重要的 <strong>类型</strong>和 <strong>函数</strong>，两个函数分别是：</p> <ul><li><strong><code>reflect.TypeOf</code></strong> - 能获取对象的类型的信息</li> <li><strong><code>reflect.ValueOf</code></strong> - 能获取对象的数据</li></ul> <p>两个类型是 <a href="https://golang.org/pkg/reflect/#Type" target="_blank" rel="noopener noreferrer"><strong><code>reflect.Type</code></strong><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 和 <a href="https://golang.org/pkg/reflect/#Value" target="_blank" rel="noopener noreferrer"><strong><code>reflect.Value</code></strong><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，它们与函数是一一对应的关系：</p> <p><img src="https://media.zenghr.cn/blog/img/20210626/6hzQxX.png" alt="6hzQxX"></p> <h2 id="golang-反射注意"><a href="#golang-反射注意" class="header-anchor">#</a> golang 反射注意<span class="badge tip" style="vertical-align:top;" data-v-15b7b770>New</span></h2> <div class="custom-block tip"><p>golang 反射不能<strong>获取和修改</strong> 私有的属性以及方法</p> <p>*<em>ValueOf(<em>ptr)</em></em> 方法传递的参数必须是 <strong>指针类型</strong> 才可以修改字段否则会报错</p></div> <h2 id="type-和-typeof"><a href="#type-和-typeof" class="header-anchor">#</a> Type 和 TypeOf</h2> <p><strong>reflect.Type</strong> 类型是一个接口类型，内部指定了若干方法，通过这些方法我们可以获取到反射类型的各种信息，例如：字段、方法等</p> <p>使用 <em><strong>reflect.TypeOf()</strong></em> 函数可以获取将任意值的类型对象 (<code>reflect.Type</code>)，程序通过类型对象可以访问任意值的类型信息</p> <h3 id="_1-理解-type-和-种类-kind"><a href="#_1-理解-type-和-种类-kind" class="header-anchor">#</a> 1. 理解 Type 和 种类 Kind</h3> <p><strong>reflect.Type 是变量的类型，而不是追根溯源的最底层类型</strong></p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> MyInt <span class="token builtin">int</span>
+reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>MyInt<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>这里的 reflect.Type 就是 <em><code>MyInt</code></em>，而非 int，如果想获得 int 只能使用<strong>Kind()</strong></p> <p>总结：<em><strong>Type 表示的是静态类型，而 kind 表示的是底层真实的类型</strong></em></p> <h3 id="_2-获取类型名以及-kind"><a href="#_2-获取类型名以及-kind" class="header-anchor">#</a> 2. 获取类型名以及 kind</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">&quot;fmt&quot;</span>
+    <span class="token string">&quot;reflect&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// 定义一个 MyInt 类型</span>
+<span class="token keyword">type</span> MyInt <span class="token builtin">int</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 声明一个空结构体</span>
+    <span class="token keyword">type</span> cat <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 获取结构体实例的反射类型对象</span>
+    typeOfCat <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>cat<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// 显示反射类型对象的名称和种类</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>typeOfCat<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> typeOfCat<span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment">// 获取Zero常量的反射类型对象</span>
+    typeOfA <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>Zero<span class="token punctuation">)</span>
+    <span class="token comment">// 显示反射类型对象的名称和种类</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>typeOfA<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> typeOfA<span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>代码输出如下：</p> <blockquote><p>cat struct</p> <p>MyInt int</p></blockquote> <h3 id="_3-type-常用方法"><a href="#_3-type-常用方法" class="header-anchor">#</a> 3. Type 常用方法</h3> <p>获取与成员相关的方法如下：</p> <table><thead><tr><th>方法</th> <th>描述</th></tr></thead> <tbody><tr><td><strong>Field</strong>(i int) StructField</td> <td>根据索引，返回索引对应的结构体字段的信息。当值不是结构体或索引超界时发生宕机</td></tr> <tr><td><strong>NumField</strong>() int</td> <td>返回结构体成员字段数量(包含私有字段)</td></tr> <tr><td><strong>FieldByName</strong>(name string) (StructField, bool)</td> <td>根据给定字符串返回字符串对应的结构体字段的信息。没有找到时 bool 返回 false</td></tr> <tr><td>FieldByIndex(index []int) StructField</td> <td>多层成员访问时，根据 []int 提供的每个结构体的字段索引，返回字段的信息。没有找到时返回零值</td></tr></tbody></table> <p><strong>StructField结构</strong>，这个结构描述结构体的成员信息，通过这个信息可以获取成员与结构体的关系，如偏移、索引、是否为匿名字段、结构体标签（Struct Tag）等</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">type</span> StructField <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	Name      <span class="token builtin">string</span>    <span class="token comment">// 字段名</span>
+	PkgPath   <span class="token builtin">string</span>    <span class="token comment">// 字段路径</span>
+	Type      Type      <span class="token comment">// 字段反射类型对象</span>
+	Tag       StructTag <span class="token comment">// 字段的结构体标签</span>
+	Offset    <span class="token builtin">uintptr</span>   <span class="token comment">// 字段在结构体中的相对偏移</span>
+	Index     <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span>     <span class="token comment">// Type.FieldByIndex中的返回的索引值</span>
+	Anonymous <span class="token builtin">bool</span>      <span class="token comment">// 是否为匿名字段</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_4-获取成员反射信息"><a href="#_4-获取成员反射信息" class="header-anchor">#</a> 4. 获取成员反射信息</h3> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;reflect&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 声明一个空结构体</span>
+	<span class="token keyword">type</span> cat <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+		Name <span class="token builtin">string</span>
+		<span class="token comment">// 带有结构体tag的字段</span>
+		Type <span class="token builtin">int</span> <span class="token string">`json:&quot;type&quot; id:&quot;100&quot;`</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// 创建cat的实例</span>
+	ins <span class="token operator">:=</span> cat<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> <span class="token string">&quot;mimi&quot;</span><span class="token punctuation">,</span> Type<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+	<span class="token comment">// 获取结构体实例的反射类型对象</span>
+	typeOfCat <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>ins<span class="token punctuation">)</span>
+	<span class="token comment">// 遍历结构体所有成员</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> typeOfCat<span class="token punctuation">.</span><span class="token function">NumField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 获取每个成员的结构体字段类型</span>
+		fieldType <span class="token operator">:=</span> typeOfCat<span class="token punctuation">.</span><span class="token function">Field</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+		<span class="token comment">// 输出成员名和tag</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">&quot;name: %v  tag: '%v'\n&quot;</span><span class="token punctuation">,</span> fieldType<span class="token punctuation">.</span>Name<span class="token punctuation">,</span> fieldType<span class="token punctuation">.</span>Tag<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// 通过字段名, 找到字段类型信息</span>
+	<span class="token keyword">if</span> catType<span class="token punctuation">,</span> ok <span class="token operator">:=</span> typeOfCat<span class="token punctuation">.</span><span class="token function">FieldByName</span><span class="token punctuation">(</span><span class="token string">&quot;Type&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+		<span class="token comment">// 从tag中取出需要的tag</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>catType<span class="token punctuation">.</span>Tag<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">&quot;json&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> catType<span class="token punctuation">.</span>Tag<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">&quot;id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_5-通过类型信息创建实例"><a href="#_5-通过类型信息创建实例" class="header-anchor">#</a> 5. 通过类型信息创建实例</h3> <p>当已知 reflect.Type 时，可以动态地创建这个类型的实例，实例的类型为指针</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> a <span class="token builtin">int</span>
+	<span class="token comment">// 取变量a的反射类型对象</span>
+	typeOfA <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+	<span class="token comment">// 根据反射类型对象创建类型实例</span>
+	aIns <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>typeOfA<span class="token punctuation">)</span>
+	<span class="token comment">// 输出：*int ptr</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>aIns<span class="token punctuation">.</span><span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> aIns<span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="value-和-valueof"><a href="#value-和-valueof" class="header-anchor">#</a> Value 和 ValueOf</h2> <p><strong>reflect.Value</strong> 类型是一个结构体，封装了反射对象的值，内部若干方法，可以通过这些方法来获取和修改对象的值，使用 <strong><code>reflect.ValueOf</code></strong> 函数可以返回 Value 类型，value 类型还可以生成原始类型对象</p> <h3 id="_1-生成原始类型的对象"><a href="#_1-生成原始类型的对象" class="header-anchor">#</a> 1. 生成原始类型的对象</h3> <p>可以通过下面几种方法从反射值对象 reflect.Value 中获取原值</p> <table><thead><tr><th>方法名</th> <th>说  明</th></tr></thead> <tbody><tr><td><strong>Interface</strong>() interface {}</td> <td>将值以 interface{} 类型返回，可以通过类型断言转换为指定类型</td></tr> <tr><td>Int() int64</td> <td>将值以 int 类型返回，所有有符号整型均可以此方式返回</td></tr> <tr><td>Uint() uint64</td> <td>将值以 uint 类型返回，所有无符号整型均可以此方式返回</td></tr> <tr><td>Float() float64</td> <td>将值以双精度（float64）类型返回，所有浮点数（float32、float64）均可以此方式返回</td></tr> <tr><td>Bool() bool</td> <td>将值以 bool 类型返回</td></tr> <tr><td>Bytes() []bytes</td> <td>将值以字节数组 []bytes 类型返回</td></tr> <tr><td>String() string</td> <td>将值以字符串类型返回</td></tr></tbody></table> <p>代码演示如下👇</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 声明整型变量a并赋初值</span>
+    <span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">1024</span>
+    <span class="token comment">// 获取变量a的反射值对象</span>
+    valueOfA <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    <span class="token comment">// 获取interface{}类型的值, 通过类型断言转换</span>
+    <span class="token keyword">var</span> getA <span class="token builtin">int</span> <span class="token operator">=</span> valueOfA<span class="token punctuation">.</span><span class="token function">Interface</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span>
+    <span class="token comment">// 获取64位的值, 强制类型转换为int类型</span>
+    <span class="token keyword">var</span> getA2 <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token function">int</span><span class="token punctuation">(</span>valueOfA<span class="token punctuation">.</span><span class="token function">Int</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>getA<span class="token punctuation">,</span> getA2<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-操作结构体成员的值"><a href="#_2-操作结构体成员的值" class="header-anchor">#</a> 2. 操作结构体成员的值</h3> <p>反射值对象（reflect.Value）提供对结构体访问的方法，通过这些方法可以完成对结构体任意值的访问，方法列表参考 <a href="#_3-type-%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95">Type 常用方法</a></p> <p><strong>修改成员的值</strong> 使用 reflect.Value 对包装的值进行修改时，需要遵循一些规则。如果该对象不可寻址或者成员是私有的，则无法修改对象值</p> <p><strong>判定是否可以操作的方法有如下👇</strong></p> <table><thead><tr><th>方法名</th> <th>描  述</th></tr></thead> <tbody><tr><td><strong>Elem</strong>() Value</td> <td>取值指向的元素值，类似于语言层<code>*</code>操作。当值类型不是指针或接口时发生宕 机，空指针时返回 nil 的 Value</td></tr> <tr><td>Addr() Value</td> <td>对可寻址的值返回其地址，类似于语言层<code>&amp;</code>操作。当值不可寻址时发生宕机</td></tr> <tr><td>CanAddr() bool</td> <td>表示值是否可寻址</td></tr> <tr><td><strong>CanSet</strong>() bool</td> <td>返回值能否被修改。要求值可寻址且是导出的字段</td></tr></tbody></table> <p><strong>修改的方法如下👇</strong></p> <table><thead><tr><th>Set(x Value)</th> <th>将值设置为传入的反射值对象的值</th></tr></thead> <tbody><tr><td>Setlnt(x int64)</td> <td>使用 int64 设置值。当值的类型不是 int、int8、int16、 int32、int64 时会发生宕机</td></tr> <tr><td>SetUint(x uint64)</td> <td>使用 uint64 设置值。当值的类型不是 uint、uint8、uint16、uint32、uint64 时会发生宕机</td></tr> <tr><td>SetFloat(x float64)</td> <td>使用 float64 设置值。当值的类型不是 float32、float64 时会发生宕机</td></tr> <tr><td>SetBool(x bool)</td> <td>使用 bool 设置值。当值的类型不是 bod 时会发生宕机</td></tr> <tr><td>SetBytes(x []byte)</td> <td>设置字节数组 []bytes值。当值的类型不是 []byte 时会发生宕机</td></tr> <tr><td>SetString(x string)</td> <td>设置字符串值。当值的类型不是 string 时会发生宕机</td></tr></tbody></table> <p><strong>代码案例如下</strong></p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">type</span> dog <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+		LegCount <span class="token builtin">int</span>
+		age <span class="token builtin">int</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// 获取dog实例地址的反射值对象</span>
+	valueOfDog <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>dog<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token comment">// 取出dog实例地址的元素</span>
+	valueOfDog <span class="token operator">=</span> valueOfDog<span class="token punctuation">.</span><span class="token function">Elem</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token comment">// 获取legCount字段的值</span>
+	vLegCount <span class="token operator">:=</span> valueOfDog<span class="token punctuation">.</span><span class="token function">FieldByName</span><span class="token punctuation">(</span><span class="token string">&quot;LegCount&quot;</span><span class="token punctuation">)</span>
+	vAge <span class="token operator">:=</span> valueOfDog<span class="token punctuation">.</span><span class="token function">FieldByName</span><span class="token punctuation">(</span><span class="token string">&quot;age&quot;</span><span class="token punctuation">)</span>
+	<span class="token comment">// 尝试设置legCount的值</span>
+	vLegCount<span class="token punctuation">.</span><span class="token function">SetInt</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+	<span class="token comment">// 这里会报错</span>
+	vAge<span class="token punctuation">.</span><span class="token function">SetInt</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>vLegCount<span class="token punctuation">.</span><span class="token function">Int</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="通过反射调用函数"><a href="#通过反射调用函数" class="header-anchor">#</a> 通过反射调用函数</h2> <p>如果反射值对象（reflect.Value）中值的类型为函数时，可以通过 reflect.Value 调用该函数，使用反射调用函数时，需要将参数使用反射值对象的切片 []reflect.Value 构造后传入 <strong>Call()</strong> 方法中，调用完成时，函数的返回值通过 []reflect.Value 返回</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;reflect&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token comment">// 普通函数</span>
+<span class="token keyword">func</span> <span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">// 将函数包装为反射值对象</span>
+	funcValue <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span>
+	<span class="token comment">// 构造函数参数, 传入两个整型值</span>
+	paramList <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>reflect<span class="token punctuation">.</span>Value<span class="token punctuation">{</span>reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+	<span class="token comment">// 反射调用函数</span>
+	retList <span class="token operator">:=</span> funcValue<span class="token punctuation">.</span><span class="token function">Call</span><span class="token punctuation">(</span>paramList<span class="token punctuation">)</span>
+	<span class="token comment">// 获取第一个返回值, 取整数值</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>retList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">Int</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="通过反射调用对象中的方法"><a href="#通过反射调用对象中的方法" class="header-anchor">#</a> 通过反射调用对象中的方法</h2> <p>如果反射值对象中具有方法时，可以通过反射调用方法，获取方法如下👇</p> <table><thead><tr><th>方法</th> <th>描述</th></tr></thead> <tbody><tr><td><strong>Method</strong>(i int) Value</td> <td>根据索引，返回索引对应的方法</td></tr> <tr><td><strong>NumMethod</strong>() int</td> <td>返回结构体成员方法(包含私有)</td></tr> <tr><td><strong>MethodByName</strong>(name string) Value</td> <td>根据给定字符串返回字符串对应的结构体方法</td></tr></tbody></table> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;fmt&quot;</span>
+	<span class="token string">&quot;reflect&quot;</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">type</span> Cat <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+	Name <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>c <span class="token operator">*</span>Cat<span class="token punctuation">)</span> <span class="token function">Sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;呜呜呜...&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	cat <span class="token operator">:=</span> Cat<span class="token punctuation">{</span><span class="token punctuation">}</span>
+	valueOf <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>cat<span class="token punctuation">)</span>
+	showMethod <span class="token operator">:=</span> valueOf<span class="token punctuation">.</span><span class="token function">MethodByName</span><span class="token punctuation">(</span><span class="token string">&quot;Show&quot;</span><span class="token punctuation">)</span>
+	showMethod<span class="token punctuation">.</span><span class="token function">Call</span><span class="token punctuation">(</span><span class="token boolean">nil</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="反射实现-map-转-struct"><a href="#反射实现-map-转-struct" class="header-anchor">#</a> 反射实现：map 转 struct</h2> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">Map2Struct</span><span class="token punctuation">(</span>m <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	value <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+
+	<span class="token comment">// obj 必须是指针且指针指向的必须是 struct</span>
+	<span class="token keyword">if</span> value<span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> reflect<span class="token punctuation">.</span>Ptr <span class="token operator">&amp;&amp;</span> value<span class="token punctuation">.</span><span class="token function">Elem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> reflect<span class="token punctuation">.</span>Struct <span class="token punctuation">{</span>
+		value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">Elem</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		getMapName <span class="token operator">:=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>key <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+			<span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> m <span class="token punctuation">{</span>
+				<span class="token keyword">if</span> strings<span class="token punctuation">.</span><span class="token function">EqualFold</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">return</span> v
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">return</span> <span class="token boolean">nil</span>
+		<span class="token punctuation">}</span>
+		<span class="token comment">// 循环赋值</span>
+		<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> value<span class="token punctuation">.</span><span class="token function">NumField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+			<span class="token comment">// 获取字段 type 对象</span>
+			field <span class="token operator">:=</span> value<span class="token punctuation">.</span><span class="token function">Field</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+			<span class="token keyword">if</span> <span class="token operator">!</span>field<span class="token punctuation">.</span><span class="token function">CanSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">continue</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">// 获取字段名称</span>
+			fieldName <span class="token operator">:=</span> value<span class="token punctuation">.</span><span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Field</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span>Name
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">&quot;fieldName -&gt; &quot;</span><span class="token punctuation">,</span> fieldName<span class="token punctuation">)</span>
+			<span class="token comment">// 获取 map 中的对应的值</span>
+			fieldVal <span class="token operator">:=</span> <span class="token function">getMapName</span><span class="token punctuation">(</span>fieldName<span class="token punctuation">)</span>
+			<span class="token keyword">if</span> fieldVal <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+				field<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span>reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span>fieldVal<span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;must prt&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="反射实现-struct-转-map"><a href="#反射实现-struct-转-map" class="header-anchor">#</a> 反射实现：struct 转 map</h2> <div class="language-go extra-class"><pre class="language-go"><code><span class="token keyword">func</span> <span class="token function">Struct2Map</span><span class="token punctuation">(</span>obj <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">{</span>
+	value <span class="token operator">:=</span> reflect<span class="token punctuation">.</span><span class="token function">ValueOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+
+	<span class="token keyword">if</span> value<span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> reflect<span class="token punctuation">.</span>Ptr <span class="token operator">||</span> value<span class="token punctuation">.</span><span class="token function">Elem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Kind</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> reflect<span class="token punctuation">.</span>Struct <span class="token punctuation">{</span>
+		<span class="token function">panic</span><span class="token punctuation">(</span><span class="token string">&quot;must prt&quot;</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">Elem</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	t <span class="token operator">:=</span> value<span class="token punctuation">.</span><span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	<span class="token comment">// 创建 map</span>
+	resultMap <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+	<span class="token comment">// 循环获取字段名称以及对应的值</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> value<span class="token punctuation">.</span><span class="token function">NumField</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+		val <span class="token operator">:=</span> value<span class="token punctuation">.</span><span class="token function">Field</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+		typeName <span class="token operator">:=</span> t<span class="token punctuation">.</span><span class="token function">Field</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> <span class="token operator">!</span>val<span class="token punctuation">.</span><span class="token function">CanSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			resultMap<span class="token punctuation">[</span>typeName<span class="token punctuation">.</span>Name<span class="token punctuation">]</span> <span class="token operator">=</span> reflect<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span>typeName<span class="token punctuation">.</span>Type<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Elem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Interface</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">continue</span>
+		<span class="token punctuation">}</span>
+		resultMap<span class="token punctuation">[</span>typeName<span class="token punctuation">.</span>Name<span class="token punctuation">]</span> <span class="token operator">=</span> val<span class="token punctuation">.</span><span class="token function">Interface</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> resultMap
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/zenghr0820/blog/edit/master/docs/Golang/01.golang基础/01.golang基础-反射机制.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">更新于:</span> <span class="time">2021-06-30 09:18:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/passages/2020-02-28-golang-slice-analysis.html" class="prev">
+        记录Go中Slice扩容源码分析
+      </a></span> <span class="next"><a href="/passages/2022-03-10-golang-reflect-deepEqual.html">
+        深度比较DeepEqual
+      </a>
+      →
+    </span></p></div> <aside class="page-sidebar"><div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">golang基础 - 反射机制</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/passages/2021-06-26-golang-reflect.html#golang-反射注意" class="toc-sidebar-link">golang 反射注意</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#type-和-typeof" class="toc-sidebar-link">Type 和 TypeOf</a> <ul class="toc-sidebar-sub-headers"><li><a href="/passages/2021-06-26-golang-reflect.html#_1-理解-type-和-种类-kind" class="toc-sidebar-link">1. 理解 Type 和 种类 Kind</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_2-获取类型名以及-kind" class="toc-sidebar-link">2. 获取类型名以及 kind</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_3-type-常用方法" class="toc-sidebar-link">3. Type 常用方法</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_4-获取成员反射信息" class="toc-sidebar-link">4. 获取成员反射信息</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_5-通过类型信息创建实例" class="toc-sidebar-link">5. 通过类型信息创建实例</a></li></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#value-和-valueof" class="toc-sidebar-link">Value 和 ValueOf</a> <ul class="toc-sidebar-sub-headers"><li><a href="/passages/2021-06-26-golang-reflect.html#_1-生成原始类型的对象" class="toc-sidebar-link">1. 生成原始类型的对象</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_2-操作结构体成员的值" class="toc-sidebar-link">2. 操作结构体成员的值</a></li></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#通过反射调用函数" class="toc-sidebar-link">通过反射调用函数</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#通过反射调用对象中的方法" class="toc-sidebar-link">通过反射调用对象中的方法</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#反射实现-map-转-struct" class="toc-sidebar-link">反射实现：map 转 struct</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#反射实现-struct-转-map" class="toc-sidebar-link">反射实现：struct 转 map</a> <ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box option-box-toc-over"><img src="/toc.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">golang基础 - 反射机制</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/passages/2021-06-26-golang-reflect.html#golang-反射注意" class="toc-sidebar-link">golang 反射注意</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#type-和-typeof" class="toc-sidebar-link">Type 和 TypeOf</a> <ul class="toc-sidebar-sub-headers"><li><a href="/passages/2021-06-26-golang-reflect.html#_1-理解-type-和-种类-kind" class="toc-sidebar-link">1. 理解 Type 和 种类 Kind</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_2-获取类型名以及-kind" class="toc-sidebar-link">2. 获取类型名以及 kind</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_3-type-常用方法" class="toc-sidebar-link">3. Type 常用方法</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_4-获取成员反射信息" class="toc-sidebar-link">4. 获取成员反射信息</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_5-通过类型信息创建实例" class="toc-sidebar-link">5. 通过类型信息创建实例</a></li></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#value-和-valueof" class="toc-sidebar-link">Value 和 ValueOf</a> <ul class="toc-sidebar-sub-headers"><li><a href="/passages/2021-06-26-golang-reflect.html#_1-生成原始类型的对象" class="toc-sidebar-link">1. 生成原始类型的对象</a></li><li><a href="/passages/2021-06-26-golang-reflect.html#_2-操作结构体成员的值" class="toc-sidebar-link">2. 操作结构体成员的值</a></li></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#通过反射调用函数" class="toc-sidebar-link">通过反射调用函数</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#通过反射调用对象中的方法" class="toc-sidebar-link">通过反射调用对象中的方法</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#反射实现-map-转-struct" class="toc-sidebar-link">反射实现：map 转 struct</a> <ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/passages/2021-06-26-golang-reflect.html#反射实现-struct-转-map" class="toc-sidebar-link">反射实现：struct 转 map</a> <ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/full.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">全屏看</span></a></div><div class="option-box"><a title="点击切换全屏" style="text-align: center; padding-left: 2px;"><img src="/toggle.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">侧边栏</span></a></div><div class="option-box"><img src="/iphone.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=https://blog.zenghr.cn/passages/2021-06-26-golang-reflect.html" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><img src="/reward.png" class="nozoom" style="pointer-events: none; width: 20px"> <span class="show-txt">打赏</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><img height="180px" src="/wechat.jpg" class="medium-zoom-image" style="margin: 10px;"></div></div></div></div><div class="option-box"><a title="记录Go中Slice扩容源码分析" href="/passages/2020-02-28-golang-slice-analysis.html" style="text-align: center; padding-left: 2px;"><img src="/prev.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">上一篇</span></a></div><div class="option-box"><a title="深度比较DeepEqual" href="/passages/2022-03-10-golang-reflect-deepEqual.html" style="text-align: center; padding-left: 2px;"><img src="/next.png" class="nozoom" style="pointer-events: none; width: 27px"> <span class="show-txt">下一篇</span></a></div></div></aside> </main></div><div class="global-ui"><div class="my-loader center" style="display:none;" data-v-354e1a9e><div class="my-loader-circle" data-v-354e1a9e></div></div><div class="my-popup" style="display:none;" data-v-5f98aac3><div class="my-popup-container" data-v-5f98aac3><div class="my-popup-exit" data-v-5f98aac3></div> <img src="" alt data-v-5f98aac3></div></div><!----><!----><div></div><div class="container" data-v-0178ff65><canvas id="live2d" width="280" height="250" class="live2d-right" data-v-0178ff65></canvas></div></div></div>
+    <script src="/assets/js/app.61497e9b.js" defer></script><script src="/assets/js/2.3bcbf9c7.js" defer></script><script src="/assets/js/4.6ca913cf.js" defer></script><script src="/assets/js/17.002f322b.js" defer></script><script src="/assets/js/6.eaefe7ba.js" defer></script><script src="/assets/js/5.df73da89.js" defer></script>
+  </body>
+</html>
