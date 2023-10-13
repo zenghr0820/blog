@@ -170,7 +170,7 @@
         left: 100%;
         top: 0;
         width: 240px;
-        background: #f7f7f7;
+        background: #ffffff;
         border: 1px solid #e8e8e8;
         left: unset;
         right: 100%;

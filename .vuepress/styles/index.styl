@@ -70,12 +70,15 @@ div[class*="language-"]::before {
 }
 .theme-default-content:not(.custom) {
   max-width: 100%;
+  background: #ffffff;
 }
 .page-edit {
   max-width: 100% !important;
+  background: #ffffff !important;
 }
 .page-nav {
   max-width: 100% !important;
+  background: #ffffff !important;
 }
 // go-to-top
 .go-to-top {
@@ -86,6 +89,7 @@ div[class*="language-"]::before {
 // 侧边栏
 .sidebar {
   z-index: 11;
+  width: 19rem;
 }
 .sidebar::-webkit-scrollbar {
   /*滚动条整体样式*/
@@ -116,6 +120,7 @@ div[class*="language-"]::before {
 
 
 #vuepress-plugin-comment
+  background: #ffffff;
   max-width 100%
   margin 0 auto
   padding 2rem 2.5rem
@@ -133,10 +138,38 @@ div[class*="language-"]::before {
 
 // $sidebarWidth: 20rem
 // define at: vuepress/packages/@vuepress/core/lib/client/style/config.styl
-.page
-  @media (min-width: $MQNarrow + 1px) {
-    padding-right $sidebarWidth
+.page {
+  display: block;
+  padding: 55px 315px 15px 20rem
+  background: #f3f5f7;
+  word-break: break-word;
+}
+@media (max-width: 1280px) {
+  .page {
+    padding-right: 3.5rem;
+    padding-bottom: 1rem;
+    display: block;
+    padding-top: 55px
   }
+  .page .theme-default-content {
+    margin-top: 0;
+    margin-left: 0;
+  }
+  .theme-default-content {
+    padding: 2rem 2.5rem !important;
+  }
+}
+@media (max-width: 719px) {
+  .page {
+    margin: 0;
+    padding: 3.5rem 0 0;
+  }
+  .page .theme-default-content {
+    padding: 1rem;
+    overflow-x: hidden
+  }
+}
+
 
 
 // 回到顶部猫
@@ -180,10 +213,6 @@ div[class*="language-"]::before {
 }
 
 @media (max-width: 719px) {
-  .page {
-    padding-left: 0;
-    padding-right: 0 !important;
-  }
   .page-sidebar {
     display: none;
   }
