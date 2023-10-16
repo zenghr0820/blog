@@ -13,7 +13,7 @@ jobs:
     # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
     # 指定 node 版本
-    container: node:16.16.0
+    container: node:16.14.2
     steps:
       # 拉取代码
       - name: Checkout
