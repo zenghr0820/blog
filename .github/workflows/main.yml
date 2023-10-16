@@ -21,9 +21,6 @@ jobs:
         with:
           persist-credentials: false
 
-      # yarn
-      - run: npm install -g yarn
-
       # 生成静态文件
       - name: Build
         run: yarn && yarn build
