@@ -25,6 +25,11 @@ jobs:
       - name: Build
         run: yarn && yarn build
 
+      # 下载 rsync
+      - name: Install rsync
+        run: | 
+          apt-get update && apt-get install -y rsync
+
       # 部署到 GitHub Pages
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
