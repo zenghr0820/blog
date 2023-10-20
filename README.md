@@ -12,8 +12,9 @@ features:
   details: 人生除了眼前的苟且，还有未知的 bug 和看不懂的 code
 comment: false
 single: true
-footer: MIT Licensed | Copyright © 2020 Zenghr
 ---
 
 
-> 这个少年的肩头想挑着草长莺飞（~~OS：在想屁吃~~）
+::: slot footer
+MIT Licensed | Copyright © 2020-present | [Zenghr](https://blog.zenghr.cn) | [粤ICP备20009116号-1](https://beian.miit.gov.cn/)
+:::
