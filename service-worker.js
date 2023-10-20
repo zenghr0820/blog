@@ -27,7 +27,7 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "c09fba5e84acedc4e203f57dd801eaef"
+    "revision": "3f4616bb98f7d25001c6e0c39093ce55"
   },
   {
     "url": "assets/css/0.styles.65ca67a0.css",
@@ -54,12 +54,12 @@ self.__precacheManifest = [
     "revision": "6942ff561df6384a47c458d8908ead2e"
   },
   {
-    "url": "assets/js/102.9c996d5b.js",
-    "revision": "f2b83901bd2f5fa8b8e45430ca91ebce"
+    "url": "assets/js/102.481d41a3.js",
+    "revision": "fe0038265fc581cb79544d100c084b0b"
   },
   {
-    "url": "assets/js/103.605b2d7e.js",
-    "revision": "a56f7259f6956e79343f34c0b7721be8"
+    "url": "assets/js/103.864779b3.js",
+    "revision": "6f9fea8a503c46650b350e38baa2c6a6"
   },
   {
     "url": "assets/js/104.f79fb32f.js",
@@ -150,12 +150,12 @@ self.__precacheManifest = [
     "revision": "3d980f2e76818e8792311761510adeee"
   },
   {
-    "url": "assets/js/30.1e5c617d.js",
-    "revision": "1aa19605caa0403089c2d6b0b3120b7c"
+    "url": "assets/js/30.9e0e8530.js",
+    "revision": "5ac2c47f4762cf8ae4bfe6d5d1ca3f90"
   },
   {
-    "url": "assets/js/31.84934529.js",
-    "revision": "455f1f5e3dea358c5a62e265550d3cfe"
+    "url": "assets/js/31.46b19327.js",
+    "revision": "fddbc17cf7c0a212109a790096382076"
   },
   {
     "url": "assets/js/32.e81f1958.js",
@@ -194,12 +194,12 @@ self.__precacheManifest = [
     "revision": "7903a7ca432761877f525f1eee86163d"
   },
   {
-    "url": "assets/js/40.071f50e2.js",
-    "revision": "8f02496a14e6bd11fcf2466f70b34c58"
+    "url": "assets/js/40.c96a39e5.js",
+    "revision": "ec60390a7fbe448108c03c17b87ec98d"
   },
   {
-    "url": "assets/js/41.d29001b9.js",
-    "revision": "63eb112c421eaf2b47ab637c7e408194"
+    "url": "assets/js/41.a20b3d83.js",
+    "revision": "21deef8ee159487eddafbc3d19080085"
   },
   {
     "url": "assets/js/42.3d99210d.js",
@@ -346,20 +346,20 @@ self.__precacheManifest = [
     "revision": "f4910f691ed2cb0ecd0df0bee628e962"
   },
   {
-    "url": "assets/js/75.fbec8e80.js",
-    "revision": "2bf1b0a4b7a80fabe55951939677a6cb"
+    "url": "assets/js/75.d4767338.js",
+    "revision": "f6d52c28dca777fc7db0cf201b70e0fd"
   },
   {
     "url": "assets/js/76.c48e610a.js",
     "revision": "0e905ad9028a932d36aaa5360bc4b522"
   },
   {
-    "url": "assets/js/77.45bba02d.js",
-    "revision": "0359a0d4d6feccf1f8a9b38337c54314"
+    "url": "assets/js/77.3fd4d641.js",
+    "revision": "ae09a95341cd3025385ff292e21c3ebe"
   },
   {
-    "url": "assets/js/78.932fd9f0.js",
-    "revision": "1121aefcb2e67b4b4daeb366cce2fd76"
+    "url": "assets/js/78.29110b1f.js",
+    "revision": "a63c39ee0990afba9f01b2b2a513cdd7"
   },
   {
     "url": "assets/js/79.fd1d8fb5.js",
@@ -370,24 +370,24 @@ self.__precacheManifest = [
     "revision": "5d6481a8b16990e0292cb6022508de8e"
   },
   {
-    "url": "assets/js/80.ca9465c3.js",
-    "revision": "ad48d805404ddc4e48353f749ef34417"
+    "url": "assets/js/80.294c81e5.js",
+    "revision": "081590c358f5fc1b3d1925f5f3bf275e"
   },
   {
-    "url": "assets/js/81.138332ff.js",
-    "revision": "fd61e28512b72396beef86174fd157c9"
+    "url": "assets/js/81.203b2abd.js",
+    "revision": "6c2056ffd8510229be9e305d4b585c36"
   },
   {
-    "url": "assets/js/82.00836c6a.js",
-    "revision": "2af95a15c38a068fe69c38c4c228eeab"
+    "url": "assets/js/82.d1b3a5df.js",
+    "revision": "a5a9dadd908f4d4ee5ba82db0f2e288e"
   },
   {
-    "url": "assets/js/83.eda83bc4.js",
-    "revision": "a00cdd8c54f281338fc4e4a196e0a877"
+    "url": "assets/js/83.e8160191.js",
+    "revision": "cb864de36d4e824f00bfb595500363dc"
   },
   {
-    "url": "assets/js/84.2d368f4c.js",
-    "revision": "8700b358f3050f61292e00f932241d64"
+    "url": "assets/js/84.f59a5f47.js",
+    "revision": "4ffbde2a835b99b34099e01b8c0dc8cc"
   },
   {
     "url": "assets/js/85.2e64bc43.js",
@@ -450,8 +450,8 @@ self.__precacheManifest = [
     "revision": "04cf4b4186f5df5886a36f0693f12346"
   },
   {
-    "url": "assets/js/app.f3eb4fa8.js",
-    "revision": "4acc7486ad1bc05e726fc3d4b091ce57"
+    "url": "assets/js/app.1f0020d5.js",
+    "revision": "9cecb47d7c32814bb909b50b7f06b603"
   },
   {
     "url": "assets/js/vendors~docsearch.5e77459f.js",
@@ -459,7 +459,7 @@ self.__precacheManifest = [
   },
   {
     "url": "friends/index.html",
-    "revision": "f9731c876a1d7576962f74656ef3215b"
+    "revision": "79f7cf5a32e7e4ae25486ef3410058e1"
   },
   {
     "url": "full.png",
@@ -467,11 +467,11 @@ self.__precacheManifest = [
   },
   {
     "url": "guide/index.html",
-    "revision": "beac5f48692874f0560f79e0656ed3d9"
+    "revision": "57f4b35909fe2db4c5eea77a969ff3b8"
   },
   {
     "url": "index.html",
-    "revision": "3c17feef0bbffdf4645bb1122cb3a5a8"
+    "revision": "956819d06fdfd8f9f64d91d34f7c7df3"
   },
   {
     "url": "iphone.png",
@@ -483,291 +483,291 @@ self.__precacheManifest = [
   },
   {
     "url": "passages/2020-01-18-first-blog.html",
-    "revision": "250d3cad9146db68a6f7082eb652ae68"
+    "revision": "ac7d7d73d1a6e307d5507be533deb63c"
   },
   {
     "url": "passages/2020-02-24-docker-install.html",
-    "revision": "b0640da8e89a9eaa8aeaac18fd4c940e"
+    "revision": "77000ff3769bc81167a0c672e734fc2c"
   },
   {
     "url": "passages/2020-02-25-docker-command.html",
-    "revision": "269ab959b7d5836c4bb6a92acb76853e"
+    "revision": "6e0adc31531567c59e6e65912625502f"
   },
   {
     "url": "passages/2020-02-25-nginx-command.html",
-    "revision": "abab038ed57c92e5e5839ce418952b11"
+    "revision": "bd9e36ff59fe43d58d19486b06d28542"
   },
   {
     "url": "passages/2020-02-25-nginx-install.html",
-    "revision": "30b1f153865bc2f523bd2c2702a97636"
+    "revision": "decc467f96ce2e60b9120efe94cf606b"
   },
   {
     "url": "passages/2020-02-28-golang-slice-analysis.html",
-    "revision": "2a0a456337736d8dda944db2efcf2fe6"
+    "revision": "d9eb85b9b40b116376a26906c494a2fe"
   },
   {
     "url": "passages/2020-08-12-kubernetes-deploy-etcd.html",
-    "revision": "0803f9d325cc40a71125edd1a9de537c"
+    "revision": "389ed8cd9cc85cc9ba5c7e7aaae7eb95"
   },
   {
     "url": "passages/2020-08-12-kubernetes-deploy-master.html",
-    "revision": "4b86c183cdcd9f5de79ef3374fb6812d"
+    "revision": "28fcc7b2faf9df6190abfaf2132ccb96"
   },
   {
     "url": "passages/2020-08-12-kubernetes-deploy-ready.html",
-    "revision": "16676d2aaaea4792e9a832f254f3a951"
+    "revision": "40bfdde3b945ce5fae1f655700c78a94"
   },
   {
     "url": "passages/2020-08-12-kubernetes-generate-tls.html",
-    "revision": "789cc189f9021891f6eb22c880b0d21c"
+    "revision": "69e1c129fa8f5cc80559f28899590924"
   },
   {
     "url": "passages/2020-08-13-kubernetes-deploy-cni.html",
-    "revision": "9619cc93f8995473c66febbbd4c3d066"
+    "revision": "237186ec191eae6481d872fbce0898bb"
   },
   {
     "url": "passages/2020-08-13-kubernetes-deploy-dns.html",
-    "revision": "f91f56fbbde1316c724d0e389607b7cf"
+    "revision": "3e4adecbe35007e2f906ef16a16d7a34"
   },
   {
     "url": "passages/2020-08-13-kubernetes-deploy-worker.html",
-    "revision": "da35e1787ba4e21e752f839e2b506a56"
+    "revision": "6c48e510de8becfafc1ce2abd36e89b1"
   },
   {
     "url": "passages/2021-04-01-idea-crack-2018.html",
-    "revision": "a5fed1e932c7c5a0926b50378cf53d5e"
+    "revision": "060a65a9ec24c3138d0e584398cd9908"
   },
   {
     "url": "passages/2021-04-09-java-basic-oop.html",
-    "revision": "edb3537ba7c49fc100b98b8a093faa88"
+    "revision": "68bcd05caf1dcd8b815a7da26fb8f1fe"
   },
   {
     "url": "passages/2021-04-09-java-lan-basic.html",
-    "revision": "c0067e96bf15ed133076a68e4a050a88"
+    "revision": "a431a8c6c225329904a3b55aac10d893"
   },
   {
     "url": "passages/2021-04-18-java-string-intern.html",
-    "revision": "b4aca04ffc9a50df9bec0a32acd54281"
+    "revision": "80d0bfcd834d0d8f4dd65f86c5b27158"
   },
   {
     "url": "passages/2021-04-19-java-basic-date.html",
-    "revision": "1ddb9450071e59d7b91a0941c6dbec88"
+    "revision": "19e93e45c46a548980e1fc716fb499f9"
   },
   {
     "url": "passages/2021-04-25-java-collection-frame.html",
-    "revision": "bd0618f34ca7290d173188d1a4f9bdac"
+    "revision": "469a346bdcff9edc18ada9fe7446b6a8"
   },
   {
     "url": "passages/2021-04-28-java-thread-theory.html",
-    "revision": "7db9b01436eff41309f7fefa405759fd"
+    "revision": "f42b5f8fcc81476251160fff70b95d03"
   },
   {
     "url": "passages/2021-05-04-java-thread-basic.html",
-    "revision": "cb89f7336d15639f920848b155d69f2b"
+    "revision": "4d6b3ec1563be90517adc5e239695645"
   },
   {
     "url": "passages/2021-05-05-java-io-basic.html",
-    "revision": "75b0df18d0b05cd0de2792f121c48747"
+    "revision": "7d5256a4c183fb5a5a66b8b8f9f39d0e"
   },
   {
     "url": "passages/2021-05-06-java-io-decorator-pattern.html",
-    "revision": "9f25793de0d61afa319ea02e175e00c1"
+    "revision": "e0c67e21e5276b9559c9e193aa58d3da"
   },
   {
     "url": "passages/2021-05-08-java-basic-reflect.html",
-    "revision": "61706332859c43899486f7dc04126ec3"
+    "revision": "a19fbcbc5b465abb2d9f05b2f5e39b4e"
   },
   {
     "url": "passages/2021-06-26-golang-reflect.html",
-    "revision": "f2766d089ac9869674c2f8c3171cc65a"
+    "revision": "ef9e89b8caa3d385341caebbd548ef9a"
   },
   {
     "url": "passages/2021-06-28-docker-mysql-env.html",
-    "revision": "caed6fdb53db36ac752d28a7e378fba3"
+    "revision": "a7674fb82dfe8a2adb27024fd77fea7d"
   },
   {
     "url": "passages/2021-06-28-git-common-cmd.html",
-    "revision": "42e4d2bbbe7e6458e436ac8abe6db07e"
+    "revision": "3352cf8e507f6447655463c0cb105f83"
   },
   {
     "url": "passages/2021-06-29-mysql-manage-auth.html",
-    "revision": "f77e6700b1d5f6a0ea3e16ce65277913"
+    "revision": "270efe7d7cb7638513e260019d02fcd8"
   },
   {
     "url": "passages/2021-06-30-git-branch-manage.html",
-    "revision": "a86cf34027243ccd353ca9fec8f0ea5b"
+    "revision": "bf6fec1b22ec9ce62badf2475c53fcdd"
   },
   {
     "url": "passages/2021-06-30-idea-jrebel-config.html",
-    "revision": "225fd4bf5d61425d863f66ece25c1379"
+    "revision": "7fc00ddf63ae707ffaf12812a52e9ae0"
   },
   {
     "url": "passages/2021-07-06-group-by-error.html",
-    "revision": "8dc8a2581959e2abcddcff9a592ef216"
+    "revision": "87f8fb06cda856d9e3bb16c70e454e1f"
   },
   {
     "url": "passages/2021-07-21-activiti7-note.html",
-    "revision": "850383ae2365d114613e4874ae96127b"
+    "revision": "f88283262bff5abc50401523ca37d271"
   },
   {
     "url": "passages/2021-07-22-activiti7-common-api.html",
-    "revision": "153455be933d3d149c4999fe269f9235"
+    "revision": "44a69a882e51f9dbe69f9fb13dcb10b1"
   },
   {
     "url": "passages/2021-07-22-activiti7-error-note.html",
-    "revision": "12dda9921a4740fa2f6d1cc4a51ed0cd"
+    "revision": "e13bd4db6360764a595714edd266dcd5"
   },
   {
     "url": "passages/2021-07-22-activiti7-note-advanced.html",
-    "revision": "1fb8875bb8a5bcecf4c6528be683436c"
+    "revision": "60b481e355eea76408c395a59b2576ba"
   },
   {
     "url": "passages/2021-07-22-activiti7-table-struct.html",
-    "revision": "fb5e669c2546a517142a1dc1abb77be0"
+    "revision": "af7cc69cc14a8b55c2f0b36c98be238e"
   },
   {
     "url": "passages/2021-07-27-spring-cloud-alibaba-nacos.html",
-    "revision": "532fd6faece2be953cb5bfd347d3a22c"
+    "revision": "9cadf54d3cab6264c2778516c5115fea"
   },
   {
     "url": "passages/2021-07-27-spring-cloud-alibaba.html",
-    "revision": "8484ec0c4df6de5412c87306615a4f25"
+    "revision": "691b2c0868e737a92ad7c113d7b3b88f"
   },
   {
     "url": "passages/2021-07-27-spring-cloud-error.html",
-    "revision": "000d80a48b7347369fb372d9081edb98"
+    "revision": "76cd6fbfec36fc603788f9397b72b29f"
   },
   {
     "url": "passages/2021-07-29-spring-cloud-gateway.html",
-    "revision": "8272d130b9d73573d6a4e3da9a70bd18"
+    "revision": "70326b038a774aea3929e685abc532db"
   },
   {
     "url": "passages/2021-08-02-redis-base-desc.html",
-    "revision": "7d7f20c8f30490de95a9a92b8ea1799c"
+    "revision": "4abe05526e83cb85f72e74752b960b88"
   },
   {
     "url": "passages/2021-08-02-redis-base-struct.html",
-    "revision": "25e3bbd6495135950734c7e3fdcd7c13"
+    "revision": "f60c69657e7fe969d9c4e85b36e8cb5b"
   },
   {
     "url": "passages/2021-08-02-redis-memory.html",
-    "revision": "07b8f187ce038b1c30ed2ab308351efc"
+    "revision": "ce6b2c597cc0d461ef51837bb0d2b45b"
   },
   {
     "url": "passages/2021-08-02-redis-overview.html",
-    "revision": "9380e7b2dee7f583a400eaa6f1b60a3e"
+    "revision": "3f592956d8624cda082c33c858ad2c72"
   },
   {
     "url": "passages/2021-08-02-redis-rdb-aof.html",
-    "revision": "3ceeefeec64251123ed335cdd08a4674"
+    "revision": "d814520cda63c02e40859d64bfd6b2f9"
   },
   {
     "url": "passages/2021-08-05-java-basic-enum.html",
-    "revision": "0eeab6a6080fe0f6b82af949d5012374"
+    "revision": "daf1653b667efeb6703ccb12dd808c33"
   },
   {
     "url": "passages/2021-08-06-elasticsearch-env.html",
-    "revision": "2d856c3ab6db7299ed1e3d593d7de11f"
+    "revision": "139b720099e71900ac7ac99009e89ba4"
   },
   {
     "url": "passages/2021-08-06-elasticsearch-introduce.html",
-    "revision": "0f5d9a506f56649dcb4d1d0a4c7e8049"
+    "revision": "7052accb8702629071b4d2d5780ef0fb"
   },
   {
     "url": "passages/2021-08-06-elasticsearch.html",
-    "revision": "02438d86d30a228cde5bfb7e9ea91114"
+    "revision": "73d7533ec39a77b984e35b28b5c736f3"
   },
   {
     "url": "passages/2021-08-07-elasticsearch-basic-course.html",
-    "revision": "cec7e65abb5ac82569d10b23b7bb407c"
+    "revision": "f23102098f647e15f6b1753287f9a550"
   },
   {
     "url": "passages/2021-08-15-mongo-introduce.html",
-    "revision": "4bd531f6d6ebf89785c84eb33a131e0a"
+    "revision": "6fda6969a8d396927953345032b78512"
   },
   {
     "url": "passages/2021-08-15-mongo-overview.html",
-    "revision": "63dc01c255487c34a91ed734d05c364b"
+    "revision": "9c7c391f12ac8a752d71c4b6d6467d4d"
   },
   {
     "url": "passages/2021-08-16-elasticsearch-ik.html",
-    "revision": "7b7a25c57d0e6acf8b8fbd50ff6145df"
+    "revision": "fefc674a165165e8c165b34290f31ab3"
   },
   {
     "url": "passages/2021-08-18-elasticsearch-highlight.html",
-    "revision": "1c56416f75748f22d61bf471d1da86b8"
+    "revision": "5cf47f787550c335c86ea39e4f05b3fc"
   },
   {
     "url": "passages/2021-08-18-elasticsearch-integrate-springboot.html",
-    "revision": "dcae836bc1bc82330ffc59b8a58207f2"
+    "revision": "0ff60978c4cdc77f4111d9fa28d9b5ec"
   },
   {
     "url": "passages/2021-08-18-git-ignore-file.html",
-    "revision": "44c297f4d06ff9e1f2f4f71df2eec26d"
+    "revision": "5e1125a9f02459f2e52f9a1d039a62b4"
   },
   {
     "url": "passages/2021-08-18-springboot-argument-resolver.html",
-    "revision": "173d6514d9b33fc3d9d2035fbc820643"
+    "revision": "f1fd03db3b4c600d95acd5cd93864e5b"
   },
   {
     "url": "passages/2021-08-19-elasticsearch-complex-query.html",
-    "revision": "0b72d45dc70c013b09c69bfb156df929"
+    "revision": "e3fe69f9ba8e41de831a5da9034f0a6e"
   },
   {
     "url": "passages/2021-08-19-mongo-install.html",
-    "revision": "ed9a0e07d5d863245fe9de07c5e86979"
+    "revision": "cdadfb77a74c3c5b21698baef272d9b5"
   },
   {
     "url": "passages/2021-08-27-mongo-geospatial.html",
-    "revision": "abf92efbe339c8ce4bca89e989094589"
+    "revision": "c18358425bd3ff6239f54243dab9a1f9"
   },
   {
     "url": "passages/2021-08-27-mongo-springboot.html",
-    "revision": "163a927cc3bea53f05bc8205a10fa64a"
+    "revision": "f2f582e32389e50acfb913570933a243"
   },
   {
     "url": "passages/2021-09-02-spring-cloud-openfeign.html",
-    "revision": "03781abc8c27d4e0ea495aadd834f35f"
+    "revision": "5094a1068877e41c4f04f05122488fb3"
   },
   {
     "url": "passages/2022-01-11-mac-jdk8-slow-solution.html",
-    "revision": "27fedd7a68e8710f102ee7b57aca13cf"
+    "revision": "87f59e92ceceb62ceef2fe5891a5d741"
   },
   {
     "url": "passages/2022-02-23-git-stash-note.html",
-    "revision": "3eb0053c5b3fe0e3c75089bd317fb74e"
+    "revision": "f74417d94066bc9839003f3f9bcddca8"
   },
   {
     "url": "passages/2022-03-10-golang-reflect-deepEqual.html",
-    "revision": "d2d2fb6ac44c8edde62ac359507250e5"
+    "revision": "f5337bd7aadc36283bf66c8e69dbe430"
   },
   {
     "url": "passages/2022-03-19-seata-transaction-error.html",
-    "revision": "2c707d567b27bff0a306379e94327498"
+    "revision": "25f46a592e174554e6cccc4620741fb3"
   },
   {
     "url": "passages/chain-of-responsibility.html",
-    "revision": "6cc897a4552969c7283d7265c9ed8f65"
+    "revision": "49d63f27452169d03fe8e5a414e77a37"
   },
   {
     "url": "passages/code-spec-alibaba.html",
-    "revision": "c250247ce10735f202872982805eeb2a"
+    "revision": "7e0fc971d59eb16e9423e9504394fa99"
   },
   {
     "url": "passages/dev-decorator-pattern.html",
-    "revision": "6e9706a811660787d83c270e655acb14"
+    "revision": "abca87a5ec8fd85e7832b1182a046b47"
   },
   {
     "url": "passages/dev-pattern-overview.html",
-    "revision": "d375b059f7b88b3e765b06dcd319b24f"
+    "revision": "f87bb42bb4295c5d044c172f5a7f241e"
   },
   {
     "url": "passages/go-catalog.html",
-    "revision": "0758f79c765c8bdf45b9c6451cc3b381"
+    "revision": "c9a060e7f9049c7283e87dfe39618d68"
   },
   {
     "url": "passages/tool-list-overview.html",
-    "revision": "8304cf84a28913bf97224fd1dc512fc0"
+    "revision": "1c45b928040b122525cfb9f55249afa2"
   },
   {
     "url": "prev.png",
