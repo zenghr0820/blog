@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     # 指定 node 版本
     container: node:16.20.1
-    # 设置环境变量
-    env:
-      clientSecret: ${{ secrets.GITALK_CLIENT_SECRET }} # gitalk 评论插件 clientSecret
 
     steps:
       # 拉取代码
@@ -28,6 +25,9 @@ jobs:
       # 生成静态文件
       - name: Build
         run: yarn && yarn build
+        # 设置环境变量
+        env:
+          clientSecret: ${{ secrets.GITALK_CLIENT_SECRET }} # gitalk 评论插件 clientSecret
 
       # 下载 rsync
       - name: Install rsync
