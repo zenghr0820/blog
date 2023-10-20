@@ -38,6 +38,7 @@ module.exports = {
           title: "「评论」<%- frontmatter.title %>",
           body:
             "<%- frontmatter.title %>：<%- window.location.origin %><%- frontmatter.to.path || window.location.pathname %>"
+          proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
         }
       }
     ],
