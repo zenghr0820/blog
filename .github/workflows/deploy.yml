@@ -24,7 +24,7 @@ jobs:
 
       # 生成静态文件
       - name: Build
-        run: yarn && yarn build
+        run: yarn && yarn docs:build
         # 设置环境变量
         env:
           giscusRepoId: ${{ secrets.GISCUS_REPO_ID }} # giscus 评论插件
