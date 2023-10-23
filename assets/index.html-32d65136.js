@@ -1,0 +1,1 @@
+import{_ as t,D as o,Y as n,Z as c,a1 as r,$ as e,a2 as s}from"./framework-1b75f830.js";const _={},d=e("h1",{id:"导航",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#导航","aria-hidden":"true"},"#"),s(" 导航")],-1);function l(i,h){const a=o("AutoCatalog");return n(),c("div",null,[d,r(a)])}const m=t(_,[["render",l],["__file","index.html.vue"]]);export{m as default};
