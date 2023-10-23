@@ -11,7 +11,7 @@ dist
 .cache
 .temp
 .idea
-/yarn.lock
+/pnpm-lock.yaml
 # 文章加密
 /keys.json
 /.temp-encrypt

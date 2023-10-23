@@ -52,13 +52,11 @@ export const navbarConfig = navbar([
         children: [
             {
                 text: "SpringBoot 系列",
-                prefix: "/spring-boot",
-                link: "/2021-08-18-springboot-argument-resolver.html"
+                link: "/spring-boot/2021-08-18-springboot-argument-resolver.html"
             },
             {
                 text: "Spring Cloud 基础",
-                prefix: "/spring-cloud",
-                link: "/2021-07-27-spring-cloud-alibaba.html"
+                link: "/spring-cloud/2021-07-27-spring-cloud-alibaba.html"
             }
         ]
     },

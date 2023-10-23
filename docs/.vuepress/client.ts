@@ -1,4 +1,3 @@
-import 'vuepress-theme-hope/presets/bounce-icon.scss'
 import { defineClientConfig } from '@vuepress/client'
 import { onBeforeUnmount, onMounted } from 'vue'
 import { setDurationTime } from './utils'
