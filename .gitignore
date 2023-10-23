@@ -1,0 +1,17 @@
+# npm
+package-lock.json
+node_modules
+
+# vscode
+.vscode
+
+# vuepress 
+dist
+.vuepress/config/sidebar-auto.js
+.cache
+.temp
+.idea
+/yarn.lock
+# 文章加密
+/keys.json
+/.temp-encrypt

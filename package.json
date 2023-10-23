@@ -1,0 +1,30 @@
+{
+  "name": "blog",
+  "version": "2.0.0",
+  "description": "A project of vuepress-theme-hope",
+  "license": "MIT",
+  "scripts": {
+    "docs:build": "vuepress build docs",
+    "docs:clean-dev": "vuepress dev docs --clean-cache",
+    "docs:dev": "vuepress dev docs",
+    "docs:update-package": "pnpm dlx vp-update"
+  },
+  "dependencies": {
+    "nodemon": "^1.19.2",
+    "ejs": "^2.7.1",
+    "ora": "^3.4.0",
+    "prettier": "^1.17.1",
+    "husky": "^2.3.0",
+    "moment": "^2.24.0",
+    "tracer": "^1.0.1",
+    "commander": "^3.0.0",
+    "date-fns": "^2.30.0",
+    "chalk": "^2.4.2"
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.67",
+    "vue": "^3.3.4",
+    "vuepress": "2.0.0-beta.67",
+    "vuepress-theme-hope": "2.0.0-beta.238"
+  }
+}
