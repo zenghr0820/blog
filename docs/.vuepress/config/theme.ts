@@ -36,7 +36,7 @@ export const themeOptions: ThemeOptions =
     displayFooter: true,
     encrypt: {
       config: {
-        "/chit-chat/2020-01-18-first-blog.html": "zenghr"
+        "/passages/2020-01-18-first-blog.html": "zenghr"
       }
     },
     // page meta

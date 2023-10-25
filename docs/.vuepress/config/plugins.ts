@@ -4,6 +4,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router";
+import { pwaConfig } from "./pwaConfig";
 
 // VuePress插件配置
 export const configPlugins: PluginConfig = [
@@ -104,6 +105,9 @@ export const themePlugins: PluginsOptions = {
     // tabs: true,
     // vPre: true,
     // vuePlayground: true
-  }
+  },
+
+  // pwa
+  pwa: pwaConfig
 
 };
