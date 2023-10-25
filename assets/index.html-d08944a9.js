@@ -1,1 +1,0 @@
-const t=JSON.parse('{"key":"v-0aad0051","path":"/spring/spring-cloud/","title":"Spring Cloud","lang":"zh-CN","frontmatter":{"title":"Spring Cloud","description":""},"headers":[],"git":{},"readingTime":{"minutes":0.01,"words":2},"filePathRelative":null,"autoDesc":true}');export{t as data};
