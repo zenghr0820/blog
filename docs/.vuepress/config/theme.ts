@@ -1,10 +1,10 @@
-import { hopeTheme } from "vuepress-theme-hope";
+import { hopeTheme, ThemeOptions } from 'vuepress-theme-hope'
 import { sidebarConfig } from "./sidebar";
 import { navbarConfig } from "./navbar";
 import { themePlugins } from "./plugins";
 import { AuthorName, Footer_Html_Info, HostName, Repo } from "../utils/constant";
 
-export default hopeTheme(
+export const themeOptions: ThemeOptions =
   // 主题选项
   {
     hostname: HostName,
@@ -45,8 +45,7 @@ export default hopeTheme(
     },
     // 内置插件
     plugins: themePlugins
-  },
-  { // 主题行为选项：https://theme-hope.vuejs.press/zh/config/theme/behavior.html
-    custom: true
   }
-);
+;
+
+export default hopeTheme(themeOptions)

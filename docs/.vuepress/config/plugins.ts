@@ -3,7 +3,7 @@ import { PluginsOptions } from "vuepress-theme-hope";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
-import vuepressPluginCustomRoute from "../plugins/my-router";
+import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router";
 
 // VuePress插件配置
 export const configPlugins: PluginConfig = [

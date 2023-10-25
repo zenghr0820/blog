@@ -1,41 +1,57 @@
-// 主题继承
-// https://v2.vuepress.vuejs.org/reference/default-theme/extending.html#extending
-// https://vuepress-theme-hope.github.io/v2/zh/cookbook/advanced/extend.html#%E7%BB%A7%E6%89%BF%E4%B8%BB%E9%A2%98
+// // 主题继承
+// // https://v2.vuepress.vuejs.org/reference/default-theme/extending.html#extending
+// // https://vuepress-theme-hope.github.io/v2/zh/cookbook/advanced/extend.html#%E7%BB%A7%E6%89%BF%E4%B8%BB%E9%A2%98
 import { ThemeObject, App } from '@vuepress/core'
+import { getDirname, path } from '@vuepress/utils'
+import { isPlainObject } from "@vuepress/shared";
+import { prepareSidebarData } from "./sidebar/prepare"
+import {
+    hopeTheme,
+    ThemeOptions,
+    getStatus,
+    getThemeData,
+    prepareThemeColorScss,
+    prepareHighLighterScss,
+    prepareSocialMediaIcons,
+    HopeThemeBehaviorOptions,
+    getSidebarSorter,
+    checkSocialMediaIcons
+} from 'vuepress-theme-hope'
 
-import { getThemeConfig } from 'vuepress-theme-hope/lib/node/themeConfig'
-import { prepareSidebarData } from './node/sidebar'
-import { prepareThemeColorScss } from 'vuepress-theme-hope/lib/node/themeColor'
 
-import themeOptions from '../themeConfig'
+const __dirname = getDirname(import.meta.url);
 
-const themeZhaobc: ThemeObject = {
-    name: 'vuepress-theme-zhaobc',
-    extends: 'vuepress-theme-hope',
+export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | boolean = true) => ({
+    name: 'vuepress-theme-zhr',
+
+    extends: hopeTheme(options, behavior),
+
     alias: {
-        // 你可以在这里覆盖或新增别名
-        // StickyIcon已提交PR，无需再自定义
-        // // 文章项
-        // '@theme-hope/module/blog/components/ArticleItem': path.resolve(
+
+        // 你可以在这里将别名定向到自己的组件
+        // "@theme-hope/modules/sidebar/components/Sidebar": path.resolve(
         //   __dirname,
-        //   './module/blog/components/ArticleItem.ts'
+        //   "./sidebar/components/Sidebar.ts",
         // ),
-    },
-    layouts: {
-        // 你可以在这里覆盖或新增布局
+        "@theme-hope/modules/sidebar/composables/index": path.resolve(
+          __dirname,
+          "./sidebar/composables/index",
+        ),
+
     },
 
     // 覆盖原来的onPrepared，使用自定义的prepareSidebarData
     // 以便自定义sidebarText
     onPrepared: (app: App): Promise<void> => {
-        console.log("aapp = ", app)
-        const themeConfig = getThemeConfig(app, themeOptions)
+        const themeStatus = getStatus(app, options);
+        const themeData = getThemeData(app, options, themeStatus);
+        const icons = themeStatus.enableBlog ? checkSocialMediaIcons(themeData) : {};
 
         return Promise.all([
-            prepareSidebarData(app, themeConfig),
-            prepareThemeColorScss(app, themeConfig),
+            prepareSidebarData(app, themeData, options.sidebarSorter),
+            prepareHighLighterScss(app, options.plugins),
+            prepareThemeColorScss(app, themeData),
+            prepareSocialMediaIcons(app, icons),
         ]).then(() => void 0)
     },
-}
-
-export default themeZhaobc
+})

@@ -8,39 +8,35 @@ export const navbarConfig = navbar([
     {
         text: "Java",
         icon: "java",
-        prefix: "/Java",
         children: [
             {
                 text: "Java 基础与面向对象",
-                prefix: "/basic",
                 children: [
                     {
                         text: "Java 基础知识",
-                        link: "/2021-04-09-java-lan-basic.html"
+                        link: "/passages/2021-04-09-java-lan-basic.html"
                     },
                     {
                         text: "Java 面向对象",
-                        link: "/2021-04-09-java-basic-oop.html"
+                        link: "/passages/2021-04-09-java-basic-oop.html"
                     }
                 ]
             },
             {
                 text: "Java进阶 - 集合框架",
-                prefix: "/collection",
                 children: [
                     {
                         text: "Java 集合框架",
-                        link: "/2021-04-25-java-collection-frame.html"
+                        link: "/passages/2021-04-25-java-collection-frame.html"
                     }
                 ]
             },
             {
                 text: "Java进阶 - IO框架",
-                prefix: "/io",
                 children: [
                     {
                         text: "Java I/O知识详解",
-                        link: "/2021-05-05-java-io-basic.html"
+                        link: "/passages/2021-05-05-java-io-basic.html"
                     }
                 ]
             }
@@ -48,28 +44,26 @@ export const navbarConfig = navbar([
     },
     {
         text: "Spring",
-        prefix: "/spring",
         children: [
             {
                 text: "SpringBoot 系列",
-                link: "/spring-boot/2021-08-18-springboot-argument-resolver.html"
+                link: "/passages/2021-08-18-springboot-argument-resolver.html"
             },
             {
                 text: "Spring Cloud 基础",
-                link: "/spring-cloud/2021-07-27-spring-cloud-alibaba.html"
+                link: "/passages/2021-07-27-spring-cloud-alibaba.html"
             }
         ]
     },
     {
         text: "数据库",
-        prefix: "/database",
         children: [
             {
                 text: "SQL数据库",
                 children: [
                     {
                         text: "Mysql",
-                        link: "/mysql/2021-06-29-mysql-manage-auth.html"
+                        link: "/passages/2021-06-29-mysql-manage-auth.html"
                     }
                 ]
             },
@@ -78,15 +72,15 @@ export const navbarConfig = navbar([
                 children: [
                     {
                         text: "Redis",
-                        link: "/redis/2021-08-02-redis-overview.html"
+                        link: "/passages/2021-08-02-redis-overview.html"
                     },
                     {
                         text: "Mongo",
-                        link: "/mongo/2021-08-15-mongo-overview.html"
+                        link: "/passages/2021-08-15-mongo-overview.html"
                     },
                     {
                         text: "Elasticsearch",
-                        link: "/elasticsearch/2021-08-06-elasticsearch.html"
+                        link: "/passages/2021-08-06-elasticsearch.html"
                     },
                 ]
             }
@@ -94,14 +88,13 @@ export const navbarConfig = navbar([
     },
     {
         text: "框架",
-        prefix: "/frame",
         children: [
             {
                 text: "常用框架",
                 children: [
                     {
                         text: "Activity7 系列",
-                        link: "/activity7/2021-07-21-activiti7-note.html"
+                        link: "/passages/2021-07-21-activiti7-note.html"
                     }
                 ]
             }
@@ -114,18 +107,17 @@ export const navbarConfig = navbar([
     {
         text: "工具|部署",
         icon: "relation",
-        prefix: "/tool",
         children: [
             {
                 text: "容器",
                 children: [
                     {
                         text: "Docker",
-                        link: "/docker/2020-02-24-docker-install.html"
+                        link: "/passages/2020-02-24-docker-install.html"
                     },
                     {
                         text: "Kubernetes",
-                        link: "/kubernetes/2020-08-12-kubernetes-deploy-ready.html"
+                        link: "/passages/2020-08-12-kubernetes-deploy-ready.html"
                     }
                 ]
             },
@@ -134,11 +126,11 @@ export const navbarConfig = navbar([
                 children: [
                     {
                         text: "Git",
-                        link: "/git/2021-06-28-git-common-cmd.html"
+                        link: "/passages/2021-06-28-git-common-cmd.html"
                     },
                     {
                         text: "Nginx",
-                        link: "/nginx/2020-02-25-nginx-install.html"
+                        link: "/passages/2020-02-25-nginx-install.html"
                     }
                 ]
             },
@@ -146,15 +138,13 @@ export const navbarConfig = navbar([
     },
     {
         text: "开发指南",
-        prefix: "/dev-guide",
         children: [
             {
                 text: "设计模式",
-                prefix: "/design",
                 children: [
                     {
                         text: "设计模式 - Overview",
-                        link: "/dev-pattern-overview.html"
+                        link: "/passages/dev-pattern-overview.html"
                     }
                 ]
             }

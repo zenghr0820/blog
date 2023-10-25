@@ -1,15 +1,20 @@
+import { App, Page } from "@vuepress/core";
+// @ts-ignore
+import { Logger } from "vuepress-shared/node";
+
 const routePfx = "/passages/";
+const logger = new Logger("vuepress-plugin-custom-router");
 
 export default {
     name: 'vuepress-plugin-custom-route',
     // 文章路径增加前缀 和 评论标识
     extendsPage(page) {
-        const {frontmatter, regularPath, pathInferred} = page;
-        // console.log(page)
+        const { frontmatter } = page;
+
         if (
             !frontmatter ||
             JSON.stringify(frontmatter) === "{}" ||
-            !frontmatter.re ||
+            (!frontmatter.re && !frontmatter.permalink) ||
             frontmatter.single === true
         ) {
             return;
@@ -28,11 +33,18 @@ export default {
         //   routePfx = ("/" + frontmatter.parentlevel + "/");
         // }
 
-        // page.path = `${routePfx}${frontmatter.permalink}.html`;
-        if (pathInferred && pathInferred.lastIndexOf("\/") > 0) {
-            const pathPfx = pathInferred.substring(0, pathInferred.lastIndexOf("\/") + 1);
-            page.path = `${pathPfx}${frontmatter.re}.html`;
+        // 自定义文档链接
+        let link = "";
+        if (frontmatter.re) {
+          link = frontmatter.re;
+        } else if (frontmatter.permalink) {
+          link = frontmatter.permalink;
         }
+
+        // logger.info("link = ", link);
+
+        page.path = `${routePfx}${link}.html`;
+        page.frontmatter.permalink = `${routePfx}${link}.html`;
 
     }
 };
