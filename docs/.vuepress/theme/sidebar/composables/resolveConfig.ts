@@ -92,6 +92,7 @@ export const resolveArraySidebarItems = (
         }
       : item;
 
+
     // resolved group item
     if ("children" in childItem) {
       const prefix = resolvePrefix(pathPrefix, childItem.prefix);
