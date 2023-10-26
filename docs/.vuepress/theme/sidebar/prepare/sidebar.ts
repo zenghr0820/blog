@@ -74,7 +74,7 @@ const getSidebarItems = (infos: SidebarInfo[]): (SidebarGroupItem | string)[] =>
       children: getSidebarItems(info.children),
     };
   });
-}
+};
 
 /**
  * @private

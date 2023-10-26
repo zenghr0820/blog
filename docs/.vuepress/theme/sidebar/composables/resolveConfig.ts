@@ -12,13 +12,16 @@ import {
   isString,
   resolveLocalePath
 } from "@vuepress/shared";
+import { useRouter } from "vue-router";
 import { keys, startsWith } from "vuepress-shared/client";
 
 import { sidebarData } from "@temp/theme-hope/sidebar";
 import { useAutoLink, useThemeLocaleData } from "@theme-hope/composables/index";
+import { resolveLinkInfo } from "@theme-hope/utils/index";
 
 import { resolvePrefix } from "./utils";
 import {
+  SidebarOptions,
   SidebarArrayOptions,
   SidebarItem,
   SidebarObjectOptions,
@@ -36,7 +39,7 @@ import {
  */
 export const headerToSidebarItem = (
   header: PageHeader,
-  headerDepth: number
+  headerDepth: number,
 ): ResolvedSidebarHeaderItem => {
   const page = usePageData();
 
@@ -50,7 +53,7 @@ export const headerToSidebarItem = (
 
 export const headersToSidebarItemChildren = (
   headers: PageHeader[],
-  headerDepth: number
+  headerDepth: number,
 ): ResolvedSidebarHeaderItem[] =>
   headerDepth > 0
     ? headers.map((header) => headerToSidebarItem(header, headerDepth - 1))
@@ -60,7 +63,7 @@ export const headersToSidebarItemChildren = (
  * Resolve sidebar items if the config is `heading`
  */
 export const resolveHeadingSidebarItems = (
-  headerDepth: number
+  headerDepth: number,
 ): ResolvedSidebarHeaderItem[] => {
   const page = usePageData();
 
@@ -73,25 +76,30 @@ export const resolveHeadingSidebarItems = (
 export const resolveArraySidebarItems = (
   sidebarConfig: SidebarArrayOptions,
   headerDepth: number,
-  prefix = ""
+  prefix = "",
 ): ResolvedSidebarItem[] => {
+  const router = useRouter();
   const page = usePageData();
 
   const handleChildItem = (
     item: SidebarItem,
-    pathPrefix = prefix
+    pathPrefix = prefix,
   ): ResolvedSidebarPageItem | ResolvedSidebarGroupItem => {
     const childItem = isString(item)
-      ? useAutoLink(resolvePrefix(pathPrefix, item))
+      ? resolveLinkInfo(router, resolvePrefix(pathPrefix, item))
       : item.link
-      ? {
+        ? {
           ...item,
           ...(!isLinkExternal(item.link)
-            ? { link: useAutoLink(resolvePrefix(pathPrefix, item.link)).link }
+            ? {
+              link: resolveLinkInfo(
+                router,
+                resolvePrefix(pathPrefix, item.link),
+              ).link,
+            }
             : {}),
         }
-      : item;
-
+        : item;
 
     // resolved group item
     if ("children" in childItem) {
@@ -114,16 +122,16 @@ export const resolveArraySidebarItems = (
       type: "page",
       ...childItem,
       children:
-        // if the sidebar item is current page and children is not set
-        // use headers of current page as children
+      // if the sidebar item is current page and children is not set
+      // use headers of current page as children
         childItem.link === page.value.path
           ? headersToSidebarItemChildren(
-              // skip h1 header
-              page.value.headers[0]?.level === 1
-                ? page.value.headers[0].children
-                : page.value.headers,
-              headerDepth
-            )
+          // skip h1 header
+          page.value.headers[0]?.level === 1
+            ? page.value.headers[0].children
+            : page.value.headers,
+          headerDepth,
+          )
           : [],
     };
   };
@@ -136,7 +144,7 @@ export const resolveArraySidebarItems = (
  */
 export const resolveMultiSidebarItems = (
   sidebarConfig: SidebarObjectOptions,
-  headerDepth: number
+  headerDepth: number,
 ): ResolvedSidebarItem[] => {
   const page = usePageData();
   const sidebarRoutes = keys(sidebarConfig).sort((x, y) => y.length - x.length);
@@ -147,16 +155,19 @@ export const resolveMultiSidebarItems = (
     // if (startsWith(decodeURI(page.value.path), base)) {
     if (startsWith(decodeURI(`/${page.value.filePathRelative}`), base)) {
       const matchedConfig = sidebarConfig[base];
+
+      console.log("1qqqqqqqqqqqqqq")
+
       return matchedConfig
         ? resolveArraySidebarItems(
-            matchedConfig === "structure"
-              ? sidebarData[base]
-              : matchedConfig === "heading"
-              ? resolveHeadingSidebarItems(headerDepth)
-              : matchedConfig,
-            headerDepth,
-            base
-          )
+          matchedConfig === "structure"
+            ? sidebarData[base]
+            : matchedConfig === "heading"
+            ? resolveHeadingSidebarItems(headerDepth)
+            : matchedConfig,
+          headerDepth,
+          base,
+        )
         : [];
     }
 
@@ -170,32 +181,26 @@ export const resolveMultiSidebarItems = (
  *
  * It should only be resolved and provided once
  */
-export const resolveSidebarItems = (): ResolvedSidebarItem[] => {
+export const resolveSidebarItems = (
+  sidebarConfig: SidebarOptions,
+  headerDepth: number,
+): ResolvedSidebarItem[] => {
   const routeLocale = useRouteLocale();
-  const frontmatter = usePageFrontmatter<ThemeNormalPageFrontmatter>();
-  const themeLocale = useThemeLocaleData();
-
-  // get sidebar config from frontmatter > themeConfig
-  const sidebarConfig = frontmatter.value.home
-    ? false
-    : frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? "structure";
-  const headerDepth =
-    frontmatter.value.headerDepth ?? themeLocale.value.headerDepth ?? 2;
 
   // resolve sidebar items according to the config
   return sidebarConfig === false
     ? []
     : sidebarConfig === "heading"
-    ? resolveHeadingSidebarItems(headerDepth)
-    : sidebarConfig === "structure"
-    ? resolveArraySidebarItems(
-        sidebarData[routeLocale.value],
-        headerDepth,
-        routeLocale.value
-      )
-    : isArray(sidebarConfig)
-    ? resolveArraySidebarItems(sidebarConfig, headerDepth)
-    : isPlainObject(sidebarConfig)
-    ? resolveMultiSidebarItems(sidebarConfig, headerDepth)
-    : [];
+      ? resolveHeadingSidebarItems(headerDepth)
+      : sidebarConfig === "structure"
+        ? resolveArraySidebarItems(
+          sidebarData[routeLocale.value],
+          headerDepth,
+          routeLocale.value,
+        )
+        : isArray(sidebarConfig)
+          ? resolveArraySidebarItems(sidebarConfig, headerDepth)
+          : isPlainObject(sidebarConfig)
+            ? resolveMultiSidebarItems(sidebarConfig, headerDepth)
+            : [];
 };

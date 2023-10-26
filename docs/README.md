@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: https://media.zenghr.cn/logo.png
+heroImage: /logo.png
 actionText: 开始阅读 →
 actionLink: /guide/
 features:

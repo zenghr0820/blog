@@ -4,18 +4,17 @@
 import { ThemeObject, App } from '@vuepress/core'
 import { getDirname, path } from '@vuepress/utils'
 import { isPlainObject } from "@vuepress/shared";
-import { prepareSidebarData } from "./sidebar/prepare"
+// import { prepareSidebarData } from "./sidebar/prepare"
 import {
     hopeTheme,
     ThemeOptions,
-    getStatus,
-    getThemeData,
-    prepareThemeColorScss,
-    prepareHighLighterScss,
-    prepareSocialMediaIcons,
+    // getStatus,
+    // getThemeData,
+    // prepareHighLighterScss,
+    // prepareSocialMediaIcons,
     HopeThemeBehaviorOptions,
-    getSidebarSorter,
-    checkSocialMediaIcons
+    // getSidebarSorter,
+    // checkSocialMediaIcons
 } from 'vuepress-theme-hope'
 
 
@@ -33,25 +32,24 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
         //   __dirname,
         //   "./sidebar/components/Sidebar.ts",
         // ),
-        "@theme-hope/modules/sidebar/composables/index": path.resolve(
-          __dirname,
-          "./sidebar/composables/index",
-        ),
+        // "@theme-hope/modules/sidebar/composables/index": path.resolve(
+        //   __dirname,
+        //   "./sidebar/composables/index",
+        // ),
 
     },
 
     // 覆盖原来的onPrepared，使用自定义的prepareSidebarData
     // 以便自定义sidebarText
-    onPrepared: (app: App): Promise<void> => {
-        const themeStatus = getStatus(app, options);
-        const themeData = getThemeData(app, options, themeStatus);
-        const icons = themeStatus.enableBlog ? checkSocialMediaIcons(themeData) : {};
-
-        return Promise.all([
-            prepareSidebarData(app, themeData, options.sidebarSorter),
-            prepareHighLighterScss(app, options.plugins),
-            prepareThemeColorScss(app, themeData),
-            prepareSocialMediaIcons(app, icons),
-        ]).then(() => void 0)
-    },
+    // onPrepared: (app: App): Promise<void> => {
+    //     const themeStatus = getStatus(app, options);
+    //     const themeData = getThemeData(app, options, themeStatus);
+    //     const icons = themeStatus.enableBlog ? checkSocialMediaIcons(themeData) : {};
+    //
+    //     return Promise.all([
+    //         prepareSidebarData(app, themeData, options.sidebarSorter),
+    //         prepareHighLighterScss(app, options.plugins),
+    //         prepareSocialMediaIcons(app, icons),
+    //     ]).then(() => void 0)
+    // },
 })

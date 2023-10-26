@@ -21,7 +21,7 @@ export const themeOptions: ThemeOptions =
     sidebarSorter: ["readme", "order", "filename", "date", "title"],
     // 图标
     iconAssets: "fontawesome-with-brands",
-    logo: "/favicon.ico",
+    logo: "/logo.png",
     // 自定义仓库链接文字。默认从 `repo` 中自动推断为
     repoLabel: "GitHub",
     // 是否在导航栏内显示仓库链接，默认为 `true`

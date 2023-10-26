@@ -152,10 +152,21 @@ export const navbarConfig = navbar([
     },
     // 其它
     {
-        text: "荒腔走板",
-        link: "/chit-chat/",
-    }
-    
+        text: "关于本站",
+        children: [
+            {
+                text: "荒腔走板",
+                // icon: "mark",
+                link: "/chit-chat/",
+            },
+            {
+                text: "链接",
+                // icon: "link",
+                link: "/link/",
+            }
+        ]
+    },
+
     //
     // {
     //     text: "面试",

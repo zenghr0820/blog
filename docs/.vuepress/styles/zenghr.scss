@@ -1,0 +1,80 @@
+@use '@sass-palette/hope-config';
+
+// 使用vuejs.org的彩色文字样式
+.fancy-hero-text {
+  .vp-blog-hero {
+    .vp-blog-hero-title {
+      // background: -webkit-linear-gradient(315deg,#42d392 25%,#647eff);
+      background: -webkit-linear-gradient(315deg, #647eff 25%, #42d392);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .vp-blog-hero-description {
+      background: -webkit-linear-gradient(315deg, #647eff 25%, #42d392);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+.theme-container {
+  // 调整下余白
+  .vp-project-home {
+    .vp-hero-info-wrapper {
+      margin-bottom: 15px;
+    }
+  }
+
+  // 调整giscus下余白
+  .vp-page .giscus-wrapper.input-top {
+    padding-bottom: 0;
+  }
+
+  .vp-page .giscus-wrapper.input-top .giscus {
+    margin-bottom: auto;
+  }
+
+  .vp-page:not(.not-found) + .vp-footer-wrapper {
+    margin-top: auto;
+  }
+}
+
+// 调整主体内容最小高度，避免出纵向滚动条
+#main-content {
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--footer-height));
+}
+
+.zenghr {
+  &.links {
+    .vp-site-info {
+      width: calc(33% - 24px);
+
+      @media (max-width: hope-config.$pad) {
+        width: calc(50% - 24px);
+
+        .vp-site-info-name {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  // 鼠标放上后变大
+  .vp-site-info {
+    overflow: hidden;
+
+    .vp-site-info-preview {
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      .vp-site-info-preview {
+        transform: scale(1.15);
+      }
+    }
+  }
+}

@@ -14,19 +14,19 @@ import {
 
 export const renderItem = (
   config: ResolvedSidebarItem,
-  props: VNode["props"]
+  props: VNode["props"],
 ): VNode =>
   isString(config.link)
     ? // if the item has link, render it as `<AutoLink>`
-      h(AutoLink, {
-        ...props,
-        config: config as AutoLinkType,
-      })
+    h(AutoLink, {
+      ...props,
+      config: config as AutoLinkType,
+    })
     : // if the item only has text, render it as `<p>`
-      h("p", props, [h(HopeIcon, { icon: config.icon }), config.text]);
+    h("p", props, [h(HopeIcon, { icon: config.icon }), config.text]);
 
 export const renderChildren = (
-  children: ResolvedSidebarHeaderItem[]
+  children: ResolvedSidebarHeaderItem[],
 ): VNode | null => {
   const route = useRoute();
 
@@ -34,16 +34,16 @@ export const renderChildren = (
 
   return h(
     "ul",
-    { class: "sidebar-sub-headers" },
+    { class: "vp-sidebar-sub-headers" },
     children.map((child) => {
       const active = isActiveSidebarItem(route, child, true);
 
-      return h("li", { class: "sidebar-sub-header" }, [
+      return h("li", { class: "vp-sidebar-sub-header" }, [
         renderItem(child, {
-          class: ["sidebar-link", "heading", { active }],
+          class: ["vp-sidebar-link", "vp-heading", { active }],
         }),
         renderChildren(child.children),
       ]);
-    })
+    }),
   );
 };
