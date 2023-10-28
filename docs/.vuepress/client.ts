@@ -1,5 +1,4 @@
 import { defineClientConfig } from '@vuepress/client'
-import { onBeforeUnmount, onMounted } from 'vue'
 
 import 'vuepress-theme-hope/presets/bounce-icon.scss'
 
