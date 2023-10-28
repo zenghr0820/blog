@@ -9,7 +9,7 @@ export default {
     name: 'vuepress-plugin-custom-route',
     // 文章路径增加前缀 和 评论标识
     extendsPage(page) {
-        const { frontmatter } = page;
+        const { frontmatter, pathInferred } = page;
 
         if (
             !frontmatter ||
@@ -41,10 +41,16 @@ export default {
           link = frontmatter.permalink;
         }
 
+        if (pathInferred && pathInferred.lastIndexOf("\/") > 0) {
+            const pathPfx = pathInferred.substring(0, pathInferred.lastIndexOf("\/") + 1);
+            page.path = `${pathPfx}${link}.html`;
+            page.frontmatter.permalink = page.path;
+        }
+
         // logger.info("link = ", link);
 
-        page.path = `${routePfx}${link}.html`;
-        page.frontmatter.permalink = `${routePfx}${link}.html`;
+        // page.path = `${routePfx}${link}.html`;
+        // page.frontmatter.permalink = `${routePfx}${link}.html`;
 
     }
 };
