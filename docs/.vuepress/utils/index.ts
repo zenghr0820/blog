@@ -12,6 +12,7 @@ export const withBase = (path: string) => {
   }
 };
 
+// 设置博客持续时间
 export function setDurationTime() {
   const $el = document.getElementById("blog-duration");
   if (!$el) return;
