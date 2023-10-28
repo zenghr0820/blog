@@ -149,14 +149,15 @@ export const resolveMultiSidebarItems = (
   const page = usePageData();
   const sidebarRoutes = keys(sidebarConfig).sort((x, y) => y.length - x.length);
 
+  console.log(page);
+  console.log("sidebarRoutes = ", sidebarRoutes);
+
   // find matching config
-  for (const base of sidebarRoutes)
+  for (const base of sidebarRoutes) {
     // TODO 文档使用自定义链接
     // if (startsWith(decodeURI(page.value.path), base)) {
     if (startsWith(decodeURI(`/${page.value.filePathRelative}`), base)) {
       const matchedConfig = sidebarConfig[base];
-
-      console.log("1qqqqqqqqqqqqqq")
 
       return matchedConfig
         ? resolveArraySidebarItems(
@@ -170,7 +171,7 @@ export const resolveMultiSidebarItems = (
         )
         : [];
     }
-
+  }
   console.warn(`${page.value.path} is missing sidebar config.`);
 
   return [];

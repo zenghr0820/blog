@@ -32,10 +32,10 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
         //   __dirname,
         //   "./sidebar/components/Sidebar.ts",
         // ),
-        // "@theme-hope/modules/sidebar/composables/index": path.resolve(
-        //   __dirname,
-        //   "./sidebar/composables/index",
-        // ),
+        "@theme-hope/modules/sidebar/composables/index": path.resolve(
+          __dirname,
+          "./sidebar/composables/index",
+        ),
 
     },
 
