@@ -7,7 +7,7 @@ export const navbarConfig = navbar([
     },
     {
         text: "Java",
-        icon: "java",
+        icon: "leaf",
         children: [
             {
                 text: "Java 基础与面向对象",
@@ -57,6 +57,7 @@ export const navbarConfig = navbar([
     },
     {
         text: "数据库",
+        icon: "database",
         children: [
             {
                 text: "SQL数据库",
@@ -88,6 +89,7 @@ export const navbarConfig = navbar([
     },
     {
         text: "框架",
+        icon: "cube",
         children: [
             {
                 text: "常用框架",
@@ -106,7 +108,7 @@ export const navbarConfig = navbar([
     },
     {
         text: "工具|部署",
-        icon: "relation",
+        icon: "hammer",
         children: [
             {
                 text: "容器",
@@ -153,15 +155,16 @@ export const navbarConfig = navbar([
     // 其它
     {
         text: "关于本站",
+        icon: "ghost",
         children: [
             {
                 text: "荒腔走板",
-                // icon: "mark",
+                icon: "comment",
                 link: "/chit-chat/",
             },
             {
                 text: "链接",
-                // icon: "link",
+                icon: "link",
                 link: "/link/",
             }
         ]

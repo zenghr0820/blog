@@ -20,7 +20,7 @@ export const themeOptions: ThemeOptions =
     // 侧边栏排序
     sidebarSorter: ["readme", "order", "filename", "date", "title"],
     // 图标
-    iconAssets: "fontawesome-with-brands",
+    iconAssets: "fontawesome",
     logo: "/logo.png",
     // 自定义仓库链接文字。默认从 `repo` 中自动推断为
     repoLabel: "GitHub",

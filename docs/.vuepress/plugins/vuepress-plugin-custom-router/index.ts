@@ -1,6 +1,7 @@
 import { App, Page } from "@vuepress/core";
 // @ts-ignore
 import { Logger } from "vuepress-shared/node";
+import { removeLeadingSlash } from '@vuepress/shared'
 
 const routePfx = "/passages/";
 const logger = new Logger("vuepress-plugin-custom-router");
@@ -51,6 +52,12 @@ export default {
 
         page.path = `${routePfx}${link}.html`;
         page.frontmatter.permalink = `${routePfx}${link}.html`;
+
+        // !! 修改 build 后，文档生成的路径
+        if (page.htmlFilePath) {
+            page.htmlFilePath = page.htmlFilePath.replace(/dist.*/, `dist${page.data.path}`);
+            page.htmlFilePathRelative = removeLeadingSlash(page.data.path);
+        }
 
     }
 };
