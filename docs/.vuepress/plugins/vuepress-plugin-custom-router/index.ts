@@ -55,8 +55,8 @@ export default {
 
         // !! 修改 build 后，文档生成的路径
         if (page.htmlFilePath) {
-            page.htmlFilePath = page.htmlFilePath.replace(/dist.*/, `dist${page.data.path}`);
-            page.htmlFilePathRelative = removeLeadingSlash(page.data.path);
+            page.htmlFilePath = page.htmlFilePath.replace(/dist.*/, `dist${page.path}`);
+            page.htmlFilePathRelative = removeLeadingSlash(page.path);
         }
 
     }
