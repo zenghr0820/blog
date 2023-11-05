@@ -4,6 +4,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { containerPlugin } from '@vuepress/plugin-container'
+import { live2dPlugin } from 'vuepress-plugin-live2d-plus'
 import { renderProjects } from '../containers/projects'
 import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router";
 import { pwaConfig } from "./pwaConfig";
@@ -46,7 +47,27 @@ export const configPlugins: PluginConfig = [
     render: (tokens, idx) => {
       return renderProjects(tokens, idx)
     }
+  }),
+
+  // 看板娘插件 see: https://github.com/xinlei3166/vuepress-plugin-live2d-plus
+  live2dPlugin({
+    enable: true,
+    model: {
+      url: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/hijiki/hijiki.model.json',
+      // url: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/tororo/tororo.model.json'
+    },
+    display: {
+      position: 'right',
+      width: '135px',
+      height: '300px',
+      xOffset: '-25px',
+      yOffset: '35px'
+    },
+    mobile: {
+      show: false
+    }
   })
+
 ];
 
 // 主题内置插件配置
@@ -78,7 +99,7 @@ export const themePlugins: PluginsOptions = {
         frontmatter.home ||
         (frontmatter.layout && !excludeLayouts.includes(frontmatter.layout))
       )
-        return false
+        return false;
       return true
     }
   },
