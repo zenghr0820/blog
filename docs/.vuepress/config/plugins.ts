@@ -50,23 +50,23 @@ export const configPlugins: PluginConfig = [
   }),
 
   // 看板娘插件 see: https://github.com/xinlei3166/vuepress-plugin-live2d-plus
-  live2dPlugin({
-    enable: true,
-    model: {
-      url: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/hijiki/hijiki.model.json',
-      // url: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/tororo/tororo.model.json'
-    },
-    display: {
-      position: 'right',
-      width: '135px',
-      height: '300px',
-      xOffset: '-25px',
-      yOffset: '35px'
-    },
-    mobile: {
-      show: false
-    }
-  })
+  // live2dPlugin({
+  //   enable: true,
+  //   model: {
+  //     url: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/hijiki/hijiki.model.json',
+  //     // url: 'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/tororo/tororo.model.json'
+  //   },
+  //   display: {
+  //     position: 'right',
+  //     width: '135px',
+  //     height: '300px',
+  //     xOffset: '-25px',
+  //     yOffset: '35px'
+  //   },
+  //   mobile: {
+  //     show: false
+  //   }
+  // })
 
 ];
 
