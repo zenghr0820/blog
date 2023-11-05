@@ -1,8 +1,10 @@
 ---
 home: true
 heroImage: /logo.png
-actionText: 开始阅读 →
-actionLink: /guide/
+actions:
+- text: 开始阅读 →
+  link: /article/
+  type: primary
 features:
 - title: 春夏秋冬
   details: 愿__心境四季如春
