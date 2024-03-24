@@ -36,6 +36,11 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
         //   __dirname,
         //   "./sidebar/composables/index",
         // ),
+        // 替换加密可组合 API
+        "@theme-hope/modules/encrypt/composables/index": path.resolve(
+          __dirname,
+          "./encrypt/composables/index",
+        ),
 
     },
 
