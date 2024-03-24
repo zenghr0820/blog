@@ -91,3 +91,13 @@ figcaption {
 [aria-label][data-balloon-pos]:after {
   white-space: pre;
 }
+
+// 博客星标文章列表样式
+.vp-sticky-article {
+  padding: 8px 4px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.vp-sticky-article a {
+  font-size: 14px;
+}
