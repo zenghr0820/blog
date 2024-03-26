@@ -2,10 +2,10 @@ import { PluginConfig } from "vuepress";
 import { PluginsOptions } from "vuepress-theme-hope";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
-import { docsearchPlugin  } from "@vuepress/plugin-docsearch";
-import { containerPlugin } from '@vuepress/plugin-container'
-import { live2dPlugin } from 'vuepress-plugin-live2d-plus'
-import { renderProjects } from '../containers/projects'
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { containerPlugin } from "@vuepress/plugin-container";
+import { live2dPlugin } from "vuepress-plugin-live2d-plus";
+import { renderProjects } from "../containers/projects";
 import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router";
 import { pwaConfig } from "./pwaConfig";
 
@@ -23,6 +23,44 @@ export const configPlugins: PluginConfig = [
     appId: process.env.algoliaAppId || "",
     apiKey: process.env.algoliaAppKey || "",
     indexName: "prod_blog",
+    translations: {
+      button: {
+        buttonText: "搜索文档",
+        buttonAriaLabel: "Search"
+      },
+      modal: {
+        searchBox: {
+          resetButtonTitle: "清除查询条件",
+          resetButtonAriaLabel: "Clear the query",
+          cancelButtonText: "关闭",
+          cancelButtonAriaLabel: "Cancel"
+        },
+        startScreen: {
+          recentSearchesTitle: "搜索历史",
+          noRecentSearchesText: "没有搜索历史",
+          saveRecentSearchButtonTitle: "保存至搜索记录",
+          removeRecentSearchButtonTitle: "从搜索历史中移除",
+        },
+        errorScreen: {
+          titleText: "无法找到相关结果",
+          helpText: "您可能需要检查您的网络连接."
+        },
+        footer: {
+          selectText: "选择",
+          selectKeyAriaLabel: "Enter key",
+          navigateText: "切换",
+          navigateUpKeyAriaLabel: "Arrow up",
+          navigateDownKeyAriaLabel: "Arrow down",
+          closeText: "关闭",
+          closeKeyAriaLabel: "Escape key",
+          searchByText: "搜索提供者"
+        },
+        noResultsScreen: {
+          noResultsText: "无法找到相关结果",
+          suggestedQueryText: "你可以尝试查询",
+        }
+      }
+    }
   }),
 
   // 路径自定义插件
@@ -45,11 +83,11 @@ export const configPlugins: PluginConfig = [
 
   // 自定义容器插件
   containerPlugin({
-    type: 'projects',
+    type: "projects",
     render: (tokens, idx) => {
-      return renderProjects(tokens, idx)
+      return renderProjects(tokens, idx);
     }
-  }),
+  })
 
   // 看板娘插件 see: https://github.com/xinlei3166/vuepress-plugin-live2d-plus
   // live2dPlugin({
@@ -94,15 +132,15 @@ export const themePlugins: PluginsOptions = {
       // 舍弃那些不是从 Markdown 文件生成的页面
       if (!filePathRelative) return false;
       // 舍弃所有的README.md页面
-      if (filePathRelative.toLowerCase().endsWith('readme.md')) return false;
+      if (filePathRelative.toLowerCase().endsWith("readme.md")) return false;
       // 舍弃那些没有使用默认布局的页面
-      const excludeLayouts = ['ArticleLayout'];
+      const excludeLayouts = ["ArticleLayout"];
       if (
         frontmatter.home ||
         (frontmatter.layout && !excludeLayouts.includes(frontmatter.layout))
       )
         return false;
-      return true
+      return true;
     }
   },
 
@@ -122,9 +160,9 @@ export const themePlugins: PluginsOptions = {
   // 组件插件
   components: {
     rootComponents: {
-      backToTop: true,
+      backToTop: true
     },
-    components: ['CodePen', 'StackBlitz', 'Replit', 'SiteInfo', 'Share'],
+    components: ["CodePen", "StackBlitz", "Replit", "SiteInfo", "Share"]
 
   },
 
