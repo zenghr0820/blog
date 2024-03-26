@@ -20,7 +20,12 @@
     "lvl4": ".theme-hope-content h4",
     "lvl5": ".theme-hope-content h5",
     "lvl6": ".theme-hope-content h6",
-    "content": ".theme-hope-content p, .theme-hope-content li"
+    "content": ".theme-hope-content p, .theme-hope-content li",
+    "lang": {
+      "selector": "/html/@lang",
+      "type": "xpath",
+      "global": true
+    }
   },
   "custom_settings": {
     "attributesForFaceting": ["type", "lang", "language", "version", "tags"],
