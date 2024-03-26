@@ -1,9 +1,9 @@
 {
-  "indexName": "prod_blog",
-  "sitemaps": [
+  "index_name": "prod_blog",
+  "sitemap_urls": [
     "https://blog.zenghr.cn/sitemap.xml"
   ],
-  "startUrls": [
+  "start_urls": [
     "https://blog.zenghr.cn"
   ],
   "exclusionPatterns": [
