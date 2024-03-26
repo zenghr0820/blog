@@ -2,7 +2,7 @@ import { PluginConfig } from "vuepress";
 import { PluginsOptions } from "vuepress-theme-hope";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { autoCatalogPlugin } from "vuepress-plugin-auto-catalog";
-import { searchProPlugin } from "vuepress-plugin-search-pro";
+import { docsearchPlugin  } from "@vuepress/plugin-docsearch";
 import { containerPlugin } from '@vuepress/plugin-container'
 import { live2dPlugin } from 'vuepress-plugin-live2d-plus'
 import { renderProjects } from '../containers/projects'
@@ -10,6 +10,8 @@ import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router"
 import { pwaConfig } from "./pwaConfig";
 
 // VuePress插件配置
+
+// @ts-ignore
 export const configPlugins: PluginConfig = [
   // 谷歌统计插件
   // googleAnalyticsPlugin({
@@ -17,10 +19,10 @@ export const configPlugins: PluginConfig = [
   // }),
 
   // 搜索插件
-  searchProPlugin({
-    // 全文检索
-    indexContent: false,
-    autoSuggestions: false
+  docsearchPlugin({
+    appId: process.env.algoliaAppId || "",
+    apiKey: process.env.algoliaAppKey || "",
+    indexName: "prod_blog",
   }),
 
   // 路径自定义插件
