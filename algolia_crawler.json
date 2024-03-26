@@ -9,7 +9,7 @@
   "stop_urls": [
     "https://blog.zenghr.cn/link"
   ],
-  "selectors": {
+  "selector": {
     "lvl0": {
       "selectors": ".sidebar-heading.active",
       "defaultValue": "Documentation"
