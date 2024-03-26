@@ -10,10 +10,7 @@
     "https://blog.zenghr.cn/link"
   ],
   "selector": {
-    "lvl0": {
-      "selectors": ".sidebar-heading.active",
-      "defaultValue": "Documentation"
-    },
+    "lvl0": ".sidebar-heading.active",
     "lvl1": ".theme-hope-content h1",
     "lvl2": ".theme-hope-content h2",
     "lvl3": ".theme-hope-content h3",
