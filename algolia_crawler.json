@@ -23,7 +23,7 @@
     "content": ".theme-hope-content p, .theme-hope-content li"
   },
   "custom_settings": {
-    "attributesForFaceting": ["type", "lang"],
+    "attributesForFaceting": ["type", "lang", "language", "version", "tags"],
     "attributesToRetrieve": [
       "hierarchy",
       "content",
