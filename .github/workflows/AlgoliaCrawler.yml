@@ -5,7 +5,8 @@ name: Algolia-Crawler
 on:
   workflow_run:
     workflows: [Deploy-blog]
-      types: [completed]
+    types:
+      - completed
 
 # 任务
 jobs:
