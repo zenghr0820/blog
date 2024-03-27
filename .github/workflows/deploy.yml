@@ -44,11 +44,3 @@ jobs:
           TOKEN: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
           BRANCH: gh-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
           FOLDER: docs/.vuepress/dist # vuepress 生成的静态文件存放的地方
-
-      # 推送索引到 Algolia
-      - name: Push indices to Algolia
-        uses: darrenjennings/algolia-docsearch-action@master
-        with:
-          algolia_application_id: ${{secrets.ALGOLIA_APPLICATION_ID}}
-          algolia_api_key: ${{secrets.ALGOLIA_API_KEY}}
-          file: './algolia_crawler.json'
