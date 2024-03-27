@@ -1,0 +1,34 @@
+import{_ as s}from"./plugin-vue_export-helper-c27b6911.js";import{o as n,c as a,a as e}from"./app-2b9eaf17.js";const t={},p=e(`<h1 id="友情链接" tabindex="-1"><a class="header-anchor" href="#友情链接" aria-hidden="true">#</a> 友情链接</h1><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>站点名称：Zenghr
+站点地址：https://blog.zenghr
+站点描述：乐子人的博客
+站点Logo：https://media.zenghr.cn/logo.png
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>请先将本站加入友链后，在下方评论按如下格式提供信息：</p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>icon: 网站图标
+name: 网站名字
+desc: 网站描述
+link: 网站链接
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="工具链接" tabindex="-1"><a class="header-anchor" href="#工具链接" aria-hidden="true">#</a> 工具链接</h2><div class="vp-project-panel"><a class="vp-project-card project0" href="https://vuepress.vuejs.org/zh/" target="_blank"><img src="https://vuepress.vuejs.org/hero.png" alt="VuePress" class="vp-project-image"><div class="vp-project-name"> VuePress </div><div class="vp-project-desc">Vue 驱动的静态网站生成器。</div></a><a class="vp-project-card project1" href="https://theme-hope.vuejs.press/zh/" target="_blank"><img src="https://theme-hope.vuejs.press/logo.png" alt="VuePress Theme Hope" class="vp-project-image"><div class="vp-project-name"> VuePress Theme Hope </div><div class="vp-project-desc">一个具有强大功能的 vuepress 主题✨</div></a><a class="vp-project-card project2" href="https://www.iconfont.cn/" target="_blank"><img src="https://image.liubing.me/2022/12/30/c827badf9fa7a.jpg" alt="iconfont" class="vp-project-image"><div class="vp-project-name"> iconfont </div><div class="vp-project-desc">阿里巴巴矢量图标库。</div></a><div class="language-yaml line-numbers-mode" data-ext="yml"><pre class="language-yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">icon</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//vuepress.vuejs.org/hero.png
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> VuePress
+  <span class="token key atrule">desc</span><span class="token punctuation">:</span> Vue 驱动的静态网站生成器。
+  <span class="token key atrule">link</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//vuepress.vuejs.org/zh/
+
+<span class="token punctuation">-</span> <span class="token key atrule">icon</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//theme<span class="token punctuation">-</span>hope.vuejs.press/logo.png
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> VuePress Theme Hope
+  <span class="token key atrule">desc</span><span class="token punctuation">:</span> 一个具有强大功能的 vuepress 主题✨
+  <span class="token key atrule">link</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//theme<span class="token punctuation">-</span>hope.vuejs.press/zh/
+
+<span class="token punctuation">-</span> <span class="token key atrule">icon</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//image.liubing.me/2022/12/30/c827badf9fa7a.jpg
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> iconfont
+  <span class="token key atrule">desc</span><span class="token punctuation">:</span> 阿里巴巴矢量图标库。
+  <span class="token key atrule">link</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//www.iconfont.cn/
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><h2 id="友情链接-1" tabindex="-1"><a class="header-anchor" href="#友情链接-1" aria-hidden="true">#</a> 友情链接</h2><div class="vp-project-panel"><a class="vp-project-card project0" href="https://mister-hope.com/" target="_blank"><img src="https://mister-hope.com/logo.svg" alt="Mr.Hope" class="vp-project-image"><div class="vp-project-name"> Mr.Hope </div><div class="vp-project-desc">VuePress Theme Hope 主题作者。</div></a><a class="vp-project-card project1" href="https://www.pdai.tech" target="_blank"><img src="https://www.pdai.tech/images/index-read.gif" alt="pdai" class="vp-project-image"><div class="vp-project-name"> pdai </div><div class="vp-project-desc">Java 全栈知识体系</div></a><div class="language-yaml line-numbers-mode" data-ext="yml"><pre class="language-yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">icon</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//mister<span class="token punctuation">-</span>hope.com/logo.svg
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> Mr.Hope
+  <span class="token key atrule">desc</span><span class="token punctuation">:</span> VuePress Theme Hope 主题作者。
+  <span class="token key atrule">link</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//mister<span class="token punctuation">-</span>hope.com/
+
+
+<span class="token punctuation">-</span> <span class="token key atrule">icon</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//www.pdai.tech/images/index<span class="token punctuation">-</span>read.gif
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pdai
+  <span class="token key atrule">desc</span><span class="token punctuation">:</span> Java 全栈知识体系
+  <span class="token key atrule">link</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//www.pdai.tech
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>`,8),c=[p];function i(l,o){return n(),a("div",null,c)}const d=s(t,[["render",i],["__file","friends.html.vue"]]);export{d as default};
