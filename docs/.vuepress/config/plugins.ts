@@ -20,8 +20,8 @@ export const configPlugins: PluginConfig = [
 
   // 搜索插件
   docsearchPlugin({
-    appId: process.env.algoliaAppId || "",
-    apiKey: process.env.algoliaAppKey || "",
+    appId: process.env.algoliaAppId || "BGZI1WD543",
+    apiKey: process.env.algoliaAppKey || "06d648afe2ad649b8852561f40f39efe",
     indexName: "prod_blog",
     contextualSearch: true,
     searchParameters: {
@@ -132,8 +132,6 @@ export const themePlugins: PluginsOptions = {
 
   // 博客插件配置
   blog: {
-    // 头像被剪裁成圆形
-    roundAvatar: true,
     hotReload: true, // 启用热更新
     // timeline: 'archives', // 时间轴访问路径修改成archives
     // 过滤列表页面

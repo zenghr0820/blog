@@ -9,6 +9,17 @@ description: 链接
 
 containerClass: zenghr links
 
+projects:
+  - name: VuePress
+    desc: 基于 Vue 的静态文档构建器
+    link: https://vuejs.press/zh/
+    icon: /assets/img/vuepress.png
+
+  - name: VuePress Theme Hope
+    desc: 一个功能强大的 VuePress 主题✨
+    link: https://theme-hope.vuejs.press/zh/
+    icon: https://theme-hope-assets.vuejs.press/logo.svg
+
 tools:
   - name: vuepress-theme-hope
     desc: 一个具有强大功能的 vuepress 主题✨

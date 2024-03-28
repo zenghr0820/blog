@@ -1,10 +1,7 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const navbarConfig = navbar([
-    {
-        text: "最新",
-        link: "/article/"
-    },
+    { text: "主页", icon: "home", link: "/" },
     {
         text: "Java",
         icon: "leaf",
