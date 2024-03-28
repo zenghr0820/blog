@@ -10,7 +10,7 @@ index: false
 站点名称：Zenghr
 站点地址：https://blog.zenghr
 站点描述：乐子人的博客
-站点Logo：https://media.zenghr.cn/logo.png
+站点Logo：https://media.zenghr.cn/avatar.png
 ```
 
 请先将本站加入友链后，在下方评论按如下格式提供信息：

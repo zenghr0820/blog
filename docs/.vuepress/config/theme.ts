@@ -30,6 +30,8 @@ export const themeOptions: ThemeOptions =
     breadcrumb: false,
     // 隐藏打印按钮
     print: false,
+    // 全屏按钮
+    fullscreen: true,
     // 文档源文件存放在仓库中的目录名
     docsDir: "docs",
     footer: Footer_Html_Info,
@@ -42,6 +44,12 @@ export const themeOptions: ThemeOptions =
     // page meta
     metaLocales: {
       editLink: "在 GitHub 上编辑此页"
+    },
+    // blog
+    blog: {
+      // 头像被剪裁成圆形
+      roundAvatar: false,
+      avatar: "/avatar.png",
     },
     // 内置插件
     plugins: themePlugins

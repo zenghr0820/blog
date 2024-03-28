@@ -12,5 +12,18 @@ export const headConfig = [
   // 自定义favicon
   ['link', { rel: 'icon', href: "/favicon.ico" }],
   // 谷歌搜索
-  ["meta", { name: "google-site-verification", content: "YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs" }]
+  ["meta", { name: "google-site-verification", content: "YaZkTUj_yooTpG-N5B8hieXvHDRpHs7xfqTLvGl6nHs" }],
+  // 字体
+  ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
+  [
+    "link",
+    { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
+  ],
+  [
+    "link",
+    {
+      href: "https://fonts.googleapis.com/css2?family=Pacifico&display=swap",
+      rel: "stylesheet",
+    },
+  ],
 ];

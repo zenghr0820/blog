@@ -2,7 +2,7 @@
 home: true
 icon: link
 title: 链接
-heroImage: /logo.png
+heroImage: /avatar.png
 heroText: 链接
 tagline: 工具链接，友情链接
 description: 链接

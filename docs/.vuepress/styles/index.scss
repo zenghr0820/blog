@@ -2,6 +2,27 @@
 @import './zenghr.scss';
 @import './font.scss';
 
+body{
+  color: #4c4849;
+}
+
+h2 {
+  position: relative;
+  margin: 20px 0 14px;
+  font-weight: bold;
+  border: none;
+  color: #4c4849;
+}
+
+// 文章 code 标签样式
+code {
+  padding: 4px;
+  background: rgba(27, 31, 35, 0.05);
+  color: #f47466;
+}
+
+// -----------------------------------------
+
 html[data-theme='light'] {
   .vp-blog-infos {
     .vp-blog-type-button {
@@ -101,4 +122,20 @@ figcaption {
 
 .vp-sticky-article a {
   font-size: 14px;
+}
+
+// 侧边栏样式
+.vp-sidebar-title {
+  font-weight: 600;
+  color: #3f3f3f;
+}
+
+#main-title {
+  font-family: Pacifico;
+  line-height: 1.9;
+}
+
+// 网站标题、博客名称更换字体
+.vp-site-name, .vp-blogger-name {
+  font-family: Pacifico;
 }
