@@ -20,6 +20,7 @@
     "vuepress-theme-hope": "2.0.0-beta.238"
   },
   "dependencies": {
-    "date-fns": "2.30.0"
+    "date-fns": "2.30.0",
+    "axios": "^1.6.8"
   }
 }

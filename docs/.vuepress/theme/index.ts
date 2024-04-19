@@ -42,6 +42,11 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
           "./encrypt/composables/index",
         ),
 
+        "@theme-hope/modules/blog/components/BlogHero": path.resolve(
+          __dirname,
+          "./components/BlogHero.vue",
+        ),
+
     },
 
     // 覆盖原来的onPrepared，使用自定义的prepareSidebarData

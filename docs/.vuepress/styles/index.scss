@@ -1,10 +1,12 @@
 // place your custom styles here
 @import './zenghr.scss';
-@import './font.scss';
+//@import './font.scss';
 
 body{
   color: #4c4849;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 
 h2 {
   position: relative;
@@ -19,6 +21,26 @@ code {
   padding: 4px;
   background: rgba(27, 31, 35, 0.05);
   color: #f47466;
+}
+
+blockquote {
+  margin: 0 0 20px;
+  padding: 12px 15px;
+  border-left: 3px solid #49b1f5;
+  background-color: rgba(73, 177, 245, 0.1);
+}
+
+.theme-hope-content pre {
+  overflow: auto;
+  margin: 0 0 20px;
+  background: #f6f8fa;
+  color: #90a4ae;
+  line-height: 1.6;
+}
+
+.theme-hope-content pre code {
+  font-size: 16px;
+  color: #7d7d7d;
 }
 
 // -----------------------------------------
