@@ -44,6 +44,7 @@ jobs:
           giscusCategoryId: ${{ secrets.GISCUS_CATEGORY_ID }} # giscus 评论插件
           algoliaAppId: ${{secrets.ALGOLIA_APPLICATION_ID}}
           algoliaAppKey: ${{secrets.ALGOLIA_API_KEY}}
+          algoliaAdminAppKey: ${{secrets.ALGOLIA_ADMIN_API_KEY}}
 
         run: |-
           pnpm build
