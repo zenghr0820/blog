@@ -129,8 +129,8 @@ if __name__ == '__main__':
     final_urls = diff_urls(urls, prev_urls)
     print(f"需要更新的url:{final_urls}")
     if len(final_urls) > 0:
-        push_urls_to_bing(urls, site_url)
-        push_urls_to_baidu(urls, site_url)
+        push_urls_to_bing(final_urls, site_url)
+        push_urls_to_baidu(final_urls, site_url)
         push_urls_to_google(final_urls)
     else:
         print("✨未发现要更新的url")
