@@ -21,7 +21,6 @@
     "lvl5": "[vp-content] h5",
     "lvl6": "[vp-content] h6",
     "content": "[vp-content] p, [vp-content] li",
-    "indexHeadings": true,
     "lang": {
       "selector": "/html/@lang",
       "type": "xpath",
