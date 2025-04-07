@@ -72,8 +72,8 @@ def push_urls_to_baidu(urls, site_url):
         if not response.content :
           return;
         json_data = json.loads(response.content)
-        success = json_data['success']
-        remain = json_data['remain']
+        success = int(json_data['success'])
+        remain = int(json_data['remain'])
         if success > 0 and remain > 0 :
           finallyUrls = []
           if len(urls) > remain :
