@@ -77,7 +77,7 @@ def push_urls_to_baidu(urls, site_url):
         if success > 0 and remain > 0 :
           finallyUrls = []
           if len(urls) > remain :
-            finallyUrls.append(urls[0, remain])
+            finallyUrls.append(urls[0:remain])
           else:
             finallyUrls = urls
 
