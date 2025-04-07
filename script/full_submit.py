@@ -62,7 +62,7 @@ def push_urls_to_baidu(urls, site_url):
     # 先提交一个url，查看每日配额
     first = []
     if len(urls) > 0 :
-      first.append(urls.pop(0)
+      first.append(urls.pop(0))
 
     data = '\n'.join(first)
     response = requests.post(url, headers=headers, data=data)
