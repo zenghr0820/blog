@@ -49,11 +49,6 @@ jobs:
           pnpm build
           > src/.vuepress/dist/.nojekyll
 
-      # 下载 rsync
-      - name: Install rsync
-        run: |
-          apt-get update && apt-get install -y rsync
-
       # 部署到 GitHub Pages
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
