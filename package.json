@@ -24,6 +24,7 @@
     "vuepress-plugin-oh-my-live2d": "^0.19.3",
     "vuepress-theme-hope": "2.0.0-rc.78"
   },
+  "packageManager": "pnpm@10.7.1",
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
