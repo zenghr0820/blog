@@ -129,7 +129,7 @@ export const themePlugins: PluginsOptions = {
   docsearch: {
     appId: process.env.algoliaAppId || "",
     apiKey: process.env.algoliaAppKey || "",
-    indexName: "prod_blog",
+    indexName: "zenghr",
     contextualSearch: true,
     searchParameters: {
     },
