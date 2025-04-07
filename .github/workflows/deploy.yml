@@ -13,7 +13,7 @@ jobs:
     # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
     # 指定 node 版本
-#    container: node:18.18.2
+    #    container: node:18.18.2
 
     steps:
       # 拉取代码
@@ -23,18 +23,18 @@ jobs:
           persist-credentials: false
 
       - name: 设置 pnpm
-          uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v4
 
       - name: 设置 Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: 22
-            cache: pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
 
       - name: 安装依赖
-          run: |
-            corepack enable
-            pnpm install --frozen-lockfile
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
 
       # 生成静态文件
       - name: 构建文档
@@ -51,7 +51,7 @@ jobs:
 
       # 下载 rsync
       - name: Install rsync
-        run: | 
+        run: |
           apt-get update && apt-get install -y rsync
 
       # 部署到 GitHub Pages
