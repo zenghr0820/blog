@@ -1,4 +1,4 @@
-name: 推送脚本
+name: 提交URL到搜索引擎
 
 on:
   push:
