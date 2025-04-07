@@ -59,10 +59,34 @@ def push_urls_to_baidu(urls, site_url):
         'User-Agent': 'curl/7.12.1',
         'Host': 'data.zz.baidu.com'
     }
-    data = '\n'.join(urls)
+    # 先提交一个url，查看每日配额
+    first = []
+    if len(urls) > 0 :
+      first.append(urls.pop(0))
+
+    data = '\n'.join(first)
     response = requests.post(url, headers=headers, data=data)
     if response.status_code == 200:
-        print(f"🎉百度推送成功!:\n{response.content}")
+        print("🎉百度推送成功!:")
+        print(response.content)
+        if not response.content :
+          return;
+        json_data = json.loads(response.content)
+        success = json_data['success']
+        remain = json_data['remain']
+        if success > 0 and remain > 0 :
+          finallyUrls = []
+          if len(urls) > response.content.remain :
+            finallyUrls.append(urls[0, response.content.remain])
+          else:
+            finallyUrls = urls
+
+          data = '\n'.join(finallyUrls)
+          response = requests.post(url, headers=headers, data=data)
+          if response.status_code == 200:
+              print(f"🎉百度推送成功!:\n{response.content}")
+          else:
+              print(f"🛎百度Error:\n{response.content}")
     else:
         print(f"🛎百度Error:\n{response.content} ")
 

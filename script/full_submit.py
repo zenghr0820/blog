@@ -69,7 +69,12 @@ def push_urls_to_baidu(urls, site_url):
     if response.status_code == 200:
         print("🎉百度推送成功!:")
         print(response.content)
-        if response.content.success > 0 and response.content.remain > 0 :
+        if not response.content :
+          return;
+        json_data = json.loads(response.content)
+        success = json_data['success']
+        remain = json_data['remain']
+        if success > 0 and remain > 0 :
           finallyUrls = []
           if len(urls) > response.content.remain :
             finallyUrls.append(urls[0, response.content.remain])
