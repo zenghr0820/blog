@@ -1,0 +1,34 @@
+# name 可以自定义
+name: Algolia-Crawler
+
+# 触发条件：博客部署工作流结束后执行 Algolia 爬虫程序
+on:
+  workflow_run:
+    workflows: [pages-build-deployment]
+    types:
+      - completed
+
+# 任务
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      # 推送索引到 Algolia
+      - name: Push indices to Algolia
+        uses: darrenjennings/algolia-docsearch-action@master
+        with:
+          algolia_application_id: ${{secrets.ALGOLIA_APPLICATION_ID}}
+          algolia_api_key: ${{secrets.ALGOLIA_API_KEY}}
+          file: './algolia_crawler.json'
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo '打包失败'
