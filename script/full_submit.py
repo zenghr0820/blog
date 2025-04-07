@@ -77,10 +77,11 @@ def push_urls_to_baidu(urls, site_url):
         if success > 0 and remain > 0 :
           finallyUrls = []
           if len(urls) > remain :
-            finallyUrls.append(urls[0:remain])
+            finallyUrls = urls[0:remain]
           else:
             finallyUrls = urls
 
+          print(f"Baidu 需要更新的url:{finallyUrls}")
           data = '\n'.join(finallyUrls)
           response = requests.post(url, headers=headers, data=data)
           if response.status_code == 200:
