@@ -5,6 +5,7 @@ export const AuthorName = 'Zenghr';
 export const AuthorEmail = '907887446@qq.com';
 export const HostName = "https://blog.zenghr.cn";
 export const Base = '/';
+export const Avatar = '/avatar.png';
 export const Footer_Html_Info=`MIT Licensed | 
 Copyright ©2020-${new Date().getFullYear()} |
 <a href="${HostName}" target="_blank">Zenghr</a> | 

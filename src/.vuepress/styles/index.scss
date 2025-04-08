@@ -20,15 +20,13 @@
     z-index: 4;
     background-color: transparent;
   }
+  @media (max-width: hope-config.$pad) {
+    z-index: 4;
+    background-color: transparent;
+  }
 }
-// .hide-navbar {
-//   .sidebar {
-//     top: 0;
-//   }
-//   .toggle-sidebar-wrapper {
-//     top: 0;
-//   }
-// }
+
+
 [data-theme="light"] .theme-container .vp-sidebar {
   @media (max-width: hope-config.$tablet) {
     background-color: rgba(255, 255, 255, 0.6);

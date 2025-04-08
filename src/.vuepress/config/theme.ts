@@ -2,17 +2,18 @@ import { hopeTheme, ThemeOptions } from 'vuepress-theme-hope'
 import { sidebarConfig } from "./sidebar";
 import { navbarConfig } from "./navbar";
 import { themePlugins } from "./plugins";
-import { AuthorName, Footer_Html_Info, HostName, Repo } from "../utils/constant";
+import * as constant from "../utils/constant";
+import {Avatar} from "../utils/constant";
 
 export const themeOptions: ThemeOptions =
   // 主题选项
   {
-    hostname: HostName,
+    hostname: constant.HostName,
     author: {
-      name: AuthorName
+      name: constant.AuthorName
     },
     // 默认为 GitHub. 同时也可以是一个完整的 URL
-    repo: Repo,
+    repo: constant.Repo,
     // 导航栏
     navbar: navbarConfig,
     // 侧边栏
@@ -24,6 +25,8 @@ export const themeOptions: ThemeOptions =
     // iconAssets: 'fontawesome',
     // 自定义仓库链接文字。默认从 `repo` 中自动推断为
     repoLabel: "GitHub",
+    // 是否显示页面贡献者
+    contributors: false,
     // 是否在导航栏内显示仓库链接，默认为 `true`
     repoDisplay: true,
     // 面包屑导航
@@ -34,7 +37,7 @@ export const themeOptions: ThemeOptions =
     fullscreen: true,
     // 文档源文件存放在仓库中的目录名
     docsDir: "docs",
-    footer: Footer_Html_Info,
+    footer: constant.Footer_Html_Info,
     displayFooter: true,
     encrypt: {
       config: {
@@ -47,9 +50,8 @@ export const themeOptions: ThemeOptions =
     },
     // blog
     blog: {
-      // 头像被剪裁成圆形
-      roundAvatar: true,
-      avatar: "/avatar.png",
+      avatar: constant.Avatar,
+      description: constant.Description,
     },
 
     // markdown 配置
