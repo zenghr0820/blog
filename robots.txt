@@ -1,5 +1,4 @@
-
-User-agent:*
-Disallow:
-
+User-agent: *
+Allow: /
 Sitemap: https://blog.zenghr.cn/sitemap.xml
+Host: https://blog.zenghr.cn
