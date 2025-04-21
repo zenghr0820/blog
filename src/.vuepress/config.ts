@@ -22,6 +22,8 @@ export default defineUserConfig({
   }),
   // Plugin Config
   plugins: configPlugins,
+  // Enable it with pwa
+  shouldPrefetch: false,
 
   alias: {
     // 你可以在这里将别名定向到自己的组件

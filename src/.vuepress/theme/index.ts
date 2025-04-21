@@ -2,6 +2,7 @@
 // // https://v2.vuepress.vuejs.org/reference/default-theme/extending.html#extending
 // // https://vuepress-theme-hope.github.io/v2/zh/cookbook/advanced/extend.html#%E7%BB%A7%E6%89%BF%E4%B8%BB%E9%A2%98
 import {getDirname, path} from 'vuepress/utils'
+import { Logger } from "@vuepress/helper";
 import {
   hopeTheme,
   ThemeOptions,
@@ -52,4 +53,8 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
   //         prepareSocialMediaIcons(app, icons),
   //     ]).then(() => void 0)
   // },
+
+  onGenerated: (): Promise<void> => {
+    const logger = new Logger("vuepress-plugin-custom-router");
+  },
 })

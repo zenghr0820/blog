@@ -18,6 +18,7 @@
     "@vuepress/plugin-pwa": "2.0.0-rc.91",
     "@vuepress/plugin-revealjs": "2.0.0-rc.91",
     "@vueuse/core": "^13.0.0",
+    "generate-robotstxt": "^8.0.3",
     "sass-embedded": "^1.86.3",
     "vue": "^3.5.13",
     "vuepress": "2.0.0-rc.20",

@@ -2,14 +2,15 @@ import { PluginConfig } from "vuepress";
 import { PluginsOptions } from "vuepress-theme-hope";
 // import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { oml2dPlugin } from 'vuepress-plugin-oh-my-live2d';
-import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router";
+import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router/index";
 import {
   canvasPlugin,
   CanvasPluginType,
-} from "../plugins/vuepress-plugin-canvas";
-import { gradientCoverPlugin } from "../plugins/vuepress-plugin-gradient-cover";
+} from "../plugins/vuepress-plugin-canvas/index";
+import { gradientCoverPlugin } from "../plugins/vuepress-plugin-gradient-cover/index";
+import { robotsPlugin } from "../plugins/vuepress-plugin-robots/index";
 import { pwaConfig } from "./pwaConfig";
-
+import { HostName } from "../utils/constant";
 // VuePress插件配置
 
 // @ts-ignore
@@ -34,6 +35,14 @@ export const configPlugins: PluginConfig = [
 
   // 遮罩插件
   gradientCoverPlugin({}),
+
+
+  // robots.txt 插件
+  robotsPlugin({
+    host: HostName,
+    disallowAll: false,
+    allowAll: true, // 以允许搜索引擎收录
+  }),
 
   // 看板娘插件 see: https://oml2d.hacxy.cn/guide/vuepress.html
   oml2dPlugin({
@@ -129,7 +138,7 @@ export const themePlugins: PluginsOptions = {
   docsearch: {
     appId: process.env.algoliaAppId || "",
     apiKey: process.env.algoliaAppKey || "",
-    indexName: "prod_blog",
+    indexName: "zenghr",
     contextualSearch: true,
     searchParameters: {
     },
