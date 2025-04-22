@@ -82,7 +82,7 @@ export const themePlugins: PluginsOptions = {
     showInMobile: true // 手机端显示代码复制
   },
   // 自动生成目录配置
-  catalog: false,
+  // catalog: true,
   // 版权信息是否显示
   copyright: false,
   // icon 图标设置

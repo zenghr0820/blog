@@ -1,6 +1,6 @@
 ---
-title: "目录"
+title: "Golang"
 index: false
 ---
 
-<AutoCatalog />
+<Catalog />

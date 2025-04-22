@@ -1,7 +1,7 @@
 ---
 title: "Mac安装JDK8启动项目慢解决方案"
 date: 2022-01-11 13:50:00
-re: 2022-01-11-mac-jdk8-slow-solution
+re: mac-jdk8-slow-solution
 ---
 
 # Mac安装JDK8启动项目慢解决方案

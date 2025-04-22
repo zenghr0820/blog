@@ -39,7 +39,7 @@ export const setupSidebarItems = (): void => {
     () => frontmatter.value.headerDepth ?? themeLocale.value.headerDepth ?? 2,
   );
 
-  console.log(sidebarConfig.value)
+  // console.log(sidebarConfig.value)
   const sidebarItems = computedWithControl(
     () => [
       sidebarConfig.value,
@@ -52,7 +52,7 @@ export const setupSidebarItems = (): void => {
         config: sidebarConfig.value,
         headerDepth: headerDepth.value,
         routeLocale: routeLocale.value,
-        routePath: page.value.path,
+        routePath: page.value.path,  // 自定义链接
       }),
   );
 

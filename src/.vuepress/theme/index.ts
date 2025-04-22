@@ -21,10 +21,10 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
     // 你可以在这里将别名定向到自己的组件
 
     // 重写侧边栏可组合 API
-    "@theme-hope/modules/sidebar/composables/index": path.resolve(
-      __dirname,
-      "./sidebar/composables/index",
-    ),
+    // "@theme-hope/modules/sidebar/composables/index": path.resolve(
+    //   __dirname,
+    //   "./sidebar/composables/index",
+    // ),
 
     // 重写加密组件
     "@theme-hope/modules/encrypt/components/LocalEncrypt": path.resolve(
@@ -40,21 +40,4 @@ export default (options: ThemeOptions, behavior: HopeThemeBehaviorOptions | bool
 
   },
 
-  // 覆盖原来的onPrepared，使用自定义的prepareSidebarData
-  // 以便自定义sidebarText
-  // onPrepared: (app: App): Promise<void> => {
-  //     const themeStatus = getStatus(app, options);
-  //     const themeData = getThemeData(app, options, themeStatus);
-  //     const icons = themeStatus.enableBlog ? checkSocialMediaIcons(themeData) : {};
-  //
-  //     return Promise.all([
-  //         prepareSidebarData(app, themeData, options.sidebarSorter),
-  //         prepareHighLighterScss(app, options.plugins),
-  //         prepareSocialMediaIcons(app, icons),
-  //     ]).then(() => void 0)
-  // },
-
-  onGenerated: (): Promise<void> => {
-    const logger = new Logger("vuepress-plugin-custom-router");
-  },
 })

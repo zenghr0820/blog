@@ -1,4 +1,3 @@
-import { App, Page } from "@vuepress/core";
 // @ts-ignore
 import { Logger, removeLeadingSlash } from "@vuepress/helper";
 const routePfx = "/passages/";
@@ -40,22 +39,21 @@ export default {
           link = frontmatter.permalink;
         }
 
-        // if (pathInferred && pathInferred.lastIndexOf("\/") > 0) {
-        //     const pathPfx = pathInferred.substring(0, pathInferred.lastIndexOf("\/") + 1);
-        //     page.path = `${pathPfx}${link}.html`;
-        //     page.frontmatter.permalink = page.path;
-        // }
+        if (pathInferred && pathInferred.lastIndexOf("\/") > 0) {
+            const pathPfx = pathInferred.substring(0, pathInferred.lastIndexOf("\/") + 1);
+            page.path = `${pathPfx}${link}.html`;
+        } else {
+            page.path = `${routePfx}${link}.html`;
+        }
 
-        // logger.info("page.value.path = ", page.value.path);
-        // logger.info("link = ", page.path);
-
-        page.path = `${routePfx}${link}.html`;
         if (page.value) {
           logger.info("page.value = ", page.value);
+          logger.info("link = ", page.path);
           page.value.path = page.path
         }
 
-        page.frontmatter.permalink = `${routePfx}${link}.html`;
+        page.frontmatter.permalink = page.path;
+        // page.frontmatter.permalink = `${routePfx}${link}.html`;
 
         // !! 修改 build 后，文档生成的路径
         if (page.htmlFilePath) {

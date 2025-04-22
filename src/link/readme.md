@@ -1,6 +1,6 @@
 ---
 title: 友情链接
-icon: link
+icon: /assets/link.svg
 index: false
 article: false
 pageInfo: [ ]

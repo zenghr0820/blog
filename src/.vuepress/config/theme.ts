@@ -30,15 +30,16 @@ export const themeOptions: ThemeOptions =
     // 是否在导航栏内显示仓库链接，默认为 `true`
     repoDisplay: true,
     // 面包屑导航
-    breadcrumb: false,
+    breadcrumb: true,
     // 隐藏打印按钮
     print: false,
     // 全屏按钮
     fullscreen: true,
     // 文档源文件存放在仓库中的目录名
-    docsDir: "docs",
+    // docsDir: "docs",
     footer: constant.Footer_Html_Info,
     displayFooter: true,
+    // 加密
     encrypt: {
       config: {
         "/chit-chat/少年的第一篇博客.html": "zenghr"

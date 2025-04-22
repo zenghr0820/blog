@@ -8,32 +8,35 @@ export const navbarConfig = navbar([
         children: [
             {
                 text: "Java 基础与面向对象",
+                prefix: "/Java/basic/",
                 children: [
                     {
                         text: "Java 基础知识",
-                        link: "/passages/2021-04-09-java-lan-basic.html"
+                        link: "01.Java基础 - 快速入门.md"
                     },
                     {
                         text: "Java 面向对象",
-                        link: "/passages/2021-04-09-java-basic-oop.html"
+                        link: "02.Java基础 - 面向对象.md"
                     }
                 ]
             },
             {
                 text: "Java进阶 - 集合框架",
+                prefix: "/Java/collection/",
                 children: [
                     {
                         text: "Java 集合框架",
-                        link: "/passages/2021-04-25-java-collection-frame.html"
+                        link: "01.Java集合框架体系.md"
                     }
                 ]
             },
             {
                 text: "Java进阶 - IO框架",
+                prefix: "/Java/io/",
                 children: [
                     {
                         text: "Java I/O知识详解",
-                        link: "/passages/2021-05-05-java-io-basic.html"
+                        link: "01.Java-IO-流基础.md"
                     }
                 ]
             }
@@ -44,11 +47,11 @@ export const navbarConfig = navbar([
         children: [
             {
                 text: "SpringBoot 系列",
-                link: "/passages/2021-08-18-springboot-argument-resolver.html"
+                link: "/spring/spring-boot/自定义参数解析器.md"
             },
             {
                 text: "Spring Cloud 基础",
-                link: "/passages/2021-07-27-spring-cloud-alibaba.html"
+                link: "/spring/spring-cloud/spring-cloud-alibaba.html"
             }
         ]
     },
@@ -58,10 +61,11 @@ export const navbarConfig = navbar([
         children: [
             {
                 text: "SQL数据库",
+                prefix: "/database/mysql/",
                 children: [
                     {
                         text: "Mysql",
-                        link: "/passages/2021-06-29-mysql-manage-auth.html"
+                        link: "01.mysql 创建用户并赋权.md"
                     }
                 ]
             },
@@ -70,38 +74,45 @@ export const navbarConfig = navbar([
                 children: [
                     {
                         text: "Redis",
-                        link: "/passages/2021-08-02-redis-overview.html"
+                        link: "/database/redis/00.Redis-知识体系.md"
                     },
                     {
                         text: "Mongo",
-                        link: "/passages/2021-08-15-mongo-overview.html"
+                        link: "/database/mongo/01.Mongo-知识体系.md"
                     },
                     {
                         text: "Elasticsearch",
-                        link: "/passages/2021-08-06-elasticsearch.html"
+                        link: "/database/elasticsearch/01.Elasticsearch-知识体系.md"
                     },
                 ]
             }
         ]
     },
     {
-        text: "框架",
-        icon: "cube",
+        text: "开发笔记",
+        icon: "code",
         children: [
             {
                 text: "常用框架",
+                prefix:"/frame/",
                 children: [
-                    {
-                        text: "Activity7 系列",
-                        link: "/passages/2021-07-21-activiti7-note.html"
-                    }
+                    { text: "Activity7 系列", icon: "", link: "activity7/" },
                 ]
+            },
+            {
+              text: "开发架构",
+              children: [
+                { text: "Golang", icon: "", link: "/golang/" },
+              ]
+            },
+            {
+              text: "开发指南",
+              prefix:"/dev-guide/design/",
+              children: [
+                { text: "设计模式", icon: "object-ungroup", link: "00.设计模式-Overview.md" },
+              ]
             }
         ]
-    },
-    {
-        text: "Golang",
-        link: "/golang/"
     },
     {
         text: "工具|部署",
@@ -109,44 +120,32 @@ export const navbarConfig = navbar([
         children: [
             {
                 text: "容器",
+                prefix: "/tool/",
                 children: [
                     {
                         text: "Docker",
-                        link: "/passages/2020-02-24-docker-install.html"
+                        link: "docker/01.安装Docker.md"
                     },
                     {
                         text: "Kubernetes",
-                        link: "/passages/2020-08-12-kubernetes-deploy-ready.html"
+                        link: "kubernetes/00.kubernetes安装环境.md"
                     }
                 ]
             },
             {
                 text: "工具",
+                prefix: "/tool/",
                 children: [
                     {
                         text: "Git",
-                        link: "/passages/2021-06-28-git-common-cmd.html"
+                        link: "git/01.git 常用命令.md"
                     },
                     {
                         text: "Nginx",
-                        link: "/passages/2020-02-25-nginx-install.html"
+                        link: "nginx/01.安装Nginx.md"
                     }
                 ]
             },
-        ]
-    },
-    {
-        text: "开发指南",
-        children: [
-            {
-                text: "设计模式",
-                children: [
-                    {
-                        text: "设计模式 - Overview",
-                        link: "/passages/dev-pattern-overview.html"
-                    }
-                ]
-            }
         ]
     },
     // 其它
@@ -162,24 +161,8 @@ export const navbarConfig = navbar([
             {
                 text: "链接",
                 icon: "link",
-                link: "/link/friends",
+                link: "/link/",
             }
         ]
     },
-
-    //
-    // {
-    //     text: "面试",
-    //     link: "/zh/guide/README.md",
-    //     icon: "editor",
-    //     // 仅在 `/zh/guide/` 激活
-    //     activeMatch: "^/zh/guide/$",
-    // },
-    // {
-    //     text: "项目",
-    //     link: "/zh/guide/README.md",
-    //     icon: "creative",
-    //     // 仅在 `/zh/guide/` 激活
-    //     activeMatch: "^/zh/guide/$",
-    // },
 ]);

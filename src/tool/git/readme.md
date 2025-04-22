@@ -5,4 +5,4 @@ dir:
     order: 4
 ---
 
-<AutoCatalog />
+<Catalog />

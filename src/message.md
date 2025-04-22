@@ -1,5 +1,5 @@
 ---
-icon: mark
+icon: /assets/lyb.svg
 sidebar: false
 article: false
 ---

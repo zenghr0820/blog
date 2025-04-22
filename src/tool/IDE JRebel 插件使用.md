@@ -1,7 +1,7 @@
 ---
 title: "Idea JRebel 热更新"
 date: 2021-06-30 10:31:00
-re: 2021-06-30-idea-jrebel-config
+re: idea-jrebel-config
 order: 2
 ---
 

@@ -6,8 +6,8 @@
 
 <template>
     <BlogHero>
-        <template #heroInfo="heroInfo">
-            <HitokotoBlogHero v-bind="heroInfo"/>
+        <template #info="info">
+            <HitokotoBlogHero v-bind="info"/>
         </template>
     </BlogHero>
 </template>

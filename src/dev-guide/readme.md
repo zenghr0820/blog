@@ -1,4 +1,5 @@
 ---
+title: "开发指南"
 toc: false
 index: false
 dir:
@@ -7,4 +8,4 @@ dir:
 ---
 
 # 导航
-<AutoCatalog />
+<Catalog />

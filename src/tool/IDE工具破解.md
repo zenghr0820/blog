@@ -1,7 +1,7 @@
 ---
 title: "IDE工具破解"
 date: 2021-04-01 16:30:00
-re: 2021-04-01-idea-crack-2018
+re: idea-crack-2018
 order: 1
 ---
 

@@ -26,6 +26,12 @@
   }
 }
 
+// 自定义目录样式
+.vp-sub-catalog-link:hover{
+  background-color: var(--vp-c-accent-bg);
+  color: var(--vp-c-white);
+}
+
 
 [data-theme="light"] .theme-container .vp-sidebar {
   @media (max-width: hope-config.$tablet) {

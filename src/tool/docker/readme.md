@@ -4,4 +4,4 @@ index: false
 order: 3
 ---
 
-<AutoCatalog />
+<Catalog />

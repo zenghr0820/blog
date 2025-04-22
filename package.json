@@ -8,6 +8,7 @@
     "build": "vuepress-vite build src",
     "clean-dev": "vuepress-vite dev src --clean-cache",
     "dev": "vuepress-vite dev src",
+    "debug": "vuepress-vite dev src --debug",
     "update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {

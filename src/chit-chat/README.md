@@ -1,4 +1,5 @@
 ---
+icon: ghost
 title: "荒腔走板"
 order: 1
 category:
