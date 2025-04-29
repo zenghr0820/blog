@@ -1,7 +1,7 @@
 import { PluginConfig } from "vuepress";
 import { PluginsOptions } from "vuepress-theme-hope";
-// import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { oml2dPlugin } from 'vuepress-plugin-oh-my-live2d';
+import { encryptPlugin } from 'vuepress-plugin-encrypt';
 import vuepressPluginCustomRoute from "../plugins/vuepress-plugin-custom-router/index";
 import {
   canvasPlugin,
@@ -13,7 +13,6 @@ import { pwaConfig } from "./pwaConfig";
 import { HostName } from "../utils/constant";
 // VuePress插件配置
 
-// @ts-ignore
 export const configPlugins: PluginConfig = [
   // 谷歌统计插件
   // googleAnalyticsPlugin({
@@ -22,6 +21,12 @@ export const configPlugins: PluginConfig = [
 
   // 路径自定义插件
   vuepressPluginCustomRoute,
+
+  encryptPlugin({
+    config: {
+      "/chit-chat/少年的第一篇博客": "zenghr"
+    }
+  }),
 
   // 背景插件
   canvasPlugin({

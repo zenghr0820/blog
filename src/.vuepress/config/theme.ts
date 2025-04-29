@@ -40,11 +40,11 @@ export const themeOptions: ThemeOptions =
     footer: constant.Footer_Html_Info,
     displayFooter: true,
     // 加密
-    encrypt: {
-      config: {
-        "/chit-chat/少年的第一篇博客.html": "zenghr"
-      },
-    },
+    // encrypt: {
+    //   config: {
+    //     "/chit-chat/少年的第一篇博客.html": "zenghr"
+    //   },
+    // },
     // page meta
     metaLocales: {
       editLink: "在 GitHub 上编辑此页"

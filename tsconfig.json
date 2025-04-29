@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "isolatedModules": true,
+    "noImplicitAny": false,
     "module": "esnext",
     "target": "ES2020",
     "baseUrl": "./",

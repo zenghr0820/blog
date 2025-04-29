@@ -12,7 +12,6 @@ export default defineClientConfig({
   layouts: {
   },
   enhance: ({ app, router, siteData }) => {
-
   },
   setup() {
     onMounted(() => {
@@ -26,5 +25,8 @@ export default defineClientConfig({
         `color: #51c4d3; font-size:12px;`
       );
     });
-  }
+  },
+  rootComponents: [
+    // 添加全局密码组件，使其在每个页面自动运行
+  ],
 })
