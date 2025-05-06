@@ -2,6 +2,7 @@
 title: vuepress-plugin-encrypt
 description: vuepress-plugin-encrypt 一个 VuePress 插件，可以为您的文档或博客提供页面级别的密码保护和内容块加密功能
 date: 2025-04-29 22:35:00
+star: true
 category: 
  - Vuepress插件
 tags: 

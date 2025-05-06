@@ -16,7 +16,7 @@ projects:
   - icon: /assets/link.svg
     name: 友情链接
     desc: (●´∀｀●)ﾉ
-    link: /link/friends.html
+    link: /link/
 
   - icon: /assets/shoucang.svg
     name: 荒腔走板
