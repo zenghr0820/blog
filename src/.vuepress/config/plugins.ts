@@ -126,11 +126,16 @@ export const themePlugins: PluginsOptions = {
     /**
      * Using Giscus
      */
-    provider: "Giscus",
-    repo: "zenghr0820/blog",
-    category: "Announcements",
-    repoId: process.env.giscusRepoId || "",
-    categoryId: process.env.giscusCategoryId || ""
+    // provider: "Giscus",
+    // repo: "zenghr0820/blog",
+    // category: "Announcements",
+    // repoId: process.env.giscusRepoId || "",
+    // categoryId: process.env.giscusCategoryId || ""
+    /**
+     * Using Waline
+     */
+    provider: "Waline",
+    serverURL: "https://waline.zenghr.cn", // your server url
   },
   // Disable features you don’t want here
 
