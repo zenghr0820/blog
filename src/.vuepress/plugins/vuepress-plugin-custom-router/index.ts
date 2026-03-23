@@ -61,5 +61,11 @@ export default {
             page.htmlFilePathRelative = removeLeadingSlash(page.path);
         }
 
+        /*
+          启动 waline 评论系统后，commentID 作为文章的唯一标识
+          将 commentID 设置为 permalink
+         */
+        page.frontmatter.commentID = page.path;
+
     }
 };

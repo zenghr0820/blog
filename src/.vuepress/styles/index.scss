@@ -232,9 +232,9 @@ div[class*="language-"]:hover:before {
 div[class*="language-"].line-numbers-mode pre code {
   padding: 0.6rem 1rem;
 }
-div[class*="language-"]:not([class*="line-numbers-mode"]) pre code {
-  padding: 0 1rem;
-}
+//div[class*="language-"]:not([class*="line-numbers-mode"]) pre code {
+//  padding: 0 1rem;
+//}
 div[class*="language-"].line-numbers-mode pre {
   margin: 0;
   margin-left: 2.4rem;
@@ -381,6 +381,13 @@ figcaption {
 // 网站标题、博客名称更换字体
 .vp-site-name, .vp-blogger-name {
   font-family: Pacifico;
+}
+
+#markdown-content > div[class*="language-"] {
+  @media (max-width: hope-config.$mobile) {
+    border-radius: 6px;
+    margin: 0;
+  }
 }
 
 

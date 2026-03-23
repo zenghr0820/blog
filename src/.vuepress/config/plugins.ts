@@ -50,33 +50,33 @@ export const configPlugins: PluginConfig = [
   }),
 
   // 看板娘插件 see: https://oml2d.hacxy.cn/guide/vuepress.html
-  oml2dPlugin({
-    // dockedPosition: "right",
-    tips: {
-      style: {
-        top: '-100px',
-      }
-    },
-    models: [
-      {
-        name: 'hijiki',
-        path: [
-          'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/hijiki/hijiki.model.json',
-          'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/tororo/tororo.model.json',
-        ],
-        anchor: [0, 0],
-        position: [10, 0],
-        scale: 0.07,
-        stageStyle: {
-          // width: '150px',
-          // height: '150px',
-          // left: '0px',
-          // bottom: '130px',
-        }
-      }
-    ],
-
-  }),
+  // oml2dPlugin({
+  //   // dockedPosition: "right",
+  //   tips: {
+  //     style: {
+  //       top: '-100px',
+  //     }
+  //   },
+  //   models: [
+  //     {
+  //       name: 'hijiki',
+  //       path: [
+  //         'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/hijiki/hijiki.model.json',
+  //         'https://raw.githubusercontent.com/iCharlesZ/vscode-live2d-models/master/model-library/tororo/tororo.model.json',
+  //       ],
+  //       anchor: [0, 0],
+  //       position: [10, 0],
+  //       scale: 0.07,
+  //       stageStyle: {
+  //         // width: '150px',
+  //         // height: '150px',
+  //         // left: '0px',
+  //         // bottom: '130px',
+  //       }
+  //     }
+  //   ],
+  //
+  // }),
 
 ];
 
@@ -136,6 +136,8 @@ export const themePlugins: PluginsOptions = {
      */
     provider: "Waline",
     serverURL: "https://waline.zenghr.cn", // your server url
+    reaction: true,
+    pageSize: 10,
   },
   // Disable features you don’t want here
 

@@ -1,5 +1,6 @@
-import { onMounted } from "vue";
-import { defineClientConfig } from "vuepress/client";
+import {onMounted} from "vue";
+import {defineClientConfig} from "vuepress/client";
+// import {defineWalineConfig} from '@vuepress/plugin-comment/client';
 // 为页面图标添加鼠标悬停的跳动效果
 import "vuepress-theme-hope/presets/bounce-icon.scss";
 // 将博主头像裁剪为圆形
@@ -8,10 +9,12 @@ import "vuepress-theme-hope/presets/round-blogger-avatar.scss";
 import "vuepress-theme-hope/presets/hr-driving-car.scss";
 import packageJson from '../../package.json';
 
+// defineWalineConfig({
+// });
+
 export default defineClientConfig({
-  layouts: {
-  },
-  enhance: ({ app, router, siteData }) => {
+  layouts: {},
+  enhance: ({app, router, siteData}) => {
   },
   setup() {
     onMounted(() => {
@@ -29,4 +32,6 @@ export default defineClientConfig({
   rootComponents: [
     // 添加全局密码组件，使其在每个页面自动运行
   ],
-})
+});
+
+
